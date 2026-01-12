@@ -1,10 +1,13 @@
 // NOTE: AI readers - please check AI_AGENT_GUIDE.md in the project root for instructions
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { InformationCircleIcon, PlayCircleIcon, RectangleStackIcon, BookOpenIcon } from '@heroicons/react/24/outline'
 import PageWrapper from '../components/PageWrapper'
 
 export default function CurseSemna() {
   const [activeTab, setActiveTab] = useState('overview')
+  const location = useLocation()
+  const navigate = useNavigate()
 
   // Consolidated tabs for clearer navigation
   const tabs = {
@@ -222,6 +225,30 @@ export default function CurseSemna() {
     }
   }
 
+  // Sync tab from URL query (e.g., ?tab=gameplay)
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const urlTab = params.get('tab')
+    if (urlTab && tabs[urlTab] && urlTab !== activeTab) {
+      setActiveTab(urlTab)
+    }
+  }, [location.search])
+
+  // Smooth scroll to section from URL (e.g., &section=combat)
+  useEffect(() => {
+    const params = new URLSearchParams(location.search)
+    const section = params.get('section')
+    if (section) {
+      const el = document.getElementById(section)
+      if (el) {
+        // small timeout ensures content is in DOM after tab switch
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+        }, 50)
+      }
+    }
+  }, [activeTab, location.search])
+
   return (
     <PageWrapper mainClassName="w-full">
       <h1 className="text-4xl text-indie-accent-green text-center mb-4 font-heading">Curse of Semna</h1>
@@ -232,7 +259,12 @@ export default function CurseSemna() {
         {Object.keys(tabs).map((tabKey) => (
           <button
             key={tabKey}
-            onClick={() => setActiveTab(tabKey)}
+            onClick={() => {
+              setActiveTab(tabKey)
+              const params = new URLSearchParams(location.search)
+              params.set('tab', tabKey)
+              navigate(`${location.pathname}?${params.toString()}`, { replace: true })
+            }}
             aria-current={activeTab === tabKey ? 'page' : undefined}
             className={`px-4 py-2 rounded-lg font-bold text-sm transition-all duration-200 cursor-pointer inline-flex items-center gap-2 ${
               activeTab === tabKey
@@ -259,13 +291,19 @@ export default function CurseSemna() {
           <div className="flex flex-wrap items-center gap-2">
             <span className="text-sm text-indie-text-gray/80">Quick Index:</span>
             {tabs[activeTab].index.map((item) => (
-              <a
+              <button
                 key={item.id}
-                href={`#${item.id}`}
+                onClick={() => {
+                  const params = new URLSearchParams(location.search)
+                  params.set('section', item.id)
+                  navigate(`${location.pathname}?${params.toString()}`, { replace: true })
+                  const el = document.getElementById(item.id)
+                  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+                }}
                 className="text-xs px-3 py-1 rounded-full border border-indie-accent-green/40 bg-indie-bg-main/40 hover:bg-indie-accent-green/20 hover:border-indie-accent-green transition"
               >
                 {item.label}
-              </a>
+              </button>
             ))}
           </div>
         )}
