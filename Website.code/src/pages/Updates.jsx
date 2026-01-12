@@ -3,6 +3,12 @@ import PageWrapper from '../components/PageWrapper'
 
 export default function Updates() {
   const updates = [
+        {
+      date: '12/01/26',
+      items: [
+        'Update updates list with recent merge and deployment details'
+      ]
+    },
     {
       date: '12/01/26',
       items: [
