@@ -1,0 +1,60 @@
+# AI Agent Instructions for Portfolio Website
+
+## Automatic Changelog Updates
+
+**IMPORTANT**: Whenever you make changes to this codebase, you MUST update the changelog in `Website.code/src/pages/Updates.jsx`.
+
+### How to Update the Changelog
+
+1. **Location**: `/mnt/2TB/Website/Portfolio-Website/Website.code/src/pages/Updates.jsx`
+2. **Format**: Add new entries at the TOP of the `updates` array
+3. **Date Format**: DD/MM/YY (e.g., '12/01/26')
+
+### Entry Format
+
+For a single update:
+```javascript
+{
+  date: 'DD/MM/YY',
+  items: [
+    'Description of what was changed'
+  ]
+},
+```
+
+For multiple related updates with a title:
+```javascript
+{
+  date: 'DD/MM/YY',
+  title: 'Title of Update',
+  items: [
+    'First change',
+    'Second change',
+    'Third change'
+  ]
+},
+```
+
+### Rules
+
+1. **Always update** when making code changes (except for trivial fixes like typos in comments)
+2. **Be descriptive** - explain what was changed and why
+3. **Use proper grammar** and complete sentences
+4. **Group related changes** under a single date entry with a title
+5. **Escape single quotes** in descriptions using `\'`
+6. **Insert at the top** of the updates array, right after `const updates = [`
+
+### Example Workflow
+
+When you make changes:
+1. Complete your code changes
+2. Open `Website.code/src/pages/Updates.jsx`
+3. Add a new entry at the top of the updates array with today's date
+4. Describe what you changed in clear, user-friendly language
+5. Include the changelog update in the same commit as your changes
+
+## Deployment
+
+The site auto-deploys to Neocities when the user pushes to GitHub via a pre-push hook.
+- Pre-push hook: builds with `npm run build` and uploads with `neocities push dist`
+- No need to manually deploy or build during development
