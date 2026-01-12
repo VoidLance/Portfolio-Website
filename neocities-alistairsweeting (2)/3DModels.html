@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alistair Sweeting's indie web portfolio - games, interactive fiction, 3D models, software development, and creative writing. Explore indie games, coding projects, and digital art.">
+    <meta name="keywords" content="Alistair Sweeting, indie games, game development, 3D modeling, software development, creative writing, portfolio, VoidLance, Curse of Semna, web development, indie web, personal website">
+    <meta name="author" content="Alistair Sweeting">
+    <meta property="og:title" content="Alistair Sweeting - Indie Game Developer & Creative Coder">
+    <meta property="og:description" content="Portfolio showcasing indie games, 3D models, software projects, and creative writing">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="/Images/header-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <title>Alistair Sweeting - Indie Game Dev, 3D Artist & Creative Coder</title>
+    <link rel="icon" type="image/png" href="/Images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Asul:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link href="/dist/tailwind.css" rel="stylesheet">
+    <link href="/Games/DungeonCrawler/game-nav.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a606772bb3.js" crossorigin="anonymous"></script>
+    <style>
+      :root {
+        --gradient-angle: 135deg;
+      }
+      body {
+        background-image: linear-gradient(var(--gradient-angle), rgba(42,24,80,0.85) 0%, rgba(24,24,32,0.85) 60%, rgba(67,234,124,0.7) 100%), url('/Images/swirly-background.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        transition: background 0.3s ease;
+      }
+      body::after {
+        content: "";
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        pointer-events: none;
+        z-index: 9999;
+        background: linear-gradient(to bottom right, rgba(42,24,80,0.12) 0%, rgba(24,24,32,0.14) 80%, rgba(67,234,124,0.10) 100%);
+        mix-blend-mode: lighten;
+        filter: blur(8px);
+      }
+    </style>
+    <script>
+      window.addEventListener('scroll', function() {
+        var scrollPercent = window.scrollY / (document.body.scrollHeight - window.innerHeight);
+        var angle = 120 + scrollPercent * 120;
+        document.documentElement.style.setProperty('--gradient-angle', angle + 'deg');
+      });
+    </script>
+  </head>
+  <body class="font-asul text-indie-text-light text-lg min-h-screen m-0">
+    <!-- Header with background image -->
+    <header class="relative w-full bg-cover bg-center bg-no-repeat border-b-2 border-indie-accent-green" style="height: 192px; background-image: url('/Images/header-image.jpg');" role="banner">
+      <!-- Gradient overlay -->
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent" style="background: linear-gradient(to bottom, transparent 0%, rgba(24, 24, 32, 0.393) 100%);"></div>
+
+      <!-- Navigation Bar positioned over header -->
+      <nav id="navbar" style="position: absolute; bottom: 0; left: 0; right: 0;">
+        <ul class="flex flex-row gap-6 items-center relative">
+            <li class="menu-item group relative"><a href="/index.html">Home</a></li>
+            <li class="menu-item group relative"><a href="/Helpdesk.html">HelpDesk</a></li>
+            <li class="menu-item group relative"><a href="/3DModels.html" aria-current="page">3D Models</a></li>
+            <li class="menu-item group relative">
+                <a href="/Games.html">Games ᐁ</a>
+                <ul class="dropdown">
+                    <li class="dropdown-item"><a href="/Games/CurseSemna.html">Curse of Semna</a></li>
+                    <li class="dropdown-item"><a href="/Games/DungeonCrawler/index.html">Dungeon Crawler</a></li>
+                </ul>
+            </li>
+            <li class="menu-item group relative">
+                <a href="/Books.html">Books ᐁ</a>
+                <ul class="dropdown">
+                    <li class="dropdown-item"><a href="#">Example</a></li>
+                </ul>
+            </li>
+            <li class="menu-item group relative"><a href="/blog.html">Blog</a></li>
+            <li class="menu-item group relative">
+                <a href="/software.html">Software ᐁ</a>
+                <ul class="dropdown">
+                    <li class="dropdown-item"><a href="/Software/Personal-Website/index.html" target="_blank">Personal Website</a></li>
+                <li class="dropdown-item"><a href="/Software/Pokemon-Team-Finder/index.html" target="_blank">Pokemon Team Finder</a></li>
+                </ul>
+            </li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="w-full max-w-[95%] mx-auto px-2 lg:px-4" style="margin-top: 2rem;">
+
+      <!-- Main Content Area -->
+      <div class="flex flex-col lg:flex-row gap-5 lg:gap-6">
+        <!-- Main Content -->
+        <main class="w-full lg:w-[78%] bg-indie-bg-main p-5 rounded-xl mb-5 shadow-indie border-2 border-indie-accent-green min-w-0 order-1 lg:order-2">
+          <h1 class="text-4xl text-indie-accent-green text-center mb-4">3D Models</h1>
+          <hr class="border-0 border-t border-indie-accent-green/50 my-4">
+          
+          <article class="text-indie-text-gray">
+            <p class="mb-6 text-center">Check out my 3D modeling projects from Sketchfab!</p>
+            
+            <!-- Sketchfab Model Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+              
+              <!-- Fantasy Weaponstore Diorama -->
+              <div class="bg-indie-bg-dark rounded-lg p-3 border border-indie-accent-green/30">
+                <h3 class="text-indie-accent-green text-lg font-bold mb-2 text-center">Fantasy Weaponstore Diorama</h3>
+                <iframe 
+                  src="https://sketchfab.com/models/d917dfc6027042ad8dd566e0fc953a70/embed" 
+                  frameborder="0" 
+                  allowfullscreen 
+                  mozallowfullscreen="true" 
+                  webkitallowfullscreen="true" 
+                  allow="autoplay; fullscreen; xr-spatial-tracking" 
+                  xr-spatial-tracking 
+                  execution-while-out-of-viewport 
+                  execution-while-not-rendered 
+                  web-share
+                  class="w-full h-[600px] rounded">
+                </iframe>
+              </div>
+              
+              <!-- Stone Sword -->
+              <div class="bg-indie-bg-dark rounded-lg p-3 border border-indie-accent-green/30">
+                <h3 class="text-indie-accent-green text-lg font-bold mb-2 text-center">Stone Sword</h3>
+                <iframe 
+                  src="https://sketchfab.com/models/9736caf0ff8146d49a2b6742f52fb7d6/embed" 
+                  frameborder="0" 
+                  allowfullscreen 
+                  mozallowfullscreen="true" 
+                  webkitallowfullscreen="true" 
+                  allow="autoplay; fullscreen; xr-spatial-tracking" 
+                  xr-spatial-tracking 
+                  execution-while-out-of-viewport 
+                  execution-while-not-rendered 
+                  web-share
+                  class="w-full h-[600px] rounded">
+                </iframe>
+              </div>
+              
+              <!-- Leaf Blade Sword -->
+              <div class="bg-indie-bg-dark rounded-lg p-3 border border-indie-accent-green/30">
+                <h3 class="text-indie-accent-green text-lg font-bold mb-2 text-center">Leaf Blade Sword</h3>
+                <iframe 
+                  src="https://sketchfab.com/models/d8e7b1f027ef405da70ee602a191bac7/embed" 
+                  frameborder="0" 
+                  allowfullscreen 
+                  mozallowfullscreen="true" 
+                  webkitallowfullscreen="true" 
+                  allow="autoplay; fullscreen; xr-spatial-tracking" 
+                  xr-spatial-tracking 
+                  execution-while-out-of-viewport 
+                  execution-while-not-rendered 
+                  web-share
+                  class="w-full h-[600px] rounded">
+                </iframe>
+              </div>
+              
+              <!-- Gate -->
+              <div class="bg-indie-bg-dark rounded-lg p-3 border border-indie-accent-green/30">
+                <h3 class="text-indie-accent-green text-lg font-bold mb-2 text-center">Gate</h3>
+                <iframe 
+                  src="https://sketchfab.com/models/63810c274dd44f02a70f148fabd53897/embed" 
+                  frameborder="0" 
+                  allowfullscreen 
+                  mozallowfullscreen="true" 
+                  webkitallowfullscreen="true" 
+                  allow="autoplay; fullscreen; xr-spatial-tracking" 
+                  xr-spatial-tracking 
+                  execution-while-out-of-viewport 
+                  execution-while-not-rendered 
+                  web-share
+                  class="w-full h-[600px] rounded">
+                </iframe>
+              </div>
+              
+              <!-- Store Counter -->
+              <div class="bg-indie-bg-dark rounded-lg p-3 border border-indie-accent-green/30">
+                <h3 class="text-indie-accent-green text-lg font-bold mb-2 text-center">Store Counter</h3>
+                <iframe 
+                  src="https://sketchfab.com/models/c160eb255df34ad581c62b4dbc1ba9f8/embed" 
+                  frameborder="0" 
+                  allowfullscreen 
+                  mozallowfullscreen="true" 
+                  webkitallowfullscreen="true" 
+                  allow="autoplay; fullscreen; xr-spatial-tracking" 
+                  xr-spatial-tracking 
+                  execution-while-out-of-viewport 
+                  execution-while-not-rendered 
+                  web-share
+                  class="w-full h-[600px] rounded">
+                </iframe>
+              </div>
+              
+              <!-- Carp's Tongue Sword -->
+              <div class="bg-indie-bg-dark rounded-lg p-3 border border-indie-accent-green/30">
+                <h3 class="text-indie-accent-green text-lg font-bold mb-2 text-center">Carp's Tongue Sword</h3>
+                <iframe 
+                  src="https://sketchfab.com/models/0724695f7b83454b8aa1144b193f9a59/embed" 
+                  frameborder="0" 
+                  allowfullscreen 
+                  mozallowfullscreen="true" 
+                  webkitallowfullscreen="true" 
+                  allow="autoplay; fullscreen; xr-spatial-tracking" 
+                  xr-spatial-tracking 
+                  execution-while-out-of-viewport 
+                  execution-while-not-rendered 
+                  web-share
+                  class="w-full h-[600px] rounded">
+                </iframe>
+              </div>
+              
+              <!-- Notice -->
+              <div class="bg-indie-bg-dark rounded-lg p-3 border border-indie-accent-green/30">
+                <h3 class="text-indie-accent-green text-lg font-bold mb-2 text-center">Notice</h3>
+                <iframe 
+                  src="https://sketchfab.com/models/d29ef609ed0b4e088f884c9b67a3a9ea/embed" 
+                  frameborder="0" 
+                  allowfullscreen 
+                  mozallowfullscreen="true" 
+                  webkitallowfullscreen="true" 
+                  allow="autoplay; fullscreen; xr-spatial-tracking" 
+                  xr-spatial-tracking 
+                  execution-while-out-of-viewport 
+                  execution-while-not-rendered 
+                  web-share
+                  class="w-full h-[600px] rounded">
+                </iframe>
+              </div>
+              
+            </div>
+            
+            <div class="mt-6 text-center">
+              <a href="https://sketchfab.com/VoidLance" target="_blank" rel="noopener noreferrer" class="inline-block bg-indie-accent-green text-indie-bg-main px-6 py-3 rounded-lg font-bold hover:bg-[#1cdba2] transition-colors shadow-indie">
+                View All Models on Sketchfab →
+              </a>
+            </div>
+          </article>
+        </main>
+
+        <!-- Sidebar - Updates -->
+        <aside class="static lg:sticky lg:top-20 bg-indie-bg-sidebar w-full lg:w-[18%] lg:min-w-[280px] p-4 text-base order-2 lg:order-1 rounded-xl lg:rounded-l-xl lg:rounded-r-none mb-5 lg:mb-0 lg:mr-5 h-auto lg:max-h-[calc(100vh-7rem)] flex flex-col overflow-y-auto">
+          <h2 class="text-2xl text-indie-accent-green text-center mb-4 flex-shrink-0">Updates</h2>
+          <iframe src="/updates.html" class="w-full flex-1 min-h-[600px] lg:min-h-[500px] bg-indie-bg-nav border-2 border-indie-accent-pink p-2.5 rounded-lg shadow-indie-sm" title="Recent updates and changelog"></iframe>
+        </aside>
+      </div>
+
+      <!-- Footer -->
+      <footer class="bg-indie-bg-nav w-full p-5 text-center mt-5 rounded-xl border-t-2 border-indie-accent-green" role="contentinfo">
+        <p class="text-indie-text-gray text-sm mb-2">CC0 Public Domain, 2022</p>
+        <p class="text-indie-text-gray text-sm mb-3">Any content such as stories, games and art contained on any page of this website is copyrighted individually, the CC0 license applies only to the website itself.</p>
+        
+        <nav aria-label="Social media links" class="mt-3">
+          <div class="flex justify-center gap-4 text-2xl">
+            <a href="https://bsky.app/profile/alistairsweeting.online" target="_blank" rel="noopener noreferrer" class="text-indie-text-gray hover:text-[#d834c2] hover:shadow-indie-glow transition-all" aria-label="BlueSky profile" title="Check out my BlueSky profile!">
+              <i class="fa-brands fa-bluesky"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/alistair-sweeting-959453165/" target="_blank" rel="noopener noreferrer" class="text-indie-text-gray hover:text-[#d834c2] hover:shadow-indie-glow transition-all" aria-label="LinkedIn profile" title="Check out my LinkedIn profile!">
+              <i class="fa-brands fa-linkedin"></i>
+            </a>
+            <a href="https://www.threads.com/@alistairsweeting" target="_blank" rel="noopener noreferrer" class="text-indie-text-gray hover:text-[#d834c2] hover:shadow-indie-glow transition-all" aria-label="Threads profile" title="Check out my Threads profile!">
+              <i class="fa-brands fa-threads"></i>
+            </a>
+            <a href="https://www.instagram.com/alistairsweeting/?hl=en" target="_blank" rel="noopener noreferrer" class="text-indie-text-gray hover:text-[#d834c2] hover:shadow-indie-glow transition-all" aria-label="Instagram profile" title="Check out my Instagram profile!">
+              <i class="fa-brands fa-instagram"></i>
+            </a>
+          </div>
+        </nav>
+      </footer>
+    </div>
+  </body

@@ -1,0 +1,17 @@
+{
+  "name": "neocities-site",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/styles/tailwind.css -o ./dist/tailwind.css --minify",
+    "watch:css": "tailwindcss -i ./src/styles/tailwind.css -o ./dist/tailwind.css --watch",
+    "format": "prettier --write \"**/*.{html,css,js,md,json}\""
+  },
+  "devDependencies": {
+    "tailwindcss": "^4.0.0",
+    "postcss": "^8.0.0",
+    "autoprefixer": "^10.0.0",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.3.0"
+  }
+}

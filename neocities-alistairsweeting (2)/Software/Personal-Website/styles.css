@@ -1,0 +1,695 @@
+
+/* ========================= */
+/* 1. CSS Reset & Base Styles */
+/* ========================= */
+@import url('https://fonts.googleapis.com/css2?family=Asul:wght@400;700&display=swap');
+body, h1, h2, h3, p, ul {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    font-family: Asul;
+    src: url('https://fonts.googleapis.com/css2?family=Asul:wght@400;700&display=swap');
+}
+
+body {
+    font-family: 'Asul', '3270 Nerd Font', 'Courier New', Courier, monospace, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #181820;
+    color: #f3f3f3;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ========================= */
+/* 2. Typography */
+/* ========================= */
+.asul-regular {
+    font-family: "Asul", serif;
+    font-weight: 400;
+    font-style: normal;
+}
+.asul-bold {
+    font-family: "Asul", serif;
+    font-weight: 700;
+    font-style: normal;
+}
+h2 {
+    color: #2ddf71;
+    margin-bottom: 1rem;
+    font-size: 4rem;
+}
+p {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #f3f3f3;
+    background: none;
+}
+
+/* ========================= */
+/* 3. Layout Containers */
+/* ========================= */
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: rgba(40, 0, 60, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(106, 27, 154, 0.10);
+    padding: 2rem 3vw;
+}
+#content {
+    margin-top: 100px; /* To offset fixed header */
+    position:relative;
+}
+section {
+    max-width: 1800px;
+    margin: 1rem auto;
+    background: rgba(40, 0, 60, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 5px 16px rgba(71, 66, 75, 0.1);
+    padding: 1rem 2vw;
+    position:relative;
+    scroll-margin-top: 120px; /* Offset for fixed header */
+}
+section #about {
+    background: rgba(40, 0, 60, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 5px 16px rgba(71, 66, 75, 0.1);
+    padding: 1rem 2vw;
+    margin-top: 250px; /* To offset fixed header */
+}
+
+/* ========================= */
+/* 4. Navigation Styles */
+/* ========================= */
+#nav-links {
+    list-style: none;
+    display: flex;
+    gap: 32px;
+    padding: 18px 0;
+    margin: 0;
+    justify-content: center;
+    background: #222;
+    min-height: 60px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    font-size: 1.5rem;
+    overflow-x: auto;
+    left: 0;
+    box-sizing: border-box;
+}
+#nav-links li {
+    display: inline;
+}
+#nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 1.25em;
+    padding: 16px 24px;
+    border-radius: 7px;
+    transition: background 0.2s, color 0.2s;
+}
+#nav-links a:hover {
+    background: #444;
+    color: #ffd700;
+}
+nav {
+    background: #232336;
+    box-shadow: 0 1px 4px rgba(67, 234, 124, 0.10);
+    border-bottom: 3px solid #43ea7c;
+    padding: 10px 0;
+    position:fixed;
+    width:100%;
+    height:auto;
+    z-index: 1100;
+    top: 0px
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem;
+    overflow-x: auto;
+}
+nav li {
+    display: inline;
+    background: #232336;
+    box-shadow: 0 1px 4px rgba(67, 234, 124, 0.10);
+    padding: 0.5rem 0;
+    text-align: center;
+    /* border-bottom: 3px solid #43ea7c; */
+    margin-bottom:0px;
+}
+nav a {
+    color: #43ea7c;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 600;
+    transition: color 0.2s, border-bottom 0.5s;
+    font-size: 2rem;
+}
+nav a:hover {
+    color: #1749a2;
+    border-bottom: 3px solid #1749a2;
+}
+ul #nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* ========================= */
+/* 5. Header Styles */
+/* ========================= */
+header {
+    background: #232336;
+    color: #f3f3f3;
+    /* padding: 2rem 0; */
+    text-align: center;
+    box-shadow: 0 2px 8px rgba(45, 108, 223, 0.08);
+    /* border-bottom: 4px solid #43ea7c; */
+    height: auto;
+    /* position: fixed; */
+    width:100%;
+    top: 0;
+}
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+}
+header p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+/* ========================= */
+/* 6. Links & Lists */
+/* ========================= */
+ul {
+    list-style: disc inside;
+    margin-bottom: 1.5rem;
+}
+a {
+    color: #2d6cdf;
+    text-decoration: underline;
+}
+a:hover {
+    color: #1749a2;
+    text-shadow: 0 0 8px #43ea7c;
+    text-decoration-color: #3bcde7d3;
+    text-decoration-style: dotted;
+}
+a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px #43ea7c;
+}
+
+/* ========================= */
+/* 7. Buttons */
+/* ========================= */
+#scrollTopBtn {
+    display:none;
+    position:fixed;
+    bottom:32px;
+    right:32px;
+    z-index:1000;
+    background: linear-gradient(135deg, #232336 60%, #43ea7c 100%);
+    color:#fff;
+    border:none;
+    border-radius:50%;
+    width:56px;
+    height:56px;
+    font-size:2.2em;
+    cursor:pointer;
+    box-shadow:0 2px 12px rgba(106,27,154,0.18);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+#scrollTopBtn:hover {
+    background: linear-gradient(135deg, #43ea7c 60%, #232336 100%);
+    box-shadow:0 4px 16px rgba(67,234,124,0.25);
+}
+
+/* ========================= */
+/* 8. Footer Styles */
+/* ========================= */
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background: #232336;
+    color: #f3f3f3;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    border-top: 2px solid #43ea7c;
+}
+
+/* ========================= */
+/* 9. Gallery Page Styles */
+/* ========================= */
+.gallery-container {
+    max-width: 1000px;
+    margin: 40px auto;
+    padding: 20px;
+    margin-top: 150px;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+.gallery-item {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    padding: 8px;
+    width: 100%;
+    position: relative;
+}
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 4px 4px 0 0;
+    aspect-ratio: 1/1;
+}
+.caption {
+    margin-top: 8px;
+    font-size: 0.95em;
+    color: #555;
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    align-items: center;
+}
+
+/* ========================= */
+/* 10. Responsive Design */
+/* ========================= */
+@media (max-width: 720px) {
+    main, section {
+        padding: 1rem 2vw;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+    nav ul {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        overflow-x: visible;
+        padding: 0 0.5rem;
+        width: 100vw;
+        box-sizing: border-box;
+    }
+    nav li {
+        display: block;
+        width: auto;
+        margin-bottom: 0.2rem;
+    }
+    nav a {
+        font-size: clamp(1.1rem, 4vw, 1.5rem);
+        padding: 0.25rem 0.5rem;
+        margin: 0.1rem 0.1rem;
+        min-width: 70px;
+        text-align: center;
+        display: block;
+        word-break: break-word;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1.1rem;
+    }
+    #content {
+        margin-top: 80px;
+    }
+    nav {
+        padding: 6px 0;
+        min-width: 0;
+        overflow-x: auto;
+        width: 100vw;
+        box-sizing: border-box;
+    }
+    section, main {
+        border-radius: 10px;
+        box-shadow: 0 1px 8px rgba(71, 66, 75, 0.08);
+    }
+    .gallery-container {
+        margin-top: 90px;
+        padding: 10px;
+    }
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
+    }
+    .gallery-item img {
+        max-width: 100%;
+        height: auto;
+    }
+    #scrollTopBtn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5em;
+        bottom: 16px;
+        right: 16px;
+    }
+}
+
+/* Navigation styles */
+ nav {
+    background: #232336;
+    box-shadow: 0 1px 4px rgba(67, 234, 124, 0.10);
+    border-bottom: 3px solid #43ea7c;
+    padding: 10px 0;
+    position:fixed;
+    width:100%;
+    height:auto;
+    z-index: 1100;
+    top: 0px
+}
+nav ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 1.5rem;
+    overflow-x: auto;
+}
+nav li {
+    display: inline;
+    background: #232336;
+    box-shadow: 0 1px 4px rgba(67, 234, 124, 0.10);
+    padding: 0.5rem 0;
+    text-align: center;
+    /* border-bottom: 3px solid #43ea7c; */
+    margin-bottom:0px;
+}
+
+nav a {
+    color: #43ea7c;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-weight: 600;
+    transition: color 0.2s, border-bottom 0.5s;
+    font-size: 2rem;
+}
+
+nav a:hover {
+    color: #1749a2;
+    border-bottom: 3px solid #1749a2;
+}
+
+/* Main content styles */
+ul #nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    background: rgba(40, 0, 60, 0.85);
+    border-radius: 16px;
+    box-shadow: 0 2px 16px rgba(106, 27, 154, 0.10);
+    padding: 2rem 3vw;
+}
+
+#content {
+    margin-top: 100px; /* To offset fixed header */
+    position:relative;
+}
+
+section {
+    max-width: 1800px;
+    margin: 1rem auto;
+    background: rgba(40, 0, 60, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 5px 16px rgba(71, 66, 75, 0.1);
+    padding: 1rem 2vw;
+    position:relative;
+    scroll-margin-top: 120px; /* Offset for fixed header */
+}
+
+section #about {
+    background: rgba(40, 0, 60, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 5px 16px rgba(71, 66, 75, 0.1);
+    padding: 1rem 2vw;
+    margin-top: 250px; /* To offset fixed header */
+}
+
+h2 {
+    color: #2ddf71;
+    margin-bottom: 1rem;
+    font-size: 4rem;
+}
+
+ul {
+    list-style: disc inside;
+    margin-bottom: 1.5rem;
+}
+
+a {
+    color: #2d6cdf;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #1749a2;
+    text-shadow: 0 0 8px #43ea7c;
+    text-decoration-color: #3bcde7d3;
+    text-decoration-style: dotted;
+}
+
+#scrollTopBtn {
+    display:none;
+    position:fixed;
+    bottom:32px;
+    right:32px;
+    z-index:1000;
+    background: linear-gradient(135deg, #232336 60%, #43ea7c 100%);
+    color:#fff;
+    border:none;
+    border-radius:50%;
+    width:56px;
+    height:56px;
+    font-size:2.2em;
+    cursor:pointer;
+    box-shadow:0 2px 12px rgba(106,27,154,0.18);
+    transition: background 0.2s, box-shadow 0.2s;
+}
+#scrollTopBtn:hover {
+    background: linear-gradient(135deg, #43ea7c 60%, #232336 100%);
+    box-shadow:0 4px 16px rgba(67,234,124,0.25);
+}
+
+a:hover {
+    color: #fff;
+    text-shadow: 0 0 8px #43ea7c;
+}
+
+p {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+    color: #f3f3f3;
+    background: none;
+}
+
+/* Footer styles */
+footer {
+    text-align: center;
+    padding: 1rem 0;
+    background: #232336;
+    color: #f3f3f3;
+    font-size: 1.1rem;
+    margin-top: 2rem;
+    border-top: 2px solid #43ea7c;
+}
+
+/* Gallery page styles */
+.gallery-container {
+    max-width: 2000px;
+    margin: 40px auto;
+    padding: 20px;
+    margin-top: 150px;
+    background-color: rgba(75, 24, 100, 0.253);
+    padding: 50px;
+    border-radius: 8px;
+}
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+.gallery-item {
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 0;
+    text-align: left;
+    width: 100%;
+    position: relative;
+}
+
+/* Overlay for gallery image on hover */
+
+.gallery-item a img {
+    transition: box-shadow 0.3s, filter 0.3s,;
+}
+.gallery-item a img:hover {
+    box-shadow: 0 0 0 4px rgba(180, 255, 200, 0.7); /* pale green */
+    filter: brightness(1.1) saturate(1.2) contrast(1.1) drop-shadow(0 4px 8px rgba(67, 234, 124, 0.3)) sepia(0.4) hue-rotate(60deg);
+}
+.gallery-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px 8px 0 0;
+    object-fit: cover;
+    min-height: 200px;
+    max-height: 400px;
+}
+.caption {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 0.95em;
+    color: #555;
+    background: #ccc9c9cc;
+    border-radius: 0 0 8px 8px;
+    box-sizing: border-box;
+    text-align: center;
+    justify-content: center;
+    position: absolute;
+    left: 0;
+}
+
+figure {
+    margin: 0;
+    padding: 0;
+    border: none;
+    width: 100%;
+}
+
+figcaption {
+    margin: 0;
+    padding: 8px 12px;
+    font-size: 0.95em;
+    color: #555;
+    background: #ccc9c9cc;
+    border-radius: 0 0 8px 8px;
+    box-sizing: border-box;
+    text-align: center;
+    justify-content: center;
+}
+
+img a:hover {
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 4px 12px rgba(106, 27, 154, 0.18);
+    transform: scale(1.05);
+    color: #43ea7c;
+}
+
+/* Responsive design */
+@media (max-width: 720px) {
+    main, section {
+        padding: 1rem 2vw;
+    }
+    header h1 {
+        font-size: 2rem;
+    }
+    nav ul {
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        overflow-x: visible;
+        padding: 0 0.5rem;
+        width: 100vw;
+        box-sizing: border-box;
+    }
+    nav li {
+        display: block;
+        width: auto;
+        margin-bottom: 0.2rem;
+    }
+    nav a {
+        font-size: clamp(1.1rem, 4vw, 1.5rem);
+        padding: 0.25rem 0.5rem;
+        margin: 0.1rem 0.1rem;
+        min-width: 70px;
+        text-align: center;
+        display: block;
+        word-break: break-word;
+    }
+    h2 {
+        font-size: 2rem;
+    }
+    p {
+        font-size: 1.1rem;
+    }
+    #content {
+        margin-top: 80px;
+    }
+    nav {
+        padding: 6px 0;
+        min-width: 0;
+        overflow-x: auto;
+        width: 100vw;
+        box-sizing: border-box;
+    }
+    section, main {
+        border-radius: 10px;
+        box-shadow: 0 1px 8px rgba(71, 66, 75, 0.08);
+    }
+    .gallery-container {
+        margin-top: 90px;
+        padding: 10px;
+    }
+    .gallery-grid {
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 10px;
+    }
+    .gallery-item img {
+        max-width: 100%;
+        height: auto;
+    }
+    #scrollTopBtn {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5em;
+        bottom: 16px;
+        right: 16px;
+    }
+}

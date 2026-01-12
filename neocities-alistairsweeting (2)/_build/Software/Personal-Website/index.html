@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Website</title>
+        <link rel="icon" type="image/png" href="/Images/favicon.png">
+    <link href="/dist/tailwind.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Alistair Sweeting's personal website, showcasing games, stories, 3D models, software, and photography.">
+    <meta name="keywords" content="Alistair Sweeting, games, stories, 3D models, software, photography, portfolio, VoidLance, Curse of Semna, Personal Website, gaming, writing, art, creative projects, software development, 3D modeling, indie games, interactive fiction, digital art, game design, programming, storytelling, web development, creative coding, open source, game development, game programming, game art, game assets, game engine, game mechanics, game narrative, game world, game characters, game levels, game environments, game sound, game music, game effects, game UI, game UX, game testing, game publishing, game marketing, game community, game forums, game reviews, game tutorials, game resources, game tools, game libraries, game frameworks, game engines, game design patterns, game development process, game development lifecycle, game development methodologies, game development best practices, game development tips, game development tricks, game development techniques, game development strategies, game development trends, game development news, game development events, game development conferences, game development workshops, game development courses, game development tutorials, game development blogs, game development podcasts, game development videos, game development forums, game development communities, game development networks, game development teams, game development studios, game development companies, game development agencies, game development freelancers, game development contractors, game development consultants, game development experts, game development professionals, game development enthusiasts">
+    <meta name="author" content="Alistair Sweeting">
+    <title>Alistair's Portfolio - Games, Stories and Code</title>
+    <link href="styles.css" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/Images/favicon.png">
+    <script src="https://kit.fontawesome.com/a606772bb3.js" crossorigin="anonymous"></script>
+</head>
+            <ul id="nav-links">
+                <li><a href="#about">About Me</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+            </ul>
+        </nav>
+    
+    <!-- <header>
+        <h1>Welcome to My Personal Website Course Tracker</h1>
+    </header> -->
+<div id="content"></div>
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I'm Alistair, a new software developer with a lot of varied experience, including creative writing, game design, 3d modelling, IT support, bar work and teaching. I love creating web applications and learning new technologies, and I have recently started a Software Development training course that promises to get me a job once I've finished the course, so I'm currently extremely excited about it. This website is just a local portfolio (although this one is actually hosted on the same domain as my main portfolio) made for the course, so while it will improve with time as I progress through the course, my real portfolio website will always be <a href="https://alistairsweeting.online" target="_blank">here</a></p>
+        <p>
+            I have made the text on this page extremely, exceedingly large for now, because the links at the top go to the sections rather than other pages, and I don't have a lot of content to add yet, so I want to make sure that when you click the links, you can see that you've actually gone to a different section. This will be fixed in the future when I have more content to add.
+        </p>
+        <p>Text is not so large now, used css to make it scroll better. Also, as this website is hosted on GitHub, <a href="https://github.com/VoidLance/Course-Files/blob/main/Project%20Files/Personal%20Website/Index.html">this link here</a> should now link to the page on github. I really wish it would actually display the site instead of raw html, but I don't want to figure out github pages at the moment and I'm not even sure if it would work. I know for sure it would add more pages I don't really want to add.</p>
+    </section>
+
+    <section id="projects">
+        <h2>Projects</h2>
+        <p>I'm sure this section will be populated with something great in short time, but for now, I'm leaving it with placeholder text as I don't want to put outside projects into this one.</p><br><hr><br>
+        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+        aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
+        aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p><p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam,
+        eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam
+        voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+        voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit,
+        sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima
+        veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis
+        autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem
+        eum fugiat quo voluptas nulla pariatur?"</p>
+    </section>
+
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>You can reach me at: <a href="mailto:alistair.m.sweeting@gmail.com">alistair.m.sweeting@gmail.com</a>
+</section>
+</div>
+<!-- Scroll to Top Button -->
+<button id="scrollTopBtn" title="Go to top">&#8679;</button>
+</body>
+<script>
+// Show/hide button on scroll
+window.onscroll = function() {
+    const btn = document.getElementById('scrollTopBtn');
+    if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        btn.style.display = 'block';
+    } else {
+        btn.style.display = 'none';
+    }
+};
+
+// Scroll to top on click
+document.getElementById('scrollTopBtn').onclick = function() {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+};
+</script>
+</html>

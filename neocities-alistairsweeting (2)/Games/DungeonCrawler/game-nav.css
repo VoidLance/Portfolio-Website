@@ -1,0 +1,408 @@
+/* Dungeon Crawler Navigation Styling - Purple & Neon Green Theme */
+
+/* Navigation Container */
+#navbar {
+  background: linear-gradient(135deg, rgba(42, 24, 80, 0.95) 0%, rgba(24, 24, 32, 0.98) 100%);
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 16px rgba(67, 234, 124, 0.15);
+  border-bottom: 2px solid #43ea7c;
+  backdrop-filter: blur(10px);
+}
+
+/* For Dungeon Crawler page - fixed positioning */
+body.font-mono #navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+/* For Index page - absolute positioning within header */
+header #navbar {
+  position: relative;
+  border-bottom: none;
+}
+
+#navbar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+/* Menu Items */
+.menu-item {
+  position: relative;
+  display: inline-block;
+}
+
+.menu-item > a {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  color: #43ea7c;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+  background-color: rgba(74, 40, 112, 0.7);
+  border: 2px solid #43ea7c;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-width: 100px;
+}
+
+.menu-item > a:hover {
+  background-color: rgba(90, 59, 131, 0.9);
+  color: #1cdba2;
+  border-color: #1cdba2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(67, 234, 124, 0.3);
+}
+
+/* Dropdown Menus - CRITICAL: Must be hidden by default */
+.dropdown {
+  display: none !important;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: linear-gradient(135deg, rgba(42, 24, 80, 0.98) 0%, rgba(58, 34, 92, 0.98) 100%);
+  border: 2px solid #43ea7c;
+  border-radius: 0.5rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4), 0 0 20px rgba(67, 234, 124, 0.2);
+  z-index: 1001;
+  overflow: hidden;
+}
+
+/* Show dropdown only on parent hover */
+.menu-item:hover > .dropdown {
+  display: block !important;
+}
+
+.dropdown-item {
+  list-style: none;
+}
+
+.dropdown-item a {
+  display: block;
+  padding: 0.75rem 1.25rem;
+  color: #43ea7c;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  border-bottom: 1px solid rgba(67, 234, 124, 0.2);
+}
+
+.dropdown-item:last-child a {
+  border-bottom: none;
+}
+
+.dropdown-item a:hover {
+  background-color: rgba(90, 59, 131, 0.8);
+  color: #1cdba2;
+  padding-left: 1.5rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #navbar {
+    padding: 0.75rem 1rem;
+  }
+  
+  #navbar ul {
+    gap: 0.25rem;
+  }
+  
+  .menu-item > a {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.9rem;
+    min-width: 80px;
+  }
+  
+  .dropdown {
+    min-width: 150px;
+  }
+  
+  .dropdown-item a {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ---- Game Panels Styling ---- */
+.panel {
+  background: linear-gradient(135deg, rgba(42, 24, 80, 0.35) 0%, rgba(24, 24, 32, 0.55) 100%);
+  color: #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(4px);
+}
+
+.panel h3 {
+  color: #43ea7c;
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.panel-stats { border: 2px solid #22d3ee; /* cyan-400 */ }
+.panel-inventory { border: 2px solid #a78bfa; /* purple-400 */ }
+.panel-tips { border: 2px solid #22c55e; /* green-500 */ }
+.panel-progress { border: 2px solid #f59e0b; /* amber-500 */ }
+
+.panel .subtle-text { color: #9ca3af; }
+.panel .divider { border-top: 1px solid rgba(167, 139, 250, 0.5); margin-top: 0.5rem; padding-top: 0.5rem; }
+
+/* Additional gameplay panels */
+.panel-enemy { border: 2px solid #ef4444; /* red-500 */ background: linear-gradient(135deg, rgba(127, 29, 29, 0.25), rgba(24,24,32,0.6)); }
+.panel-shop { border: 2px solid #a78bfa; /* purple-400 */ background: linear-gradient(135deg, rgba(88, 28, 135, 0.25), rgba(24,24,32,0.6)); }
+.panel-spell { border: 2px solid #60a5fa; /* blue-400 */ background: linear-gradient(135deg, rgba(29, 78, 216, 0.25), rgba(24,24,32,0.6)); }
+.panel-narrative { border: 2px solid #6b7280; /* gray-500 */ background: linear-gradient(135deg, rgba(55, 65, 81, 0.25), rgba(24,24,32,0.6)); }
+
+/* Character & Log panels */
+.panel-character { border: 2px solid #22c55e; background: linear-gradient(135deg, rgba(34,197,94,0.12), rgba(24,24,32,0.6)); }
+.panel-log { border: 2px solid rgba(67,234,124,0.35); background: linear-gradient(135deg, rgba(0,0,0,0.9), rgba(24,24,32,0.9)); }
+
+/* Compact variant for small dashboard panels */
+.panel-compact { padding: 0.75rem; border-radius: 0.5rem; }
+.panel-compact h3 { font-size: 1rem; margin-bottom: 0.25rem; }
+
+/* Wider emphasis panel for main scenario/story */
+.panel-wide { padding: 1.25rem; }
+.panel-wide h3 { font-size: 1.25rem; }
+
+/* Eye-catching game title enhancements */
+.game-title {
+  background: linear-gradient(135deg, #e879f9, #43ea7c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 12px rgba(232, 121, 249, 0.3), 0 0 22px rgba(67, 234, 124, 0.35);
+  letter-spacing: 0.5px;
+}
+
+/* Game Title styling */
+.game-title {
+  background: linear-gradient(135deg, #e879f9, #43ea7c);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 12px rgba(232, 121, 249, 0.3), 0 0 22px rgba(67, 234, 124, 0.35);
+  letter-spacing: 0.5px;
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  padding-top: 1.5rem;
+}
+
+/* Tighten spacing hooks for status panel sections */
+.hp-section + .progress { margin-bottom: 0.5rem; }
+.mana-section + .progress { margin-bottom: 0.15rem; }
+.stats-section p { margin-bottom: 0.15rem; }
+
+/* Center the Start New Game button at bottom of situation panel */
+#situation-panel .start-new-game-wrapper { display:flex; justify-content:center; align-items:center; margin-top: 1rem; }
+
+/* Optional layout: exploration controls after status panels */
+#controls { 
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  gap: 0.625rem;
+}
+
+/* Add larger gap above situation panel */
+#situation-panel { margin-top: 0.75rem; }
+
+/* Progress bars */
+.progress { width: 100%; height: 1rem; background: #1f2937; border-radius: 9999px; overflow: hidden; border: 1px solid rgba(148,163,184,0.4); }
+.progress-sm { height: 0.5rem; }
+.progress-fill { height: 100%; transition: width 0.3s ease; }
+.progress-fill.hp { background: linear-gradient(90deg, #dc2626, #ef4444); }
+.progress-fill.mana { background: linear-gradient(90deg, #2563eb, #3b82f6); }
+
+/* Global Button Styling - Purple & Neon Green Theme */
+button,
+.button,
+input[type="submit"],
+input[type="button"],
+a.button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 2px solid transparent;
+  font-size: 1rem;
+}
+
+/* Primary Button Style (Green) */
+button:not(.tab-button),
+.button-primary,
+input[type="submit"],
+a.button-primary {
+  background: linear-gradient(135deg, #43ea7c 0%, #2bc769 100%);
+  color: #181820;
+  border-color: #43ea7c;
+  box-shadow: 0 4px 12px rgba(67, 234, 124, 0.3);
+}
+
+button:not(.tab-button):hover,
+.button-primary:hover,
+input[type="submit"]:hover,
+a.button-primary:hover {
+  background: linear-gradient(135deg, #1cdba2 0%, #18b87f 100%);
+  border-color: #1cdba2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(67, 234, 124, 0.4);
+}
+
+/* Secondary Button Style (Purple) */
+.button-secondary,
+input[type="button"] {
+  background: linear-gradient(135deg, rgba(74, 40, 112, 0.9) 0%, rgba(58, 34, 92, 0.9) 100%);
+  color: #43ea7c;
+  border-color: #43ea7c;
+  box-shadow: 0 4px 12px rgba(42, 24, 80, 0.3);
+}
+
+.button-secondary:hover,
+input[type="button"]:hover {
+  background: linear-gradient(135deg, rgba(90, 59, 131, 0.95) 0%, rgba(74, 40, 112, 0.95) 100%);
+  color: #1cdba2;
+  border-color: #1cdba2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(90, 59, 131, 0.5);
+}
+
+/* Link-style Buttons */
+a.inline-block[class*="bg-indie-accent-green"] {
+  background: linear-gradient(135deg, #43ea7c 0%, #2bc769 100%) !important;
+  color: #181820 !important;
+  border: 2px solid #43ea7c;
+  box-shadow: 0 4px 12px rgba(67, 234, 124, 0.3);
+  transition: all 0.3s ease;
+}
+
+a.inline-block[class*="bg-indie-accent-green"]:hover {
+  background: linear-gradient(135deg, #1cdba2 0%, #18b87f 100%) !important;
+  border-color: #1cdba2;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(67, 234, 124, 0.4);
+}
+
+/* ---- Game Action Buttons ---- */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.25rem;
+  font-weight: 800;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+  color: #ffffff;
+  border: 2px solid transparent;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+.btn:hover { transform: translateY(-2px); box-shadow: 0 6px 14px rgba(0,0,0,0.4); }
+.btn:disabled { cursor: not-allowed; opacity: 0.7; transform: none; }
+
+.btn-explore { background: linear-gradient(135deg, #ef4444, #dc2626) !important; color: #ffffff !important; border-color: #ef4444 !important; }
+.btn-explore:hover { background: linear-gradient(135deg, #dc2626, #b91c1c) !important; }
+
+.btn-rest { background: linear-gradient(135deg, #0ea5e9, #0284c7) !important; color: #ffffff !important; border-color: #0ea5e9 !important; }
+.btn-rest:hover { background: linear-gradient(135deg, #0284c7, #0891b2) !important; }
+
+.btn-attack { background: linear-gradient(135deg, #ef4444, #f97316) !important; color: #ffffff !important; border-color: #f97316 !important; }
+.btn-attack:hover { background: linear-gradient(135deg, #dc2626, #ea580c) !important; }
+
+.btn-run { background: linear-gradient(135deg, #374151, #1f2937) !important; color: #ffffff !important; border-color: #6b7280 !important; }
+.btn-run:hover { background: linear-gradient(135deg, #4b5563, #374151) !important; }
+
+.btn-shop { background: linear-gradient(135deg, #8b5cf6, #7c3aed) !important; color: #ffffff !important; border-color: #a78bfa !important; }
+.btn-shop:hover { background: linear-gradient(135deg, #7c3aed, #6d28d9) !important; }
+
+.btn-potion { background: linear-gradient(135deg, #16a34a, #22c55e) !important; color: #ffffff !important; border-color: #22c55e !important; }
+.btn-potion:hover { background: linear-gradient(135deg, #15803d, #16a34a) !important; }
+
+.btn-mana { background: linear-gradient(135deg, #2563eb, #3b82f6) !important; color: #ffffff !important; border-color: #3b82f6 !important; }
+.btn-mana:hover { background: linear-gradient(135deg, #1d4ed8, #2563eb) !important; }
+/* ---- Form Inputs & Selects ---- */
+.form-label {
+  color: #43ea7c;
+  font-weight: 800;
+}
+
+.input,
+.select,
+select,
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea {
+  background: rgba(24, 24, 32, 0.85);
+  color: #e5e7eb;
+  border: 2px solid rgba(67, 234, 124, 0.45);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.input:focus,
+.select:focus,
+select:focus,
+textarea:focus,
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus {
+  border-color: #1cdba2;
+  box-shadow: 0 0 0 3px rgba(28, 219, 162, 0.25);
+}
+
+/* ---- Fallback helpers if Tailwind isn't available ---- */
+/* Scope hidden fallback to known game sections to avoid over-hiding unintended elements */
+#controls .hidden,
+#shop-panel.hidden,
+#enemy-panel.hidden,
+#spell-selector.hidden,
+#class-selection-screen.hidden {
+  display: none !important;
+}
+
+/* Ensure the top dashboard panels layout correctly on all devices */
+#dashboard-panels { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 0.5rem; margin-bottom: 0.75rem; }
+@media (min-width: 640px) { #dashboard-panels { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 768px) { #dashboard-panels { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* Force character + enemy panels to sit side-by-side on md+ */
+#status-panels { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 0.75rem; }
+@media (min-width: 768px) { #status-panels { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Class selection: force a 2x2 layout on md+ */
+#class-cards-container { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 1rem; }
+@media (min-width: 768px) { #class-cards-container { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Shop grid: 1/2/3/4 columns as width allows */
+#shop-grid { display: grid; grid-template-columns: repeat(1, minmax(0, 1fr)); gap: 1rem; }
+@media (min-width: 768px) { #shop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (min-width: 1024px) { #shop-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (min-width: 1280px) { #shop-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+
+/* Disabled buttons should look clearly unavailable */
+button:disabled,
+.disabled,
+button.opacity-50 {
+  filter: grayscale(60%) !important;
+  opacity: 0.5 !important;
+  pointer-events: none !important;
+}

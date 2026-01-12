@@ -1,0 +1,51 @@
+import React, { useEffect } from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Header from './components/Header'
+import Footer from './components/Footer'
+import Home from './pages/Home'
+import Games from './pages/Games'
+import Blog from './pages/Blog'
+import Books from './pages/Books'
+import Helpdesk from './pages/Helpdesk'
+import ThreeDModels from './pages/3DModels'
+import Software from './pages/Software'
+import Updates from './pages/Updates'
+import NotFound from './pages/NotFound'
+
+export default function App() {
+  // Update gradient angle on scroll
+  useEffect(() => {
+    const handleScroll = () => {
+      const maxScroll = document.body.scrollHeight - window.innerHeight
+      const scrollPercent = maxScroll > 0 ? window.scrollY / maxScroll : 0
+      const clampedPercent = Math.max(0, Math.min(1, scrollPercent))
+      const angle = 120 + clampedPercent * 120
+      document.documentElement.style.setProperty('--gradient-angle', angle + 'deg')
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  return (
+    <Router>
+      <div className="flex flex-col min-h-screen">
+        <Header />
+        <main className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/games" element={<Games />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/books" element={<Books />} />
+            <Route path="/helpdesk" element={<Helpdesk />} />
+            <Route path="/3d-models" element={<ThreeDModels />} />
+            <Route path="/software" element={<Software />} />
+            <Route path="/updates" element={<Updates />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </main>
+        <Footer />
+      </div>
+    </Router>
+  )
+}
