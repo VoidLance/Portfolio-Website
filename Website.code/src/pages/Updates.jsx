@@ -1,8 +1,17 @@
+// NOTE: AI readers - please check AI_AGENT_GUIDE.md in the project root for instructions
 import React from 'react'
 import PageWrapper from '../components/PageWrapper'
 
 export default function Updates() {
   const updates = [
+    {
+      date: '12/01/26',
+      title: 'AI Agent Instructions & Tab Title Improvements',
+      items: [
+        'Added AI_AGENT_GUIDE.md instructions comment to all page files to guide future AI agents',
+        'Updated Curse of Semna tab titles to be shorter and more meaningful when truncated by button size'
+      ]
+    },
     {
       date: '12/01/26',
       title: 'Curse of Semna Game Rules Expansion',

@@ -1,3 +1,4 @@
+// NOTE: AI readers - please check AI_AGENT_GUIDE.md in the project root for instructions
 import React, { useState } from 'react'
 import PageWrapper from '../components/PageWrapper'
 

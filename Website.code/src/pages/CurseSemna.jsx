@@ -1,3 +1,4 @@
+// NOTE: AI readers - please check AI_AGENT_GUIDE.md in the project root for instructions
 import React, { useState } from 'react'
 import PageWrapper from '../components/PageWrapper'
 
@@ -6,7 +7,7 @@ export default function CurseSemna() {
 
   const tabs = {
     story: {
-      title: 'The Story of Semna',
+      title: 'Story',
       content: (
         <>
           <p className="mb-4">
@@ -22,7 +23,7 @@ export default function CurseSemna() {
       )
     },
     objective: {
-      title: 'How to Win',
+      title: 'Win Conditions',
       content: (
         <>
           <p className="mb-4">You win the game if:</p>
@@ -34,7 +35,7 @@ export default function CurseSemna() {
       )
     },
     setup: {
-      title: 'Game Setup & Starting',
+      title: 'Setup',
       content: (
         <>
           <h3 className="text-xl font-bold text-indie-accent-pink mb-3">Starting a Game:</h3>
@@ -49,7 +50,7 @@ export default function CurseSemna() {
       )
     },
     turnStructure: {
-      title: 'Turn Structure',
+      title: 'Turns',
       content: (
         <>
           <p className="mb-4">Each turn consists of the following stages in order:</p>
@@ -65,7 +66,7 @@ export default function CurseSemna() {
       )
     },
     combat: {
-      title: 'Combat & Attacking',
+      title: 'Combat',
       content: (
         <>
           <p className="mb-4">During the War stage, players can make attacks using their Leader and Wing units.</p>
@@ -85,7 +86,7 @@ export default function CurseSemna() {
       )
     },
     energy: {
-      title: 'Energy System',
+      title: 'Energy',
       content: (
         <>
           <p className="mb-4">Energy is a critical resource that represents damage taken throughout the game.</p>
@@ -99,7 +100,7 @@ export default function CurseSemna() {
       )
     },
     cardTypes: {
-      title: 'Card Types & Roles',
+      title: 'Cards',
       content: (
         <>
           <h3 className="text-lg font-bold text-indie-accent-pink mb-3">Card Types:</h3>
@@ -120,7 +121,7 @@ export default function CurseSemna() {
       )
     },
     deckbuilding: {
-      title: 'Deckbuilding Rules',
+      title: 'Deckbuilding',
       content: (
         <>
           <h3 className="text-lg font-bold text-indie-accent-pink mb-3">Main Deck:</h3>
@@ -139,7 +140,7 @@ export default function CurseSemna() {
       )
     },
     zones: {
-      title: 'Playmat Zones',
+      title: 'Zones',
       content: (
         <>
           <ul className="space-y-3">
@@ -156,7 +157,7 @@ export default function CurseSemna() {
       )
     },
     glossary: {
-      title: 'Game Glossary',
+      title: 'Glossary',
       content: (
         <>
           <div className="space-y-3">
@@ -210,7 +211,7 @@ export default function CurseSemna() {
       )
     },
     coreRules: {
-      title: 'Core Rules & Principles',
+      title: 'Rules',
       content: (
         <>
           <ul className="space-y-3">
