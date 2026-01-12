@@ -225,6 +225,16 @@ export default function CurseSemna() {
     }
   }
 
+  // Map section IDs to their tabs for anchor-based deep-linking
+  const sectionToTab = {}
+  Object.entries(tabs).forEach(([tabKey, tabData]) => {
+    if (tabData.index) {
+      tabData.index.forEach(({ id }) => {
+        sectionToTab[id] = tabKey
+      })
+    }
+  })
+
   // Sync tab from URL query (e.g., ?tab=gameplay)
   useEffect(() => {
     // Fallback for HashRouter quirks: parse search from window.location.hash
@@ -256,6 +266,26 @@ export default function CurseSemna() {
     }
   }, [activeTab, location.search])
 
+  // Handle anchor-based deep-linking (e.g., #combat switches to gameplay tab)
+  useEffect(() => {
+    const rawHash = typeof window !== 'undefined' ? window.location.hash : ''
+    // Extract the last anchor after the pathname (e.g., from "#/games/curse-semna#combat" get "combat")
+    const parts = rawHash.split('#').filter(p => p && !p.startsWith('/'))
+    const anchor = parts[parts.length - 1]
+    
+    if (anchor && sectionToTab[anchor]) {
+      const tabForSection = sectionToTab[anchor]
+      if (tabForSection !== activeTab) {
+        setActiveTab(tabForSection)
+      }
+      // Scroll after a short delay to ensure DOM is updated
+      setTimeout(() => {
+        const el = document.getElementById(anchor)
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 50)
+    }
+  }, [])
+
   return (
     <PageWrapper mainClassName="w-full">
       <h1 className="text-4xl text-indie-accent-green text-center mb-4 font-heading">Curse of Semna</h1>
@@ -273,10 +303,10 @@ export default function CurseSemna() {
               navigate({ search: `?${params.toString()}` }, { replace: true })
             }}
             aria-current={activeTab === tabKey ? 'page' : undefined}
-            className={`px-4 py-2 rounded-lg font-bold text-sm transition-all duration-200 cursor-pointer inline-flex items-center gap-2 ${
+            className={`px-4 py-2 rounded-t-lg font-bold text-sm transition-all duration-200 cursor-pointer inline-flex items-center gap-2 border-b-4 ${
               activeTab === tabKey
-                ? 'bg-indie-accent-green text-indie-bg-main shadow-indie scale-105 border-2 border-indie-accent-green'
-                : 'bg-indie-bg-main/50 border-2 border-indie-accent-green/50 text-indie-text-light hover:border-indie-accent-green hover:bg-indie-accent-green/20 hover:scale-105'
+                ? 'border-b-indie-accent-green text-indie-accent-green bg-indie-accent-green/10'
+                : 'border-b-transparent text-indie-text-light hover:text-indie-accent-green hover:bg-indie-accent-green/5'
             }`}
           >
             {(() => {
@@ -288,14 +318,9 @@ export default function CurseSemna() {
         ))}
       </div>
 
-      {/* Active Tab Indicator + Quick Index */}
-      <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 mb-6">
-        <div className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-indie-accent-green/50 bg-indie-accent-green/10">
-          <span className="w-2 h-2 rounded-full bg-indie-accent-green animate-pulse" aria-hidden="true"></span>
-          <span className="text-sm">Viewing: <span className="font-bold text-indie-accent-green">{tabs[activeTab].title}</span></span>
-        </div>
-        {tabs[activeTab].index && (
-          <div className="flex flex-wrap items-center gap-2">
+      {/* Quick Index */}
+      {tabs[activeTab].index && (
+        <div className="flex flex-wrap items-center gap-2 mb-6">
             <span className="text-sm text-indie-text-gray/80">Quick Index:</span>
             {tabs[activeTab].index.map((item) => (
               <button
@@ -312,9 +337,8 @@ export default function CurseSemna() {
                 {item.label}
               </button>
             ))}
-          </div>
-        )}
-      </div>
+        </div>
+      )}
 
       {/* Tab Content */}
       <article className="text-indie-text-gray">
