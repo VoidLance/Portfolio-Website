@@ -7,6 +7,19 @@ export default defineConfig({
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
+    // Ensure all assets get content hashes for proper cache busting
+    rollupOptions: {
+      output: {
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash][extname]'
+      }
+    },
+    // Force rebuild and hash generation
+    cssCodeSplit: true,
+    minify: 'terser',
+    // Prevent caching issues by always generating new hashes
+    sourcemap: false,
   },
   server: {
     open: true,

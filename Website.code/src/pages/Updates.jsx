@@ -9,7 +9,7 @@ export default function Updates() {
       title: 'AI Agent Instructions & Tab Title Improvements',
       items: [
         'Added AI_AGENT_GUIDE.md instructions comment to all page files to guide future AI agents',
-        'Updated Curse of Semna tab titles to be shorter and more meaningful when truncated by button size (now testing updates)'
+        'Updated Curse of Semna tab titles to be shorter and more meaningful when truncated by button size'
       ]
     },
     {
