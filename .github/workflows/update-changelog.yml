@@ -1,4 +1,4 @@
-name: Update Changelog
+name: Deploy to Neocities
 
 on:
   push:
@@ -7,92 +7,16 @@ on:
       - master
 
 jobs:
-  update-changelog:
+  deploy:
     runs-on: ubuntu-latest
-    # Skip if the commit message contains [bot] to prevent infinite loops
-    if: "!contains(github.event.head_commit.message, '[bot]')"
-    permissions:
-      contents: write
     
     steps:
       - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-
-      - name: Get commit message and author
-        id: commit
-        run: |
-          COMMIT_MSG=$(git log -1 --pretty=%B)
-          COMMIT_AUTHOR=$(git log -1 --pretty=%an)
-          COMMIT_EMAIL=$(git log -1 --pretty=%ae)
-          # Use double quotes and escape special characters for JSON
-          COMMIT_MSG="${COMMIT_MSG//$'\n'/\\n}"
-          echo "message<<EOF" >> $GITHUB_OUTPUT
-          echo "$COMMIT_MSG" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-          echo "author=$COMMIT_AUTHOR" >> $GITHUB_OUTPUT
-          echo "email=$COMMIT_EMAIL" >> $GITHUB_OUTPUT
-
-      - name: Update Updates.jsx
-        run: |
-          node << 'SCRIPT_END'
-          const fs = require("fs");
-          const path = require("path");
-          
-          const filePath = path.join(process.cwd(), "Website.code/src/pages/Updates.jsx");
-          let content = fs.readFileSync(filePath, "utf-8");
-          
-          const commitMessage = process.env.COMMIT_MSG;
-          const today = new Date();
-          const dateStr = String(today.getDate()).padStart(2, "0") + "/" + String(today.getMonth() + 1).padStart(2, "0") + "/" + String(today.getFullYear()).slice(-2);
-          
-          // Split commit message into title and items (if multi-line)
-          const lines = commitMessage.split("\n").filter(l => l.trim());
-          const title = lines[0].replace(/'/g, "\\'");
-          const items = lines.slice(1).filter(l => l.trim()).map(item => item.replace(/'/g, "\\'"));
-          
-          // Create the new update entry
-          let newEntry = `    {\n      date: '${dateStr}',`;
-          
-          if (items.length === 0) {
-            newEntry += `\n      items: [\n        '${title}'\n      ]`;
-          } else {
-            newEntry += `\n      title: '${title}',\n      items: [\n        ${items.map(item => `'${item}'`).join(',\n        ')}\n      ]`;
-          }
-          
-          newEntry += "\n    },";
-          
-          // Find the updates array and insert the new entry
-          const updatesStart = content.indexOf("const updates = [");
-          const firstEntryStart = content.indexOf("{", updatesStart);
-          
-          if (updatesStart !== -1 && firstEntryStart !== -1) {
-            content = content.slice(0, firstEntryStart) + newEntry + "\n    " + content.slice(firstEntryStart);
-            fs.writeFileSync(filePath, content);
-            console.log("✓ Updated Updates.jsx with new entry");
-          } else {
-            console.error("✗ Could not find updates array");
-            process.exit(1);
-          }
-          SCRIPT_END
-        env:
-          COMMIT_MSG: ${{ steps.commit.outputs.message }}
-
-      - name: Commit and push
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
-          git add Website.code/src/pages/Updates.jsx
-          git commit -m "[bot] Update changelog from latest commit" || exit 0
-          git push origin HEAD:${{ github.ref_name }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build React app
         run: |
