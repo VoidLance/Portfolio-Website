@@ -2,12 +2,12 @@
 
 ## Automatic Changelog Updates
 
-**IMPORTANT**: Whenever you make changes to this codebase, you MUST update the changelog in `Website.code/src/pages/Updates.jsx`.
+**IMPORTANT**: Whenever you make changes to this codebase, you MUST update the changelog in `Website.code/src/data/updatesData.js`.
 
 ### How to Update the Changelog
 
-1. **Location**: `/mnt/2TB/Website/Portfolio-Website/Website.code/src/pages/Updates.jsx`
-2. **Format**: Add new entries at the TOP of the `updates` array
+1. **Location**: `/mnt/2TB/Website/Portfolio-Website/Website.code/src/data/updatesData.js`
+2. **Format**: Add new entries at the TOP of the `updatesData` array
 3. **Date Format**: DD/MM/YY (e.g., '12/01/26')
 
 ### Entry Format
@@ -48,8 +48,8 @@ For multiple related updates with a title:
 
 When you make changes:
 1. Complete your code changes
-2. Open `Website.code/src/pages/Updates.jsx`
-3. Add a new entry at the top of the updates array with today's date
+2. Open `Website.code/src/data/updatesData.js`
+3. Add a new entry at the top of the updatesData array with today's date
 4. Describe what you changed in clear, user-friendly language
 5. Include the changelog update in the same commit as your changes
 

@@ -15,9 +15,9 @@ This guide ensures AI agents (Claude, Copilot, etc.) understand project requirem
 ### Changelog Updates
 **EVERY code change must update the changelog** (except trivial comment fixes)
 
-- **File**: `Website.code/src/pages/Updates.jsx`
+- **File**: `Website.code/src/data/updatesData.js`
 - **When**: After completing any modifications
-- **How**: Add entry to top of `updates` array in `Updates.jsx`
+- **How**: Add entry to top of `updatesData` array
 - **Format**: See `.cursorrules` for exact format specification
 
 ### Code Style
@@ -37,8 +37,9 @@ Portfolio-Website/
 │   └── settings.json
 ├── Website.code/             ← React source code
 │   ├── src/
-│   │   ├── pages/           ← Page components (including Updates.jsx)
+│   │   ├── pages/           ← Page components
 │   │   ├── components/      ← Reusable components
+│   │   ├── data/            ← Shared data files (updatesData.js)
 │   │   └── index.css
 │   ├── package.json
 │   ├── vite.config.js
@@ -82,7 +83,7 @@ A: Any modification to functionality, UI, styling, or features. Minor typo fixes
 A: Add it immediately. The changelog should accurately reflect all work done on the project.
 
 **Q: Where exactly do I add the changelog entry?**
-A: Right after `const updates = [` at the start of the array in `Updates.jsx`.
+A: Right after `export const updatesData = [` at the start of the array in `Website.code/src/data/updatesData.js`.
 
 **Q: What format should the date be?**
 A: DD/MM/YY (e.g., '12/01/26' for January 12, 2026)

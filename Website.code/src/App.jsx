@@ -11,7 +11,6 @@ import Books from './pages/Books'
 import Helpdesk from './pages/Helpdesk'
 import ThreeDModels from './pages/3DModels'
 import Software from './pages/Software'
-import Updates from './pages/Updates'
 import CurseSemna from './pages/CurseSemna'
 import DungeonCrawler from './pages/DungeonCrawler'
 import NotFound from './pages/NotFound'
@@ -44,7 +43,6 @@ export default function App() {
             <Route path="/helpdesk" element={<Helpdesk />} />
             <Route path="/3d-models" element={<ThreeDModels />} />
             <Route path="/software" element={<Software />} />
-            <Route path="/updates" element={<Updates />} />
             <Route path="/games/curse-semna" element={<CurseSemna />} />
             <Route path="/games/dungeon-crawler" element={<DungeonCrawler />} />
             <Route path="*" element={<NotFound />} />

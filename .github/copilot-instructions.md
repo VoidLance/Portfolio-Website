@@ -9,4 +9,4 @@ This project uses `.cursorrules` for AI agent guidelines. **Always read the `.cu
 
 Location: `/.cursorrules`
 
-When making any code changes (except trivial fixes), you MUST update the changelog in `Website.code/src/pages/Updates.jsx` according to the format specified in `.cursorrules`.
+When making any code changes (except trivial fixes), you MUST update the changelog in `Website.code/src/data/updatesData.js` according to the format specified in `.cursorrules`.

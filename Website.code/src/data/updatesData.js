@@ -4,12 +4,13 @@
 export const updatesData = [
   {
     date: '12/01/26',
-    title: 'Cache Busting & HTML Meta Tag Fixes',
+    title: 'Consolidate Changelog to Shared Data File',
     items: [
-      'Added cache-busting meta tags to index.html to prevent browser caching issues',
-      'Created post-build script to automatically inject Cache-Control headers',
-      'Improved Vite configuration with explicit asset hashing for all files',
-      'Fixes issue where page updates weren\'t displaying on published website'
+      'Removed redundant Updates.jsx page component from router',
+      'Created centralized updatesData.js for all changelog entries',
+      'Updated AI_AGENT_GUIDE.md and .cursorrules to point to shared data file',
+      'All updates now maintained in single source of truth accessible to Sidebar',
+      'Simplified architecture - sidebar is the only place updates are displayed'
     ]
   },
   {
