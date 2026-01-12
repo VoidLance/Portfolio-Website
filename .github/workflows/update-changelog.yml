@@ -100,12 +100,18 @@ jobs:
           npm install
           npm run build
 
+      - name: Setup Neocities credentials
+        run: |
+          mkdir -p ~/.config
+          echo "machine api.neocities.org" > ~/.netrc
+          echo "login ${{ secrets.NEOCITIES_LOGIN }}" >> ~/.netrc
+          echo "password ${{ secrets.NEOCITIES_TOKEN }}" >> ~/.netrc
+          chmod 600 ~/.netrc
+        if: secrets.NEOCITIES_TOKEN != ''
+
       - name: Deploy to Neocities
         run: |
-          # Install Neocities CLI if not already installed
-          gem install neocities || true
+          gem install neocities
           cd Website.code
           neocities push dist
-        env:
-          NEOCITIES_LOGIN: ${{ secrets.NEOCITIES_LOGIN }}
-          NEOCITIES_TOKEN: ${{ secrets.NEOCITIES_TOKEN }}
+        if: secrets.NEOCITIES_TOKEN != ''
