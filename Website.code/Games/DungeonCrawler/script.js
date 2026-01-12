@@ -1406,8 +1406,10 @@ const ClassSelection = {
     
     createClassCard: function(className, classInfo) {
         const card = document.createElement('div');
-        card.className = 'backdrop-blur-sm bg-[rgba(24,24,32,0.6)] border border-indigo-400/30 rounded-lg p-4 hover:border-cyan-400 hover:bg-[rgba(24,24,32,0.7)] transition-all cursor-pointer shadow-none';
+        card.className = 'backdrop-blur-md bg-gradient-to-br from-[rgba(88,44,131,0.3)] via-[rgba(24,24,32,0.5)] to-[rgba(10,10,20,0.6)] border-2 rounded-xl p-5 hover:border-2 hover:from-[rgba(120,60,180,0.5)] hover:via-[rgba(40,40,60,0.6)] hover:to-[rgba(20,20,40,0.7)] transition-all duration-300 cursor-pointer shadow-lg hover:shadow-[0_0_30px_rgba(147,51,234,0.4)] transform hover:-translate-y-1';
         card.style.borderColor = classInfo.color;
+        card.style.background = `linear-gradient(135deg, rgba(88, 44, 131, 0.25) 0%, rgba(30, 20, 60, 0.35) 50%, rgba(10, 10, 20, 0.5) 100%)`;
+        card.style.backdropFilter = 'blur(12px)';
 
         // Get passive and preferred stats from CHARACTER_CLASSES
         const ClassCtor = CHARACTER_CLASSES[className];
@@ -1418,7 +1420,7 @@ const ClassSelection = {
 
         card.innerHTML = `
             <div class="flex items-center mb-3">
-                <i class="fas ${classInfo.icon} text-3xl mr-3" style="color: ${classInfo.color}"></i>
+                <i class="fas ${classInfo.icon} text-3xl mr-3" style="color: ${classInfo.color}; text-shadow: 0 0 10px ${classInfo.color}"></i>
                 <h3 class="text-2xl font-bold" style="color: ${classInfo.color}">${classInfo.name}</h3>
             </div>
             <p class="text-gray-300 mb-3">${classInfo.description}</p>
@@ -1443,6 +1445,7 @@ const ClassSelection = {
             <div class="mb-2">
                 <span class="font-bold text-green-300">Preferred Stats:</span> <span class="text-xs text-gray-200">${prefStats}</span>
             </div>
+            <button class="w-full mt-3 px-4 py-2 rounded-lg font-bold text-white transition-all duration-200" style="background: linear-gradient(135deg, ${classInfo.color} 0%, rgba(147, 51, 234, 0.8) 100%); box-shadow: 0 0 15px ${classInfo.color}40;">Select Class</button>
         `;
         card.onclick = () => this.selectClass(className);
         return card;
