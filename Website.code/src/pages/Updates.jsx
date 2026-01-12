@@ -127,7 +127,7 @@ export default function Updates() {
   ]
 
   return (
-    <PageWrapper mainClassName="w-full" hasSidebar={false}>
+    <PageWrapper mainClassName="w-full max-w-7xl mx-auto" hasSidebar={false}>
       <h1 className="text-4xl text-indie-accent-green text-center mb-4">Updates & Changelog</h1>
       <hr className="border-0 border-t border-indie-accent-green/50 my-4" />
       
