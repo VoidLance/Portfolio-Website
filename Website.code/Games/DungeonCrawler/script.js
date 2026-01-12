@@ -1406,7 +1406,7 @@ const ClassSelection = {
     
     createClassCard: function(className, classInfo) {
         const card = document.createElement('div');
-        card.className = 'bg-black/50 border-2 rounded-lg p-4 hover:border-cyan-400 transition-all cursor-pointer';
+        card.className = 'backdrop-blur-sm bg-[rgba(24,24,32,0.6)] border border-indigo-400/30 rounded-lg p-4 hover:border-cyan-400 hover:bg-[rgba(24,24,32,0.7)] transition-all cursor-pointer shadow-none';
         card.style.borderColor = classInfo.color;
 
         // Get passive and preferred stats from CHARACTER_CLASSES
@@ -3154,6 +3154,7 @@ const UI = {
         const armorSlot = document.getElementById('armor-slot');
         const accessorySlot = document.getElementById('accessory-slot');
         const vampireStatus = document.getElementById('vampire-status');
+        const playerClassEl = document.getElementById('player-class');
         
         if (gameState.character) {
             if (weaponSlot) {
@@ -3173,12 +3174,17 @@ const UI = {
             }
             if (vampireStatus) {
                 vampireStatus.classList.toggle('hidden', !gameState.character.isVampire);
+                vampireStatus.style.display = gameState.character.isVampire ? 'block' : 'none';
+            }
+            if (playerClassEl) {
+                playerClassEl.textContent = gameState.selectedClass || '-';
             }
         } else {
             if (weaponSlot) weaponSlot.textContent = 'Weapon: None';
             if (armorSlot) armorSlot.textContent = 'Armor: None';
             if (accessorySlot) accessorySlot.textContent = 'Accessory: None';
-            if (vampireStatus) vampireStatus.classList.add('hidden');
+            if (vampireStatus) { vampireStatus.classList.add('hidden'); vampireStatus.style.display = 'none'; }
+            if (playerClassEl) playerClassEl.textContent = '-';
         }
         
         // Update quick tips based on vampire status

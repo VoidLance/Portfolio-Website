@@ -260,6 +260,7 @@ body *:focus-within {
   letter-spacing: 0.5px;
   font-size: clamp(1.25rem, 2.5vw, 1.875rem);
   padding-top: 0.5rem;
+  white-space: nowrap;
 }
 
 /* Tighten spacing hooks for status panel sections */
