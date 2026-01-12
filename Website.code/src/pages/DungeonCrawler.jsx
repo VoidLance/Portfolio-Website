@@ -14,7 +14,9 @@ export default function DungeonCrawler() {
           <p className="text-center mb-4 text-indie-text-light text-lg">An interactive dungeon crawler game built with JavaScript.</p>
           <div className="text-center">
             <a 
-              href="/#/games/dungeon-crawler"
+              href="/Games/DungeonCrawler/index.html" 
+              target="_blank" 
+              rel="noopener noreferrer" 
               className="inline-block bg-indie-accent-green text-indie-bg-main px-8 py-3 rounded-lg font-bold text-xl hover:bg-[#1cdba2] transition-colors shadow-indie"
             >
               Play Game →
