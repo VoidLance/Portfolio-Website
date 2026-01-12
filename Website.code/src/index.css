@@ -80,11 +80,7 @@ p a,
 .text-indie-text-light a {
   color: #43ea7c;
   font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: #43ea7c;
-  text-decoration-style: solid;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 3px;
+  text-decoration: none;
   transition: all 0.3s ease;
 }
 
@@ -93,8 +89,11 @@ p a:hover,
 .text-indie-text-gray a:hover,
 .text-indie-text-light a:hover {
   color: #1cdba2;
+  text-decoration: underline;
   text-decoration-color: #ED64F5;
   text-decoration-style: solid;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
   text-shadow: 0 0 8px rgba(67, 234, 124, 0.5);
 }
 
