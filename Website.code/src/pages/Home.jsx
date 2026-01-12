@@ -26,7 +26,6 @@ export default function Home() {
               how to use a gemini browser. For those interested, my gemini page will be available at:{' '}
               <a 
                 href="gemini://voidlance.cities.yesterweb.org/" 
-                className="text-indie-accent-green font-bold no-underline hover:text-[#1cdba2] hover:underline hover:decoration-indie-accent-pink hover:decoration-dashed transition-all"
                 rel="external"
               >
                 gemini://voidlance.cities.yesterweb.org/

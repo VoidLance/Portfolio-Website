@@ -10,9 +10,7 @@ export default function NotFound() {
       <article className="text-indie-text-gray text-center">
         <p className="text-2xl mb-4">Oops! The page you're looking for doesn't exist.</p>
         <p>
-          <a href="/" className="text-indie-accent-green font-bold hover:text-[#1cdba2] transition-all">
-            Return to Home
-          </a>
+          <a href="/">Return to Home</a>
         </p>
       </article>
     </PageWrapper>

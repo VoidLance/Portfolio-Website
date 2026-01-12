@@ -75,7 +75,7 @@ export default function Blog() {
           {loading && <p className="text-center italic">Loading blog posts...</p>}
           {error && (
             <p className="text-center text-indie-accent-pink">
-              Unable to load blog posts. <a href="https://voidlance.blogspot.com" target="_blank" rel="noopener noreferrer" className="text-indie-accent-green hover:underline">Visit the blog directly.</a>
+              Unable to load blog posts. <a href="https://voidlance.blogspot.com" target="_blank" rel="noopener noreferrer">Visit the blog directly.</a>
             </p>
           )}
           {!loading && !error && posts.length === 0 && (
