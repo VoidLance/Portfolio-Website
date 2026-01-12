@@ -3,7 +3,7 @@ import PageWrapper from '../components/PageWrapper'
 
 export default function Updates() {
   const updates = [
-            {
+    {
       date: '12/01/26',
       items: [
         'Merge branch \'main\' of https://github.com/VoidLance/Portfolio-Website'
@@ -15,7 +15,7 @@ export default function Updates() {
         'Enhance GitHub Action permissions and ensure proper token usage for checkout step'
       ]
     },
-{
+    {
       date: '12/01/26',
       title: 'React Deployment & Neocities Integration',
       items: [
