@@ -84,5 +84,7 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add Website.code/src/pages/Updates.jsx
-          git commit -m "[bot] Update changelog from latest commit" || echo "Nothing to commit"
-          git push
+          git commit -m "[bot] Update changelog from latest commit" || exit 0
+          git push origin HEAD:${{ github.ref_name }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
