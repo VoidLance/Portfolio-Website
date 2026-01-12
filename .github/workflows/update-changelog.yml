@@ -11,31 +11,5 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
-      - name: Build React app
-        run: |
-          cd Website.code
-          npm install
-          npm run build
-
-      - name: Setup Neocities credentials
-        run: |
-          mkdir -p ~/.config
-          echo "machine api.neocities.org" > ~/.netrc
-          echo "login ${{ secrets.NEOCITIES_LOGIN }}" >> ~/.netrc
-          echo "password ${{ secrets.NEOCITIES_TOKEN }}" >> ~/.netrc
-          chmod 600 ~/.netrc
-        if: secrets.NEOCITIES_TOKEN != ''
-
-      - name: Deploy to Neocities
-        run: |
-          gem install neocities
-          cd Website.code
-          neocities push dist
-        if: secrets.NEOCITIES_TOKEN != ''
+      - name: Deployment handled by local pre-push hook
+        run: echo "Deployment is handled by the local pre-push hook. No action needed here."
