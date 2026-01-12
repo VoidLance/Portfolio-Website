@@ -4,6 +4,17 @@
 export const updatesData = [
   {
     date: '12/01/26',
+    title: 'Curse of Semna & Dungeon Crawler UX Improvements',
+    items: [
+      'Enhanced Curse of Semna page by consolidating 10+ tabs into 4 main categories (Overview, Gameplay, Cards, Reference) with intuitive icons',
+      'Implemented deep-linking support for direct navigation to specific sections via URL parameters and anchor tags',
+      'Restored Dungeon Crawler game with modern UI refinements: compact single-line title, color-matched class selection borders, and fixed-height scrollable log panel',
+      'Added player class display in stats panel and improved class card styling with glassmorphism effects and dynamic color glows',
+      'Fixed numerous display issues including vampire badge visibility, list bullet formatting, and button spacing in class selection'
+    ]
+  },
+  {
+    date: '12/01/26',
     title: 'Consolidate Changelog to Shared Data File',
     items: [
       'Removed redundant Updates.jsx page component from router',
