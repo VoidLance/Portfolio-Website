@@ -2,6 +2,8 @@
 
 My modern portfolio website showcasing my projects, skills, and experience.
 
+> **⚠️ IMPORTANT FOR AI AGENTS**: Please read [`.cursorrules`](/.cursorrules) before making any changes. It contains mandatory requirements including changelog updates.
+
 ## Features
 
 - Responsive design

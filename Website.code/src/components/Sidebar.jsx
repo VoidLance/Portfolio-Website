@@ -4,6 +4,15 @@ export default function Sidebar() {
   const updates = [
     {
       date: '12/01/26',
+      title: 'Updates Layout Improvements',
+      items: [
+        'Increased sidebar width to 25%',
+        'Reduced gap between sections',
+        'Better use of horizontal space'
+      ]
+    },
+    {
+      date: '12/01/26',
       title: 'React Deployment & Automation',
       items: [
         'Deployed React site to Neocities with HashRouter',

@@ -5,6 +5,25 @@ export default function Updates() {
   const updates = [
     {
       date: '12/01/26',
+      title: 'Curse of Semna Game Rules Expansion',
+      items: [
+        'Integrated comprehensive game information from design document into Curse of Semna page',
+        'Added 10 new tabbed sections: Story, How to Win, Game Setup, Turn Structure, Combat & Attacking, Energy System, Card Types & Roles, Deckbuilding Rules, Playmat Zones, and Game Glossary',
+        'Included full gameplay mechanics, core rules, and terminology definitions',
+        'Removed all planning/design notes to keep only practical game information for players'
+      ]
+    },
+    {
+      date: '12/01/26',
+      title: 'Updates Section Layout Improvements',
+      items: [
+        'Increased updates sidebar width from 18% to 25% for better readability',
+        'Reduced gap between updates sidebar and main content from 20px to 8px',
+        'Adjusted minimum width to 320px to support the wider layout'
+      ]
+    },
+    {
+      date: '12/01/26',
       title: 'React Deployment & Neocities Integration',
       items: [
         'Successfully deployed React site to Neocities with HashRouter for static hosting compatibility',

@@ -1,0 +1,18 @@
+# CRITICAL: Read This First
+
+This file serves as a checkpoint to ensure AI agents see important project instructions.
+
+**READ .cursorrules BEFORE PROCEEDING WITH ANY WORK**
+
+The `.cursorrules` file contains:
+- Mandatory changelog update requirements
+- Code style guidelines  
+- Project conventions
+- Development procedures
+
+This file is auto-read by Cursor IDE and some AI tools, but to ensure compliance:
+1. Claude/GitHub Copilot users should manually read `.cursorrules`
+2. Include `.cursorrules` in initial workspace context
+3. Reference this file in project documentation
+
+Location: `/.cursorrules` (at repository root)
