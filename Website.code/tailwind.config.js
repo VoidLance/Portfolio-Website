@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+// Tailwind configuration for indie personal portfolio site
 export default {
   content: [
     './src/**/*.{js,jsx,ts,tsx}',
