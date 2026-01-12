@@ -82,8 +82,8 @@ export default function Home() {
             <hr className="border-0 border-t border-indie-accent-green/50 my-4" />
             
             <div className="flex justify-center mt-4">
-              <a href="https://vampire-club.neocities.org/" target="_blank" rel="noopener noreferrer" aria-label="Vampire Club member">
-                <img src="/Images/vcskull.gif" className="w-fit h-auto" alt="Vampire Club skull banner - I'm a member!" loading="lazy" />
+              <a href="https://vampire-club.neocities.org/" target="_blank" rel="noopener noreferrer" aria-label="Vampire Club member" className="w-full">
+                <img src="/Images/vcskull.gif" className="w-full h-auto" alt="Vampire Club skull banner - I'm a member!" loading="lazy" />
               </a>
             </div>
           </article>
