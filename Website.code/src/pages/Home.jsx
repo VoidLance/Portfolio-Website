@@ -16,7 +16,7 @@ export default function Home() {
           
           <article className="text-indie-text-gray">
             <p>
-              Hi, I'm <strong className="text-indie-accent-green font-bold">Alistair Sweeting</strong>, and welcome to my website! test
+              Hi, I'm <strong className="text-indie-accent-green font-bold">Alistair Sweeting</strong>, and welcome to my website! 
               It is still heavily under construction, but eventually it should serve as my central page, as an alternative to social media, 
               for showing off both my personality and my portfolio of games, software, 3D models and writing.
             </p>
