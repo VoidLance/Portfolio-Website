@@ -227,7 +227,11 @@ export default function CurseSemna() {
 
   // Sync tab from URL query (e.g., ?tab=gameplay)
   useEffect(() => {
-    const params = new URLSearchParams(location.search)
+    // Fallback for HashRouter quirks: parse search from window.location.hash
+    const rawHash = typeof window !== 'undefined' ? window.location.hash : ''
+    const hashSearch = rawHash.includes('?') ? rawHash.substring(rawHash.indexOf('?')) : ''
+    const effectiveSearch = location.search && location.search.length > 0 ? location.search : hashSearch
+    const params = new URLSearchParams(effectiveSearch)
     const urlTab = params.get('tab')
     if (urlTab && tabs[urlTab] && urlTab !== activeTab) {
       setActiveTab(urlTab)
@@ -236,7 +240,10 @@ export default function CurseSemna() {
 
   // Smooth scroll to section from URL (e.g., &section=combat)
   useEffect(() => {
-    const params = new URLSearchParams(location.search)
+    const rawHash = typeof window !== 'undefined' ? window.location.hash : ''
+    const hashSearch = rawHash.includes('?') ? rawHash.substring(rawHash.indexOf('?')) : ''
+    const effectiveSearch = location.search && location.search.length > 0 ? location.search : hashSearch
+    const params = new URLSearchParams(effectiveSearch)
     const section = params.get('section')
     if (section) {
       const el = document.getElementById(section)
@@ -261,9 +268,9 @@ export default function CurseSemna() {
             key={tabKey}
             onClick={() => {
               setActiveTab(tabKey)
-              const params = new URLSearchParams(location.search)
+              const params = new URLSearchParams(location.search || '')
               params.set('tab', tabKey)
-              navigate(`${location.pathname}?${params.toString()}`, { replace: true })
+              navigate({ search: `?${params.toString()}` }, { replace: true })
             }}
             aria-current={activeTab === tabKey ? 'page' : undefined}
             className={`px-4 py-2 rounded-lg font-bold text-sm transition-all duration-200 cursor-pointer inline-flex items-center gap-2 ${
@@ -294,9 +301,9 @@ export default function CurseSemna() {
               <button
                 key={item.id}
                 onClick={() => {
-                  const params = new URLSearchParams(location.search)
+                  const params = new URLSearchParams(location.search || '')
                   params.set('section', item.id)
-                  navigate(`${location.pathname}?${params.toString()}`, { replace: true })
+                  navigate({ search: `?${params.toString()}` }, { replace: true })
                   const el = document.getElementById(item.id)
                   if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
                 }}
