@@ -12,14 +12,14 @@ npm install
 npm run dev
 ```
 
-Open http://localhost:5173 in your browser - you'll see your site with **zero page reloads** when navigating!
+Open http://localhost:5173 in my browser - I'll see my site with **zero page reloads** when navigating!
 
 ### 3. Build for Production
 ```bash
 npm run build
 ```
 
-Then upload the `dist/` folder to your hosting.
+Then I'll upload the `dist/` folder to my hosting.
 
 ---
 
@@ -78,7 +78,7 @@ alistairsweeting-portfolio/
 
 ## 🎨 Styling
 
-All your original styling is preserved using Tailwind CSS with the custom `indie-*` color scheme:
+All my original styling is preserved using Tailwind CSS with the custom `indie-*` color scheme:
 
 ```jsx
 <h1 className="text-indie-accent-green">Title</h1>
@@ -133,7 +133,7 @@ npm run build
 ### Netlify / Vercel
 ```bash
 npm run build
-# Connect your repo and auto-deploy
+# Connect my repo and auto-deploy
 ```
 
 ### Any Static Host
@@ -155,7 +155,7 @@ The site adapts to all screen sizes:
 
 ## 🔄 What About Old Pages?
 
-Your original HTML files are still there. External games and projects still work:
+My original HTML files are still there. External games and projects still work:
 - `/Games/DungeonCrawler/index.html` - Direct links work
 - `/Software/Personal-Website/index.html` - Still accessible
 
@@ -196,7 +196,7 @@ npm run preview   # Test production build locally
 A: No! Navigation between pages is instant using React Router.
 
 **Q: Can I go back to static HTML?**
-A: Yes, your original HTML files are still there.
+A: Yes, my original HTML files are still there.
 
 **Q: How do I add dynamic content?**
 A: Fetch data in React components using hooks like `useEffect`.

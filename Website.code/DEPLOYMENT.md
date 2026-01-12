@@ -2,7 +2,7 @@
 
 ## What Changed
 
-Your website has been refactored from static HTML pages to a React single-page application (SPA). This means:
+My website has been refactored from static HTML pages to a React single-page application (SPA). This means:
 
 ✅ **No full page reloads** - Navigation is instant
 ✅ **Better performance** - Shared components load once
@@ -13,7 +13,7 @@ Your website has been refactored from static HTML pages to a React single-page a
 
 ### Quick Start
 
-1. Make sure you have Node.js installed (https://nodejs.org/)
+1. Make sure I have Node.js installed (https://nodejs.org/)
 
 2. From the project directory, run:
 ```bash
@@ -21,7 +21,7 @@ npm install
 npm run dev
 ```
 
-3. Open http://localhost:5173 in your browser
+3. Open http://localhost:5173 in my browser
 
 ## Building for Deployment
 
@@ -43,25 +43,25 @@ The optimized site is now in the `dist/` folder.
 
 ## Deploying to Neocities
 
-1. Build your app:
+1. Build my app:
 ```bash
 npm run build
 ```
 
-2. Upload the contents of `dist/` to your Neocities account using:
+2. Upload the contents of `dist/` to my Neocities account using:
    - The Neocities web uploader
    - Command line: `neocities push dist/*`
    - Or manually via FTP
 
-3. Your site is now live!
+3. My site is now live!
 
 ## Important Notes
 
 ### Preserving Existing Pages
 
-The old HTML files are still in the root directory. You can:
+The old HTML files are still in the root directory. I can:
 - Keep them for backup
-- Delete them once you confirm the React version works
+- Delete them once I confirm the React version works
 - Or ignore them if they're not being served
 
 ### Direct Game Links
@@ -82,7 +82,7 @@ React Router handles browser history automatically:
 
 ## File Structure After Build
 
-When you build with `npm run build`, the `dist/` folder contains:
+When I build with `npm run build`, the `dist/` folder contains:
 
 ```
 dist/
@@ -94,13 +94,13 @@ dist/
 └── [other generated files]
 ```
 
-Upload the entire `dist/` folder contents to your hosting.
+Upload the entire `dist/` folder contents to my hosting.
 
 ## Troubleshooting
 
 ### Page not found on Neocities
 
-Neocities is a static host and doesn't support single-page app routing by default. You may need to:
+Neocities is a static host and doesn't support single-page app routing by default. I may need to:
 
 1. **Option A**: Add a `_redirects` file to dist/ before uploading:
 ```
@@ -135,18 +135,18 @@ npm run lint     # Check code style (if ESLint is installed)
 
 ## Future Updates
 
-To update content, edit the files in `src/pages/` and rebuild:
+To update content, I'll edit the files in `src/pages/` and rebuild:
 
 ```bash
 npm run build
 ```
 
-Then upload the new `dist/` folder.
+Then I'll upload the new `dist/` folder.
 
 ## Keeping Original Files
 
 The original static HTML files are still in the root:
-- `index.html.bak` (if you backed it up)
+- `index.html.bak` (if I backed it up)
 - `Games.html`
 - `blog.html`
 - etc.
@@ -161,4 +161,4 @@ The main advantage of this setup is:
 3. **Easier updates** - Edit React components instead of HTML
 4. **Modern tooling** - Vite for fast development
 
-If you need to go back to static HTML, your original files are still there!
+If I need to go back to static HTML, my original files are still there!

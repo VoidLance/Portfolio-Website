@@ -1,8 +1,8 @@
 # 🎯 Project Overview - React SPA Refactor
 
-## What You Have
+## What I Have
 
-A complete, production-ready React single-page application that replaces your old static HTML website.
+A complete, production-ready React single-page application that replaces my old static HTML website.
 
 ---
 
@@ -130,7 +130,7 @@ export default function Home() {
 ### How It Renders
 
 ```
-1. User loads www.yoursite.com/
+1. I load www.mysite.com/
 2. Router matches "/" path
 3. Home component renders
 4. Header renders (same for all pages)
@@ -139,10 +139,10 @@ export default function Home() {
 7. Footer renders (same for all pages)
 ```
 
-### When User Clicks "Games"
+### When I Click "Games"
 
 ```
-1. User clicks <Link to="/games">
+1. I click <Link to="/games">
 2. React Router intercepts (no page reload!)
 3. URL changes to /games
 4. Home component unmounts
@@ -194,7 +194,7 @@ className="flex flex-col lg:flex-row"
 ### Navigation State
 
 ```
-User clicks link
+I click link
     ↓
 Navigation component (managed state) closes dropdown
     ↓
@@ -404,7 +404,7 @@ npm run build
 
 **Navigation is slow?**
 ```jsx
-// Make sure you're using Link, not <a>
+// Make sure I'm using Link, not <a>
 import { Link } from 'react-router-dom'
 <Link to="/page">Not this!</Link>    // ❌ Wrong
 <a href="/page">Like this!</a>       // ✅ Correct
@@ -412,9 +412,9 @@ import { Link } from 'react-router-dom'
 
 ---
 
-## 🎉 You're All Set!
+## 🎉 I'm All Set!
 
-Your website is now:
+My website is now:
 ✅ Fast (instant navigation)
 ✅ Modern (React + Vite)
 ✅ Maintainable (component-based)

@@ -1,6 +1,6 @@
 # 🎯 START HERE
 
-Welcome! Your website has been successfully refactored to React.
+Welcome! My website has been successfully refactored to React.
 
 **Time to get started: 5 minutes**
 
@@ -13,14 +13,14 @@ Welcome! Your website has been successfully refactored to React.
 npm install
 ```
 
-This downloads all the dependencies your React app needs.
+This downloads all the dependencies my React app needs.
 
 ### Step 2: Run (1 minute)
 ```bash
 npm run dev
 ```
 
-Your browser opens automatically to `http://localhost:5173`
+My browser opens automatically to `http://localhost:5173`
 
 ### Step 3: Test (2 minutes)
 - Click "Games", "Blog", "Books", etc.
@@ -42,18 +42,18 @@ Click link → Server sends new HTML → Page reloads → 300-500ms wait
 Click link → React updates content → Instant! → <50ms
 ```
 
-Your website now has **zero page reloads** when navigating! 🎉
+My website now has **zero page reloads** when navigating! 🎉
 
 ---
 
 ## 📚 What to Read Next
 
-Pick one based on your needs:
+Pick one based on my needs:
 
-### If you want to...
+### If I want to...
 
 **Just see it working** (5 min)
-→ You're done! Keep running `npm run dev`
+→ I'm done! Keep running `npm run dev`
 
 **Understand how it works** (15 min)
 → Read [README_REACT.md](./README_REACT.md)
@@ -72,7 +72,7 @@ Pick one based on your needs:
 
 ---
 
-## 📁 Your App Structure
+## 📁 My App Structure
 
 ```
 src/
@@ -82,7 +82,7 @@ src/
 │   ├── Footer.jsx
 │   └── ... (more)
 │
-├── pages/              ← Your page contents
+├── pages/              ← My page contents
 │   ├── Home.jsx
 │   ├── Games.jsx
 │   ├── Blog.jsx
@@ -97,7 +97,7 @@ That's it! Simple, clean, organized.
 
 ## 🎨 All Styling Preserved
 
-Your original design is 100% intact:
+My original design is 100% intact:
 - ✅ Colors (green accent, dark purple background)
 - ✅ Fonts (Asul, Montserrat)
 - ✅ Responsive design (mobile, tablet, desktop)
@@ -117,13 +117,13 @@ npm run lint            # Check code style
 
 ---
 
-## 🚢 When You're Ready to Deploy
+## 🚢 When I'm Ready to Deploy
 
 ```bash
 npm run build
 ```
 
-This creates a `dist/` folder. Upload that folder to your hosting.
+This creates a `dist/` folder. I'll upload that folder to my hosting.
 
 See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
 
@@ -134,7 +134,7 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
 **Q: Will people see page reloads?**
 A: No! Navigation is now instant.
 
-**Q: Did you break anything?**
+**Q: Did I break anything?**
 A: No! All original functionality preserved.
 
 **Q: Can I modify this?**
@@ -150,7 +150,7 @@ A: Yes! See [DEPLOYMENT.md](./DEPLOYMENT.md) for setup.
 
 ## 🎯 Next Steps
 
-1. **You are here** → Keep `npm run dev` running
+1. **I am here** → Keep `npm run dev` running
 2. **Read [README_REACT.md](./README_REACT.md)** → Understand the project
 3. **Make changes** → Edit files in `src/` directory
 4. **Test thoroughly** → Check all pages work
@@ -160,7 +160,7 @@ A: Yes! See [DEPLOYMENT.md](./DEPLOYMENT.md) for setup.
 
 ## 🎊 Welcome to Modern Web Development!
 
-Your site now has:
+My site now has:
 - ⚡ Instant navigation
 - 🎨 Beautiful design (preserved)
 - 📱 Mobile-friendly
@@ -171,6 +171,6 @@ Your site now has:
 
 ---
 
-**P.S.** The old HTML files are still in the root directory if you need them as backup. But you don't! The React version is production-ready.
+**P.S.** The old HTML files are still in the root directory if I need them as backup. But I don't! The React version is production-ready.
 
 Need help? Check the documentation files - they're comprehensive!

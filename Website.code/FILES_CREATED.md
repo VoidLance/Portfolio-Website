@@ -1,6 +1,6 @@
 # ✅ Refactor Complete - File Manifest
 
-Your website has been successfully refactored to React! Here's what was created.
+My website has been successfully refactored to React! Here's what was created.
 
 ---
 
@@ -115,7 +115,7 @@ npm run build
 Creates `dist/` folder ready to deploy
 
 ### Step 5: Deploy
-Upload `dist/` folder to your hosting
+Upload `dist/` folder to my hosting
 
 ---
 
@@ -171,7 +171,7 @@ dist/                      ← Created by: npm run build
 
 ---
 
-## ✨ What You Get
+## ✨ What I Get
 
 ### ⚡ Instant Navigation
 ```
@@ -279,7 +279,7 @@ Read in this order:
 
 ---
 
-## 🎉 You're All Set!
+## 🎉 I'm All Set!
 
 Everything is ready to use:
 
@@ -318,7 +318,7 @@ Everything is ready to use:
 ```bash
 npm install              # Install dependencies
 npm run build           # Build production files
-# Upload dist/ folder to your hosting
+# Upload dist/ folder to my hosting
 ```
 
 See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
@@ -337,7 +337,7 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
 
 ## 🎊 Summary
 
-Your website is now:
+My website is now:
 - ⚡ **Lightning fast** (instant navigation)
 - 🎨 **Beautiful** (original design preserved)
 - 📱 **Responsive** (all devices)

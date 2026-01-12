@@ -1,6 +1,6 @@
 # 🎉 React Refactored Portfolio
 
-Your website has been successfully refactored from static HTML to **React single-page application** with **zero page reloads** on navigation!
+My website has been successfully refactored from static HTML to **React single-page application** with **zero page reloads** on navigation!
 
 ## 🚀 Quick Start (3 Steps)
 
@@ -75,7 +75,7 @@ npm run lint    # Check code style
 
 ```bash
 npm run build       # Creates dist/ folder
-# Upload dist/ to your hosting
+# Upload dist/ to my hosting
 ```
 
 Works on Neocities, Netlify, Vercel, or any static host!

@@ -1,27 +1,27 @@
 # React Refactor Summary
 
-## What You're Getting
+## What I'm Getting
 
-Your website has been completely refactored from **static HTML pages** to a **modern React single-page application (SPA)**.
+My website has been completely refactored from **static HTML pages** to a **modern React single-page application (SPA)**.
 
 ### The Magic ✨
 
 **Before (Static HTML)**
 ```
-User clicks link
+I click link
     ↓
 Browser requests new HTML file from server
     ↓
 Server sends entire new page (including header, footer, nav)
     ↓
-Page reloads, flashes, user waits
+Page reloads, flashes, I wait
     ↓
 Content finally displays
 ```
 
 **After (React SPA)**
 ```
-User clicks link
+I click link
     ↓
 JavaScript instantly swaps page content
     ↓
@@ -135,7 +135,7 @@ npm run preview
 1. ✅ Ensure Node.js is installed
 2. ✅ Run `npm install`
 3. ✅ Run `npm run build`
-4. ✅ Upload `dist/` folder to your host
+4. ✅ Upload `dist/` folder to my host
 5. ✅ Test navigation (should be instant!)
 
 ---
@@ -153,7 +153,7 @@ npm run preview
    ↓
 5. Upload dist/ folder to hosting
    ↓
-6. Your site is live!
+6. My site is live!
 ```
 
 ---
@@ -177,7 +177,7 @@ npm run preview
 3. **Read** `DEPLOYMENT.md` for deployment options
 4. **Run** `npm install && npm run dev` to see it in action
 5. **Explore** the `src/` directory to understand the structure
-6. **Modify** pages to add your content
+6. **Modify** pages to add my content
 
 ---
 
@@ -185,7 +185,7 @@ npm run preview
 
 ### React
 - Component-based UI library
-- Components are reusable pieces of your site
+- Components are reusable pieces of my site
 - State management for interactive features
 
 ### React Router
@@ -200,7 +200,7 @@ npm run preview
 
 ### Tailwind CSS
 - Utility-first CSS framework
-- Your custom `indie-*` colors are preserved
+- My custom `indie-*` colors are preserved
 - Responsive design with `lg:` breakpoints
 
 ---
@@ -243,7 +243,7 @@ Code Duplication: High   Code Duplication: None
 ## Files to Read in Order
 
 1. **QUICKSTART.md** ← Start here (5 min read)
-2. **This file** ← You're reading it (5 min read)
+2. **This file** ← I'm reading it (5 min read)
 3. **REACT_SETUP.md** ← Detailed explanation (10 min read)
 4. **DEPLOYMENT.md** ← How to deploy (10 min read)
 5. **Code** ← Explore src/ directory
@@ -265,7 +265,7 @@ If something isn't clear:
 
 ✨ **This refactor is production-ready!**
 
-Your site now has:
+My site now has:
 - ⚡ Instant navigation (no page reloads)
 - 🎨 All original styling preserved
 - 📱 Responsive design maintained

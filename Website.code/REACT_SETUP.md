@@ -66,20 +66,20 @@ This creates an optimized build in the `dist/` directory.
 
 ### Adding a New Page
 
-1. Create a new file in `src/pages/YourPage.jsx`:
+1. Create a new file in `src/pages/MyPage.jsx`:
 
 ```jsx
 import React from 'react'
 import PageWrapper from '../components/PageWrapper'
 
-export default function YourPage() {
+export default function MyPage() {
   return (
     <PageWrapper>
-      <h1 className="text-4xl text-indie-accent-green text-center mb-4">Your Page Title</h1>
+      <h1 className="text-4xl text-indie-accent-green text-center mb-4">My Page Title</h1>
       <hr className="border-0 border-t border-indie-accent-green/50 my-4" />
       
       <article className="text-indie-text-gray">
-        {/* Your content here */}
+        {/* My content here */}
       </article>
     </PageWrapper>
   )
@@ -89,16 +89,16 @@ export default function YourPage() {
 2. Add route in `src/App.jsx`:
 
 ```jsx
-import YourPage from './pages/YourPage'
+import MyPage from './pages/MyPage'
 
-<Route path="/your-page" element={<YourPage />} />
+<Route path="/my-page" element={<MyPage />} />
 ```
 
 3. Add navigation link in `src/components/Navigation.jsx`:
 
 ```jsx
 <li className="menu-item group relative">
-  <Link to="/your-page" onClick={closeDropdown}>Your Page</Link>
+  <Link to="/my-page" onClick={closeDropdown}>My Page</Link>
 </li>
 ```
 
@@ -114,7 +114,7 @@ import YourPage from './pages/YourPage'
 All navigation uses React Router's `<Link>` component for instant page transitions without server requests.
 
 ### Scroll Effects
-The gradient background angle changes as you scroll the page (original feature preserved).
+The gradient background angle changes as I scroll the page (original feature preserved).
 
 ### Responsive Design
 The layout adapts to desktop and mobile with:
@@ -128,8 +128,8 @@ Hover interactions managed with React state for a smooth, responsive experience.
 
 ### For Neocities
 1. Run `npm run build`
-2. Upload the contents of the `dist/` folder to your Neocities site
-3. Ensure your server supports client-side routing (may need `_redirects` or similar configuration)
+2. Upload the contents of the `dist/` folder to my Neocities site
+3. Ensure my server supports client-side routing (may need `_redirects` or similar configuration)
 
 ### For Other Static Hosts
 The built app is a standard static site and can be deployed to:

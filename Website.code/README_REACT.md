@@ -1,10 +1,10 @@
 # Alistair Sweeting Portfolio - React Single Page Application
 
-> 🚀 Your website has been refactored to React for **instant navigation with zero page reloads**
+> 🚀 My website has been refactored to React for **instant navigation with zero page reloads**
 
 ## 📚 Documentation
 
-Start with one of these guides based on your needs:
+Start with one of these guides based on my needs:
 
 1. **[QUICKSTART.md](./QUICKSTART.md)** ⭐ **Start here!** - Get running in 3 steps (5 min)
 2. **[REFACTOR_SUMMARY.md](./REFACTOR_SUMMARY.md)** - What changed and why (5 min)
@@ -16,7 +16,7 @@ Start with one of these guides based on your needs:
 
 ## 🎯 What This Is
 
-Your personal portfolio website has been transformed from **9 static HTML pages** into a **modern React single-page application (SPA)**.
+My personal portfolio website has been transformed from **9 static HTML pages** into a **modern React single-page application (SPA)**.
 
 ### The Key Benefit
 **Navigation is now instant** - no page reloads, no waiting, no flicker.
@@ -41,7 +41,7 @@ Then open http://localhost:5173
 ```bash
 npm install
 npm run build
-# Upload dist/ folder to your hosting
+# Upload dist/ folder to my hosting
 ```
 
 ### Option 3: Want to Understand It First?
@@ -49,10 +49,10 @@ Read **[QUICKSTART.md](./QUICKSTART.md)** (5 minutes)
 
 ---
 
-## 📁 What You Get
+## 📁 What I Get
 
 ```
-Your React SPA
+My React SPA
 │
 ├── src/
 │   ├── components/          ← Reusable React pieces
@@ -62,7 +62,7 @@ Your React SPA
 │   │   ├── Sidebar.jsx      (Updates panel)
 │   │   └── PageWrapper.jsx  (Page layout)
 │   │
-│   ├── pages/               ← Your page contents
+│   ├── pages/               ← My page contents
 │   │   ├── Home.jsx
 │   │   ├── Games.jsx
 │   │   ├── Blog.jsx
@@ -130,7 +130,7 @@ Creates optimized `dist/` folder ready for deployment
 ```bash
 npm run preview
 ```
-Test your production build locally
+Test my production build locally
 
 ---
 
@@ -164,7 +164,7 @@ Test your production build locally
 
 ## 🎨 Styling Preserved
 
-Your original design is fully preserved:
+My original design is fully preserved:
 
 ```jsx
 <h1 className="text-indie-accent-green">Hello</h1>
@@ -194,7 +194,7 @@ export default function NewPage() {
   return (
     <PageWrapper>
       <h1 className="text-4xl text-indie-accent-green">My New Page</h1>
-      <p>Your content here</p>
+      <p>My content here</p>
     </PageWrapper>
   )
 }
@@ -270,13 +270,13 @@ See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed Neocities setup.
 ### For Netlify/Vercel
 ```bash
 npm run build
-# Connect your git repo, they handle the rest
+# Connect my git repo, they handle the rest
 ```
 
 ### For Any Static Host
 ```bash
 npm run build
-# Upload dist/ to your hosting
+# Upload dist/ to my hosting
 ```
 
 ---
@@ -299,7 +299,7 @@ A: Yes! See [DEPLOYMENT.md](./DEPLOYMENT.md).
 A: No! Build locally with `npm run build`, upload the `dist/` folder (static files only).
 
 **Q: Can I go back to static HTML?**  
-A: Yes, your original HTML files are still in the root directory.
+A: Yes, my original HTML files are still in the root directory.
 
 **Q: Why is this better than static HTML?**  
 A: Faster navigation, no duplicated code, easier to maintain.
@@ -375,7 +375,7 @@ Page appears (300-500ms later!)
 
 ## 📞 Support
 
-If you have questions:
+If I have questions:
 1. Check the relevant `.md` file
 2. Look at example components in `src/components/`
 3. Review page examples in `src/pages/`
@@ -386,7 +386,7 @@ If you have questions:
 
 ## 🎉 Conclusion
 
-Your website is now:
+My website is now:
 - ⚡ **Lightning fast** - Instant navigation
 - 🎨 **Beautiful** - Original design preserved
 - 📱 **Responsive** - Works on all devices

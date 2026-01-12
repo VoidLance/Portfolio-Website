@@ -4,7 +4,7 @@
 
 ### BEFORE (Static HTML)
 ```
-User clicks "Games" link
+I click "Games" link
     ↓ (Network request)
     ↓ Browser waits for server
     ↓ Page reloads completely
@@ -19,10 +19,10 @@ User clicks "Games" link
 
 ### AFTER (React SPA)
 ```
-User clicks "Games" link
+I click "Games" link
     ↓ (No network!)
     ↓ JavaScript instantly swaps content
-    ↓ Smooth transition (if you add CSS)
+    ↓ Smooth transition (if I add CSS)
     ↓ Page displays (<50ms)
 ```
 
@@ -160,9 +160,9 @@ But advantages:
 5. ... repeat for 9 files ...
 6. Upload all 9 modified files
 7. Test all 9 pages to verify
-8. Hope you didn't miss a file!
+8. Hope I didn't miss a file!
 
-Risk: Inconsistencies if you forget a file
+Risk: Inconsistencies if I forget a file
 Time: 15-30 minutes per header change
 ```
 
@@ -303,4 +303,4 @@ Automatic, immediate, productive
 **Static HTML** = Simpler but slower, higher maintenance  
 **React SPA** = More powerful, instant navigation, easier to maintain
 
-Your website is now **fast, modern, and maintainable!** 🚀
+My website is now **fast, modern, and maintainable!** 🚀

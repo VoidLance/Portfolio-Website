@@ -36,7 +36,7 @@
 
 ### 4. Integrate Classes into GameState
 
-Need to modify `script.js`:
+I need to modify `script.js`:
 
 ```javascript
 // Add after line 4 (after discoveries: 0):
@@ -48,7 +48,7 @@ character: null, // Will be initialized when class is selected
 
 ### 5. Create Class Selection Functions
 
-Add to script.js before `GameController`:
+I'll add to script.js before `GameController`:
 
 ```javascript
 // Class Selection System
@@ -107,7 +107,7 @@ const ClassSelection = {
         document.getElementById('class-selection-screen').classList.add('hidden');
         document.getElementById('game-story').parentElement.classList.remove('hidden');
         
-        UI.addToLog(`<span style="color: ${CLASS_DESCRIPTIONS[className].color}">You have chosen the ${className} class!</span>`, "levelup");
+        UI.addToLog(`<span style="color: ${CLASS_DESCRIPTIONS[className].color}">I have chosen the ${className} class!</span>`, "levelup");
         UI.updateDisplay();
         GameController.continueGameStart();
     }
@@ -130,9 +130,9 @@ startNewGame: function() {
 // Add new function:
 continueGameStart: function() {
     // This runs after class selection
-    UI.updateStory("<i class='fas fa-door-open'></i> You enter the dungeon depths. The air grows cold as darkness surrounds you...");
+    UI.updateStory("<i class='fas fa-door-open'></i> I enter the dungeon depths. The air grows cold as darkness surrounds me...");
     UI.addToLog("=== GAME START ===", "start");
-    UI.addToLog(`Welcome, ${gameState.selectedClass}! Your adventure begins...`, "start");
+    UI.addToLog(`Welcome, ${gameState.selectedClass}! My adventure begins...`, "start");
     UI.showExplorationButtons();
     UI.updateDisplay();
 }
@@ -140,7 +140,7 @@ continueGameStart: function() {
 
 ### 7. Update gameState.reset()
 
-Modify reset function (around line 215):
+I'll modify reset function (around line 215):
 
 ```javascript
 reset() {
@@ -176,7 +176,7 @@ reset() {
 
 ### 8. Update offerSpellChoice() for Class-Exclusive Spells
 
-Modify `offerSpellChoice` (around line 343):
+I'll modify `offerSpellChoice` (around line 343):
 
 ```javascript
 offerSpellChoice(level) {
