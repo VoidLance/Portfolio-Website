@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+// Automatic changelog updater for commit messages
 
 const fs = require('fs');
 const path = require('path');
