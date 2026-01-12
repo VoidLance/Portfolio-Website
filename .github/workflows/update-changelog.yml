@@ -93,3 +93,19 @@ jobs:
           git push origin HEAD:${{ github.ref_name }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build React app
+        run: |
+          cd Website.code
+          npm install
+          npm run build
+
+      - name: Deploy to Neocities
+        run: |
+          # Install Neocities CLI if not already installed
+          gem install neocities || true
+          cd Website.code
+          neocities push dist
+        env:
+          NEOCITIES_LOGIN: ${{ secrets.NEOCITIES_LOGIN }}
+          NEOCITIES_TOKEN: ${{ secrets.NEOCITIES_TOKEN }}
