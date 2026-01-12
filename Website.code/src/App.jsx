@@ -13,6 +13,7 @@ import ThreeDModels from './pages/3DModels'
 import Software from './pages/Software'
 import CurseSemna from './pages/CurseSemna'
 import DungeonCrawler from './pages/DungeonCrawler'
+import LAWSBook from './pages/LAWSBook'
 import NotFound from './pages/NotFound'
 
 export default function App() {
@@ -40,6 +41,7 @@ export default function App() {
             <Route path="/games" element={<Games />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/books" element={<Books />} />
+            <Route path="/books/laws" element={<LAWSBook />} />
             <Route path="/helpdesk" element={<Helpdesk />} />
             <Route path="/3d-models" element={<ThreeDModels />} />
             <Route path="/software" element={<Software />} />

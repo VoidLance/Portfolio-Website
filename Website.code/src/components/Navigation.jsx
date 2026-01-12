@@ -52,7 +52,7 @@ export default function Navigation() {
             <NavLink to="/books" onClick={closeDropdown}>Books</NavLink>
           </li>
           <li className="dropdown-item">
-            <a href="#" onClick={closeDropdown}>Example</a>
+            <NavLink to="/books/laws" onClick={closeDropdown}>L.A.W.S</NavLink>
           </li>
         </ul>
       </li>
