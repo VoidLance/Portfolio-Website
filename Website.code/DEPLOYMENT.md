@@ -43,17 +43,40 @@ The optimized site is now in the `dist/` folder.
 
 ## Deploying to Neocities
 
+### ✅ Automated Deployment (Current Setup)
+
+My deployment is fully automated! Just push to GitHub:
+
+```bash
+git add .
+git commit -m "My changes"
+git push origin main  # This triggers automatic build & deploy!
+```
+
+The git pre-push hook (`.git/hooks/pre-push`) automatically:
+1. Navigates to Website.code directory
+2. Runs `npm run build` to create production files
+3. Runs `neocities push dist` to upload to my site
+4. If any step fails, the push is aborted
+
+**Live Site**: https://alistairsweeting.online
+
+### Manual Deployment (If Needed)
+
 1. Build my app:
 ```bash
+cd Website.code
 npm run build
 ```
 
-2. Upload the contents of `dist/` to my Neocities account using:
-   - The Neocities web uploader
-   - Command line: `neocities push dist/*`
-   - Or manually via FTP
+2. Upload using Neocities CLI:
+```bash
+neocities push dist
+```
 
 3. My site is now live!
+
+**Note**: I'm using HashRouter (URLs like `/#/games`) because Neocities is a static host and doesn't support server-side routing.
 
 ## Important Notes
 

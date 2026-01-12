@@ -97,7 +97,20 @@ Works on Neocities, Netlify, Vercel, or any static host!
 
 ---
 
-**Status**: ✅ Production Ready  
+**Status**: ✅ Production Ready & Deployed
+
+---
+
+## 🌐 Live Site
+
+**URL**: https://alistairsweeting.online
+
+**Deployment**: Automated via git pre-push hook
+- Builds React app with Vite
+- Uploads to Neocities automatically
+- Uses HashRouter for static hosting compatibility
+
+**Last Updated**: 12 January 2026  
 **Created**: January 2026  
 **Technology**: React + Vite + Tailwind CSS  
 

@@ -4,26 +4,32 @@ export default function Sidebar() {
   const updates = [
     {
       date: '12/01/26',
-      title: 'Dungeon Crawler Polish & Site Cleanup',
+      title: 'React Deployment & Automation',
       items: [
-        'Fixed spell choice UI visibility on level up—now displays with high z-index and forced flex layout',
-        'Implemented spell replacement menu when character has 4 known spells (all classes)',
-        'Eliminated shadow artifacts by removing all box-shadow/text-shadow/filter globally and on hover/active states',
-        'Fixed transition flicker by disabling transitions on all elements during interactions',
-        'Made spell choice buttons horizontal grid layout instead of vertical stack',
-        'Protected spell choice UI from being hidden by hideAllActionButtons when _spellChoiceActive flag is true',
-        'Cleaned up deprecated files: removed _archive, _build directories and old static HTML pages',
-        'Consolidated website to React-only structure with only current assets and tooling'
+        'Deployed React site to Neocities with HashRouter',
+        'Automated build & deploy with git hooks',
+        'Fixed deployment MIME type issues',
+        'Instant navigation with zero page reloads'
+      ]
+    },
+    {
+      date: '12/01/26',
+      title: 'Dungeon Crawler Polish',
+      items: [
+        'Fixed spell choice UI visibility',
+        'Implemented spell replacement menu',
+        'Eliminated shadow artifacts',
+        'Cleaned up deprecated files'
       ]
     },
     {
       date: '12/01/26',
       title: 'React Refactor Complete',
       items: [
-        'Refactored website from vanilla HTML to React with React Router',
-        'Migrated to Vite + Tailwind CSS v4 with PostCSS',
-        'Updated pages to use React components',
-        'Preserved all historical content and styling'
+        'Refactored website to React',
+        'Migrated to Vite + Tailwind CSS v4',
+        'Component-based architecture',
+        'All styling preserved'
       ]
     },
     {

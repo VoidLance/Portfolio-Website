@@ -32,17 +32,23 @@ npm run dev
 
 ### Deployment
 
-This repository is configured to automatically deploy to my Neocities site using GitHub Actions and the Neocities CLI. I just push my changes to the main branch, and the site automatically updates on Neocities.
+This repository is configured to automatically deploy to my Neocities site using a git pre-push hook and the Neocities CLI. When I push changes to GitHub, the hook automatically:
+
+1. Builds the React app with Vite (creates optimized production bundle)
+2. Uploads the dist/ folder contents to Neocities
+3. Maintains all static assets (Games, Software folders)
 
 ```bash
-git push origin main
+git push origin main  # Automatically builds and deploys!
 ```
 
 ## Deployment Details
 
-- **Local**: I make all my changes in this repository
-- **Live**: My changes automatically sync to Neocities via CLI integration
-- **Status**: My GitHub repo and Neocities site remain in sync
+- **Local**: I make all my changes in this repository (React source in Website.code/)
+- **Build**: Git hook runs `npm run build` to create optimized production files
+- **Live**: Built files from dist/ automatically sync to Neocities at alistairsweeting.online
+- **Status**: My GitHub repo and Neocities site stay in sync with every push
+- **Architecture**: React SPA with HashRouter for static hosting compatibility
 
 ## Technologies
 

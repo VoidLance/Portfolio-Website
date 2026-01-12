@@ -38,10 +38,17 @@ npm run dev
 Then open http://localhost:5173
 
 ### Option 2: Want to Deploy It?
+**Already deployed!** Live at: https://alistairsweeting.online
+
+**Automated deployment**:
 ```bash
-npm install
+git push origin main  # Auto-builds and uploads to Neocities!
+```
+
+**Manual deployment**:
+```bash
 npm run build
-# Upload dist/ folder to my hosting
+neocities push dist
 ```
 
 ### Option 3: Want to Understand It First?

@@ -5,6 +5,17 @@ export default function Updates() {
   const updates = [
     {
       date: '12/01/26',
+      title: 'React Deployment & Neocities Integration',
+      items: [
+        'Successfully deployed React site to Neocities with HashRouter for static hosting compatibility',
+        'Configured automated git pre-push hook to build and deploy on every GitHub push',
+        'Fixed MIME type issues by properly uploading dist folder instead of source files',
+        'Updated all documentation files to first person perspective for personal use',
+        'Site now features instant navigation with zero page reloads while maintaining all original design'
+      ]
+    },
+    {
+      date: '12/01/26',
       title: 'React Refactor Complete',
       items: [
         'Refactored website from vanilla HTML to React with React Router for better component management',

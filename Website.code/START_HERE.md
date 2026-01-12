@@ -117,13 +117,27 @@ npm run lint            # Check code style
 
 ---
 
-## 🚢 When I'm Ready to Deploy
+## 🚢 Deployment (Already Set Up!)
 
+My site is already deployed and automated!
+
+**Live at**: https://alistairsweeting.online
+
+**Automated deployment**: Just push to GitHub:
 ```bash
-npm run build
+git push origin main
 ```
 
-This creates a `dist/` folder. I'll upload that folder to my hosting.
+The pre-push hook automatically:
+1. Runs `npm run build` to create production files
+2. Uploads `dist/` folder to Neocities
+3. My site updates within seconds!
+
+**Manual deployment** (if needed):
+```bash
+npm run build
+neocities push dist
+```
 
 See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
 

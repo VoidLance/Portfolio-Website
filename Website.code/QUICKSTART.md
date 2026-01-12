@@ -14,12 +14,22 @@ npm run dev
 
 Open http://localhost:5173 in my browser - I'll see my site with **zero page reloads** when navigating!
 
-### 3. Build for Production
+### 3. Deploy (Already Automated!)
+
+My site is already set up for automatic deployment!
+
+**Just push to GitHub**:
 ```bash
-npm run build
+git push origin main  # Automatically builds and deploys!
 ```
 
-Then I'll upload the `dist/` folder to my hosting.
+**Or manually**:
+```bash
+npm run build
+neocities push dist
+```
+
+**Live at**: https://alistairsweeting.online
 
 ---
 
