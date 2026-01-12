@@ -115,3 +115,4 @@ Works on Neocities, Netlify, Vercel, or any static host!
 **Technology**: React + Vite + Tailwind CSS  
 
 For detailed information, see the documentation files!
+# Test commit
