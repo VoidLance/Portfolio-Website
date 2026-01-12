@@ -310,7 +310,7 @@
                 window.addEventListener('error', function(e){ showError(e.error || e.message || e); });
                 window.addEventListener('unhandledrejection', function(e){ showError(e.reason || e); });
                 try {
-                    import('./script.js?v=20260115-002').catch(showError);
+                    import('./script.js?v=20260115-003').catch(showError);
                 } catch (e) {
                     showError(e);
                 }

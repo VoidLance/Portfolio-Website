@@ -1445,13 +1445,13 @@ const ClassSelection = {
             <div class="mb-2">
                 <p class="text-green-400 font-bold mb-1">Strengths:</p>
                 <ul class="text-sm text-gray-300">
-                    ${classInfo.strengths.map(s => `<li>• ${s}</li>`).join('')}
+                    ${classInfo.strengths.map(s => `<li>${s}</li>`).join('')}
                 </ul>
             </div>
             <div class="mb-3">
                 <p class="text-red-400 font-bold mb-1">Weaknesses:</p>
                 <ul class="text-sm text-gray-300">
-                    ${classInfo.weaknesses.map(w => `<li>• ${w}</li>`).join('')}
+                    ${classInfo.weaknesses.map(w => `<li>${w}</li>`).join('')}
                 </ul>
             </div>
             <p class="text-xs text-cyan-300 italic mb-2">${classInfo.playstyle}</p>
