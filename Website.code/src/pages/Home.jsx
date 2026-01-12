@@ -72,8 +72,10 @@ export default function Home() {
                 >
                   here.
                 </a>{' '}
-                This website is going to be kept more up to date and looking better, just purely because I pay for the domain, 
-                but the GitHub is where I will be putting the work I do that is directly tied to the course I am doing.
+                This website's source code is also available there in a private repository, and I am using the neocities git integration to
+                automatically push updates when I make changes. It's pretty cool! I am also considering open-sourcing it in the future, but there's a whole thing with licensing 
+                that I need to figure out first, I'm happy to make the website itself an open license, but some of the things I'm putting here have their own licensing 
+                and I don't know whether or how making the code available would impact that.
               </p>
             </section>
             
@@ -81,7 +83,7 @@ export default function Home() {
             
             <div className="flex justify-center mt-4">
               <a href="https://vampire-club.neocities.org/" target="_blank" rel="noopener noreferrer" aria-label="Vampire Club member">
-                <img src="/Images/vcskull.gif" className="w-full h-auto" alt="Vampire Club skull banner - I'm a member!" loading="lazy" />
+                <img src="/Images/vcskull.gif" className="w-fit h-auto" alt="Vampire Club skull banner - I'm a member!" loading="lazy" />
               </a>
             </div>
           </article>
