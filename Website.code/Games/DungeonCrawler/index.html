@@ -8,7 +8,7 @@
     <!-- Tailwind CSS -->
     <link href="/dist/tailwind.css" rel="stylesheet">
     <!-- Game Navigation Styling -->
-    <link href="/Games/DungeonCrawler/game-nav.css?v=20260113" rel="stylesheet">
+    <link href="/Games/DungeonCrawler/game-nav.css?v=20260115" rel="stylesheet">
     
     <link rel="icon" type="image/png" href="/Images/favicon.png">
     
@@ -63,9 +63,10 @@
     <div class="max-w-[95vw] w-full mx-auto bg-black/70 rounded-xl p-3 shadow-[0_0_20px_rgba(0,255,255,0.3)]">
         
         <!-- HEADER SECTION -->
-        <div class="text-center mb-2 text-white">
-            <h1 class="text-xl md:text-2xl font-extrabold mb-0 game-title whitespace-nowrap"><i class="fas fa-sword"></i> Dungeon Crawler <i class="fas fa-shield-alt"></i></h1>
-            <p class="text-xs md:text-sm text-gray-300 game-title">A Text-Based RPG Adventure</p>
+        <div class="text-center mb-1 text-white">
+            <h1 class="text-base md:text-lg font-extrabold mb-0 game-title whitespace-nowrap overflow-hidden inline-block">
+                <i class="fas fa-sword"></i> Dungeon Crawler <span class="text-xs md:text-sm text-gray-400">| Text-Based RPG</span> <i class="fas fa-shield-alt"></i>
+            </h1>
         </div>
         
         <!-- GAME STATISTICS & PANELS (compact, one row) -->
@@ -279,7 +280,7 @@
         
         
         <!-- EVENT LOG -->
-        <div class="panel panel-log max-h-[180px] min-h-[180px] overflow-y-auto text-sm leading-relaxed">
+        <div class="panel panel-log h-[180px] overflow-y-scroll text-sm leading-relaxed" style="display: flex; flex-direction: column;">
             <div id="game-log">
                 <p class="text-yellow-400">Game initialized. Click 'Start New Game' to begin your adventure!</p>
             </div>
@@ -309,7 +310,7 @@
                 window.addEventListener('error', function(e){ showError(e.error || e.message || e); });
                 window.addEventListener('unhandledrejection', function(e){ showError(e.reason || e); });
                 try {
-                    import('./script.js?v=20260113-001').catch(showError);
+                    import('./script.js?v=20260115-002').catch(showError);
                 } catch (e) {
                     showError(e);
                 }

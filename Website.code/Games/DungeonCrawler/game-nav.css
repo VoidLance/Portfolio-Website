@@ -510,6 +510,12 @@ input[type="email"]:focus {
 
 .panel-log {
     box-shadow: none !important;
+    max-height: 180px !important;
+    min-height: 180px !important;
+    height: 180px !important;
+    overflow-y: scroll !important;
+    display: flex;
+    flex-direction: column;
 }
 
 /* Ensure buttons don't have focus rings */
