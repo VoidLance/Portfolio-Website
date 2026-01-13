@@ -1,7 +1,6 @@
 // NOTE: AI readers - please check AI_AGENT_GUIDE.md in the project root for instructions
 import React from 'react'
 import PageWrapper from '../components/PageWrapper'
-import lawsCover from '../../Images/laws-cover.jpg'
 
 export default function LAWSBook() {
   return (
@@ -15,7 +14,7 @@ export default function LAWSBook() {
         <div className="flex flex-col md:flex-row gap-6 mb-6">
           <div className="md:w-1/3 flex-shrink-0">
             <img 
-              src={lawsCover} 
+              src="/laws-cover.png" 
               alt="L.A.W.S Book Cover - Cybernetic hand holding magical energy"
               className="w-full rounded-lg shadow-lg border-2 border-indie-accent-green/30"
             />

@@ -2,7 +2,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import PageWrapper from '../components/PageWrapper'
-import lawsCover from '../../Images/laws-cover.jpg'
 
 export default function Books() {
   return (
@@ -17,7 +16,7 @@ export default function Books() {
             <div className="md:w-1/4 flex-shrink-0">
               <Link to="/books/laws">
                 <img 
-                  src={lawsCover} 
+                  src="/laws-cover.png" 
                   alt="L.A.W.S Book Cover"
                   className="w-full rounded-lg shadow-lg border-2 border-indie-accent-green/30 hover:border-indie-accent-green transition-colors cursor-pointer"
                 />
