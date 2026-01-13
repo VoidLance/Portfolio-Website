@@ -27,6 +27,7 @@ export default function Games() {
           <div className="glass-darker p-6 rounded-lg border-2 border-indie-accent-green/50">
             <h2 className="text-2xl text-indie-accent-pink font-bold mb-3">Dungeon Crawler</h2>
             <p className="mb-4">An interactive dungeon crawler game built with JavaScript. Navigate through dungeons, battle enemies, and collect treasure in this classic adventure.</p>
+            <p className="text-sm text-indie-text-gray/70 italic mb-4">Status: Completed</p>
             <a 
               href="/#/games/dungeon-crawler"
               className="inline-block bg-indie-accent-green text-indie-bg-main px-6 py-2 rounded-lg font-bold hover:bg-[#1cdba2] transition-colors shadow-indie"

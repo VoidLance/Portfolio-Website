@@ -14,6 +14,7 @@ export default function Software() {
           <div className="glass-darker p-6 rounded-lg border-2 border-indie-accent-green/50">
             <h2 className="text-2xl text-indie-accent-pink font-bold mb-3">Personal Website</h2>
             <p className="mb-4">A responsive portfolio website created as a course project, featuring modern design and smooth navigation.</p>
+            <p className="text-sm text-indie-text-gray/70 italic mb-4">Status: Completed</p>
             <a 
               href="/Software/Personal-Website/index.html" 
               target="_blank" 
@@ -28,6 +29,7 @@ export default function Software() {
           <div className="glass-darker p-6 rounded-lg border-2 border-indie-accent-green/50">
             <h2 className="text-2xl text-indie-accent-pink font-bold mb-3">Pokemon Team Finder</h2>
             <p className="mb-4">An interactive tool to help build optimal Pokemon teams with type coverage analysis.</p>
+            <p className="text-sm text-indie-text-gray/70 italic mb-4">Status: Completed</p>
             <a 
               href="/Software/Pokemon-Team-Finder/index.html" 
               target="_blank" 
@@ -42,6 +44,7 @@ export default function Software() {
           <div className="glass-darker p-6 rounded-lg border-2 border-indie-accent-green/50">
             <h2 className="text-2xl text-indie-accent-pink font-bold mb-3">Banking App</h2>
             <p className="mb-4">A banking simulation application showcasing account management and transactions.</p>
+            <p className="text-sm text-indie-text-gray/70 italic mb-4">Status: Completed</p>
             <a 
               href="/Software/Banking/html/index.html" 
               target="_blank" 

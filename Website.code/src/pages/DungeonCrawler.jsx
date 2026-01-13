@@ -12,6 +12,7 @@ export default function DungeonCrawler() {
         <div className="glass-darker p-6 rounded-lg border-2 border-indie-accent-green/50 mb-6">
           <h2 className="text-2xl text-indie-accent-green mb-4 text-center font-bold">Dungeon Crawler Game</h2>
           <p className="text-center mb-4 text-indie-text-light text-lg">An interactive dungeon crawler game built with JavaScript.</p>
+          <p className="text-center text-sm text-indie-text-gray/70 italic mb-4">Status: Completed</p>
           <div className="text-center">
             <a 
               href="/Games/DungeonCrawler/index.html" 
