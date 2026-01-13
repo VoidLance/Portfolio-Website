@@ -44,7 +44,7 @@ export default function LAWSBook() {
             from Britain's highest security prison with his reunited crew—the Copper Fist—Tom returns 
             to Sheffield to support his family through increasingly dangerous jobs. The country has 
             descended into chaos under governmental tyranny, where suspected terrorism charges are 
-            weaponized against anyone who challenges the system. Tom and his crew—Butcher (a demolished expert with a soft heart 
+            weaponized against anyone who challenges the system. Tom and his crew—Butcher (a demolitions expert with a soft heart 
             and a fierce sense of loyalty), Dave (a brawler who solves most problems through direct force), 
             Kestrel (a young hacker with something to prove), Silas (an actor who commits fully to every role), 
             Brian (the crew's connection to the underworld), and Chris—are survivors in a world where resistance is measured 
@@ -57,16 +57,16 @@ export default function LAWSBook() {
             at Dev's scrapyard, sifting through abandoned car parts and electronics, Tom uncovers an 
             ornate golden box containing an elaborately decorated broadsword—a piece of craftsmanship 
             that doesn't match anything in the scrapyard's inventory, quality, or origin. The metalwork is 
-            extraordinary. The design is archaic. And when he finds the name engraved along the fuller, his blood goes cold: 
+            extraordinary. The design is archaic. And when he finds the name engraved along the fuller, his blood goes cold:  
             <em>Elwood</em>. His family name. A sword that shouldn't exist, bearing his bloodline, lost in a wasteland for 
-            reasons no one in his family ever mentioned. Dev warned him: anything this valuable that's lost in the wasteland 
+            reasons no one in his family ever mentioned. His brother Mike warned him: anything this valuable that's lost in the wasteland 
             attracts the kind of attention that kills people.
           </p>
 
           <p>
             <strong className="text-indie-accent-green">L.A.W.S:</strong> Across 
             the Atlantic, four elite students from a prestigious institution are on the hunt. Liam, 
-            their charismatic leader—flamboyant, practiced in martial arts, confident in his methods. Jackie, 
+            their charismatic leader — flamboyant, practiced in martial arts, confident in his methods. Jackie, 
             a playful but deadly operative with a knack for getting results. Abi, fiery and rebellious despite 
             her official role, never one to follow orders blindly. And Rose, their brilliant analyst whose 
             composure and strategic mind guide them from afar through a communication headset, unassuming yet indispensable. 
@@ -78,9 +78,9 @@ export default function LAWSBook() {
             <strong className="text-indie-accent-green">The Convergence:</strong> As the team 
             systematically closes in on their target, Tom's brother Mike realizes the danger: 
             "Just get rid of it, Tom! We can't have that kind of attention here." But holding onto 
-            the sword is no longer an option, and neither is letting it go. Two very different worlds—
+            the sword is no longer an option, and neither is letting it go. Two very different worlds —
             one fighting for survival through cunning and crime, one operating with resources and capabilities 
-            that Tom can barely comprehend—are about to collide over an artifact that both sides have been 
+            that Tom can barely comprehend — are about to collide over an artifact that both sides have been 
             seeking for entirely different reasons. And Tom is standing in the middle.
           </p>
 
@@ -89,7 +89,7 @@ export default function LAWSBook() {
             collision between those fighting for survival and those operating from positions of absolute 
             power. It explores themes of resistance against oppression, loyalty and betrayal, what it means 
             to be an underdog, and whether ancient power can serve those who've been abandoned by the modern world. 
-            Most importantly, it asks: who really owns the future—those with resources, or those with nothing left to lose?
+            Most importantly, it asks: who really owns the future — those with resources, or those with nothing left to lose?
           </p>
 
           <p>
@@ -105,7 +105,7 @@ export default function LAWSBook() {
           <h2 className="text-2xl text-indie-accent-green mb-4">Story Elements</h2>
           <ul className="space-y-2 list-disc list-inside">
             <li><strong>The Copper Fist:</strong> Named after "a beggar with a handful of pennies 
-            closed tight to his chest"—representing champions of the common people fighting against 
+            closed tight to his chest" — representing champions of the common people fighting against 
             systemic oppression</li>
             <li><strong>Credits Currency:</strong> An underworld cryptocurrency similar to Bitcoin, 
             disconnected from government control and used for operations outside legal reach</li>
