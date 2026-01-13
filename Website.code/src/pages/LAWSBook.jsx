@@ -44,27 +44,34 @@ export default function LAWSBook() {
             from Britain's highest security prison with his reunited crew—the Copper Fist—Tom returns 
             to Sheffield to support his family through increasingly dangerous jobs. The country has 
             descended into chaos under governmental tyranny, where suspected terrorism charges are 
-            weaponized against anyone who challenges the system. Tom and his crew—Butcher (demolitions), 
-            Dave (muscle), Kestrel (tech specialist), Silas (infiltration), Brian (connections), and 
-            Chris—are survivors in a world where resistance is measured in credits and careful planning.
+            weaponized against anyone who challenges the system. Tom and his crew—Butcher (a demolished expert with a soft heart 
+            and a fierce sense of loyalty), Dave (a brawler who solves most problems through direct force), 
+            Kestrel (a young hacker with something to prove), Silas (an actor who commits fully to every role), 
+            Brian (the crew's connection to the underworld), and Chris—are survivors in a world where resistance is measured 
+            in credits and careful planning. Tom himself is down to earth and pragmatic, but harbors a deep fascination 
+            with things most people dismiss as fantasy or myth. It's a fascination his late father never quite approved of.
           </p>
 
           <p>
             <strong className="text-indie-accent-green">The Discovery:</strong> While working a job 
             at Dev's scrapyard, sifting through abandoned car parts and electronics, Tom uncovers an 
             ornate golden box containing an elaborately decorated broadsword—a piece of craftsmanship 
-            that doesn't match anything in the scrapyard's inventory, quality, or origin. It's old.
-            Impossibly old. And it radiates something he can't quite define. Dev warned him: anything
-            this valuable that's lost in the wasteland attracts the kind of attention that kills people.
+            that doesn't match anything in the scrapyard's inventory, quality, or origin. The metalwork is 
+            extraordinary. The design is archaic. And when he finds the name engraved along the fuller, his blood goes cold: 
+            <em>Elwood</em>. His family name. A sword that shouldn't exist, bearing his bloodline, lost in a wasteland for 
+            reasons no one in his family ever mentioned. Dev warned him: anything this valuable that's lost in the wasteland 
+            attracts the kind of attention that kills people.
           </p>
 
           <p>
             <strong className="text-indie-accent-green">L.A.W.S:</strong> Across 
-            the Atlantic, three elite students from a prestigious institution are on the hunt. Liam 
-            (field leader), Jackie (combat operative), and Abi (tactical specialist) form a specialized 
-            recovery unit trained to track and retrieve something very specific. Their methods are cutting-edge.
-            Their resources are vast. And they've been searching for this artifact far longer than anyone
-            in Britain even knew it existed.
+            the Atlantic, four elite students from a prestigious institution are on the hunt. Liam, 
+            their charismatic leader—flamboyant, practiced in martial arts, confident in his methods. Jackie, 
+            a playful but deadly operative with a knack for getting results. Abi, fiery and rebellious despite 
+            her official role, never one to follow orders blindly. And Rose, their brilliant analyst whose 
+            composure and strategic mind guide them from afar through a communication headset, unassuming yet indispensable. 
+            Together they form a recovery unit trained to track and retrieve something very specific. Their methods are cutting-edge. 
+            Their resources are vast. And they've been searching for this artifact far longer than anyone in Britain even knew it existed.
           </p>
 
           <p>
