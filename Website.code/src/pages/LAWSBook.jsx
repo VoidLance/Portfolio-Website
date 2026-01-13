@@ -47,7 +47,7 @@ export default function LAWSBook() {
             weaponized against anyone who challenges the system. Tom and his crew—Butcher (a demolitions expert with a soft heart 
             and a fierce sense of loyalty), Dave (a brawler who solves most problems through direct force), 
             Kestrel (a young hacker with something to prove), Silas (an actor who commits fully to every role), 
-            Brian (the crew's connection to the underworld), and Chris—are survivors in a world where resistance is measured 
+            Brian (the crew's connection to the underworld), and Chris — are survivors in a world where resistance is measured 
             in credits and careful planning. Tom himself is down to earth and pragmatic, but harbors a deep fascination 
             with things most people dismiss as fantasy or myth. It's a fascination his late father never quite approved of.
           </p>
@@ -55,7 +55,7 @@ export default function LAWSBook() {
           <p>
             <strong className="text-indie-accent-green">The Discovery:</strong> While working a job 
             at Dev's scrapyard, sifting through abandoned car parts and electronics, Tom uncovers an 
-            ornate golden box containing an elaborately decorated broadsword—a piece of craftsmanship 
+            ornate golden box containing an elaborately decorated broadsword — a piece of craftsmanship 
             that doesn't match anything in the scrapyard's inventory, quality, or origin. The metalwork is 
             extraordinary. The design is archaic. And when he finds the name engraved along the fuller, his blood goes cold:  
             <em>Elwood</em>. His family name. A sword that shouldn't exist, bearing his bloodline, lost in a wasteland for 
