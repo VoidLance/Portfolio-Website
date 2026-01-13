@@ -46,42 +46,43 @@ export default function LAWSBook() {
             descended into chaos under governmental tyranny, where suspected terrorism charges are 
             weaponized against anyone who challenges the system. Tom and his crew—Butcher (demolitions), 
             Dave (muscle), Kestrel (tech specialist), Silas (infiltration), Brian (connections), and 
-            Chris—represent the last line of resistance for ordinary people.
+            Chris—are survivors in a world where resistance is measured in credits and careful planning.
           </p>
 
           <p>
             <strong className="text-indie-accent-green">The Discovery:</strong> While working a job 
             at Dev's scrapyard, sifting through abandoned car parts and electronics, Tom uncovers an 
-            ornate golden box containing an elaborately decorated broadsword. Unknown to him, this is 
-            the Elwood Sword—a magical artifact of immense power that has been lost for generations.
+            ornate golden box containing an elaborately decorated broadsword—a piece of craftsmanship 
+            that doesn't match anything in the scrapyard's inventory, quality, or origin. It's old.
+            Impossibly old. And it radiates something he can't quite define. Dev warned him: anything
+            this valuable that's lost in the wasteland attracts the kind of attention that kills people.
           </p>
 
           <p>
             <strong className="text-indie-accent-green">The Los Angeles Witch School:</strong> Across 
-            the Atlantic, in a world where cybernetic enhancements have merged with ancient magic, 
-            three students from the prestigious L.A.W.S are dispatched on an urgent mission. Liam 
-            (negotiator and leader), Jackie (combat specialist), and Abi (tactical support) form the 
-            school's primary LARS unit (Legendary Artifact Recovery Squad), backed by Rose's remote 
-            magical tracking and guidance.
+            the Atlantic, three elite students from a prestigious institution are on the hunt. Liam 
+            (field leader), Jackie (combat operative), and Abi (tactical specialist) form a specialized 
+            recovery unit trained to track and retrieve something very specific. Their methods are cutting-edge.
+            Their resources are vast. And they've been searching for this artifact far longer than anyone
+            in Britain even knew it existed.
           </p>
 
           <p>
-            <strong className="text-indie-accent-green">The Convergence:</strong> As the LARS unit 
-            systematically searches Britain for the sword's energy signature, Tom's brother Mike 
-            warns him: "Just get rid of it, Tom! We can't have that kind of attention here." But it's 
-            already too late. The discovery of the Elwood Sword sets in motion events that will force 
-            both worlds to collide—where underground criminals must face magical students, and where 
-            the fate of a fallen nation might rest in the hands of an artifact that bridges technology, 
-            magic, and humanity.
+            <strong className="text-indie-accent-green">The Convergence:</strong> As the team 
+            systematically closes in on their target, Tom's brother Mike realizes the danger: 
+            "Just get rid of it, Tom! We can't have that kind of attention here." But holding onto 
+            the sword is no longer an option, and neither is letting it go. Two very different worlds—
+            one fighting for survival through cunning and crime, one operating with resources and capabilities 
+            that Tom can barely comprehend—are about to collide over an artifact that both sides have been 
+            seeking for entirely different reasons. And Tom is standing in the middle.
           </p>
 
           <p>
-            <strong className="text-indie-accent-green">Themes:</strong> L.A.W.S explores the 
-            intersection of cyberpunk dystopia and urban fantasy, examining themes of resistance 
-            against oppression, loyalty and betrayal, the evolution of magic through technology, 
-            and the price of power. It's a story where wizards conjure energy with CPU implants, 
-            where criminals become unlikely heroes, and where ancient artifacts hold the key to 
-            either salvation or destruction.
+            <strong className="text-indie-accent-green">Themes:</strong> L.A.W.S examines the 
+            collision between those fighting for survival and those operating from positions of absolute 
+            power. It explores themes of resistance against oppression, loyalty and betrayal, what it means 
+            to be an underdog, and whether ancient power can serve those who've been abandoned by the modern world. 
+            Most importantly, it asks: who really owns the future—those with resources, or those with nothing left to lose?
           </p>
 
           <p>
@@ -96,22 +97,30 @@ export default function LAWSBook() {
         <div className="mt-8 p-6 bg-indie-bg-nav rounded-lg border border-indie-accent-green/30">
           <h2 className="text-2xl text-indie-accent-green mb-4">World Building Highlights</h2>
           <ul className="space-y-2 list-disc list-inside">
-            <li><strong>Cybernetic Magic:</strong> CPU implants that run alongside the human brain, 
-            enabling magical feats like levitation and energy manipulation</li>
-            <li><strong>Credits Currency:</strong> An underworld cryptocurrency similar to Bitcoin, 
-            disconnected from government control</li>
             <li><strong>The Copper Fist:</strong> Named after "a beggar with a handful of pennies 
-            closed tight to his chest"—representing champions of the common people</li>
+            closed tight to his chest"—representing champions of the common people fighting against 
+            systemic oppression</li>
+            <li><strong>Credits Currency:</strong> An underworld cryptocurrency similar to Bitcoin, 
+            disconnected from government control and used for operations outside legal reach</li>
             <li><strong>Fallen Britain:</strong> A nation transformed into a wasteland under 
-            oppressive rule, where scrapyards have become makeshift towns</li>
-            <li><strong>Magical Artifacts:</strong> Ancient objects of power that predate modern 
-            cyber-magic, holding secrets to both worlds' futures</li>
+            oppressive government rule, where scrapyards have become makeshift towns and survival 
+            means breaking laws</li>
+            <li><strong>The Elwood Sword:</strong> An artifact of significant historical and mysterious 
+            significance, sought by powerful interests for reasons Tom will come to understand</li>
+            <li><strong>Contrasting Worlds:</strong> Two fundamentally different societies—one built on 
+            desperation and the will to survive, one built on resources and advanced capabilities—
+            are about to discover they want the same thing</li>
           </ul>
         </div>
 
         <div className="mt-8 text-center">
-          <p className="text-sm text-indie-text-gray/70 italic">
+          <p className="text-sm text-indie-text-gray/70 italic mb-4">
             Status: Work in Progress
+          </p>
+          <p className="text-indie-text-gray/80">
+            L.A.W.S is a story about discovering that the world is far stranger, more capable, 
+            and more dangerous than you ever imagined—and having to survive when two incompatible 
+            sides collide over something neither of them fully understands.
           </p>
         </div>
       </article>

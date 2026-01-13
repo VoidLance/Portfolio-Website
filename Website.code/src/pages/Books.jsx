@@ -35,19 +35,18 @@ export default function Books() {
               </Link>
               
               <p className="mb-4 leading-relaxed">
-                When cyberpunk meets urban fantasy, magic gets an upgrade. In a dystopian Britain where 
-                resistance fighters survive through heists and cunning, Tom Elwood uncovers an ancient 
-                artifact that shouldn't exist—the legendary Elwood Sword. But this discovery attracts 
-                dangerous attention from across the Atlantic: elite students from the Los Angeles Witch 
-                School, where CPU implants blend with spellcraft and magical artifacts are collected at 
-                any cost.
+                In a fallen Britain where an underground resistance survives through wit, skill, and crime,
+                Tom Elwood leads the Copper Fist—a crew of specialists united against an oppressive government.
+                After narrowly escaping the country's highest security prison, Tom returns to Sheffield to rebuild
+                his crew and support his family. It should be another routine job at the local scrapyard.
               </p>
               
               <p className="mb-4 leading-relaxed">
-                As Tom's underground crew—the Copper Fist—faces off against techno-mages armed with 
-                both magic and advanced technology, two worlds collide in a battle that will determine 
-                whether an oppressed nation can find hope in an artifact of immense power, or whether 
-                that power will be locked away by those who claim to protect it.
+                Then Tom uncovers something that doesn't belong there. Something elaborate. Something that shouldn't exist.
+                And the moment he touches it, he triggers a countdown. Mysterious figures from across the Atlantic have
+                been searching for it for longer than he knows, and they're closing in. What Tom doesn't understand is that
+                the real danger isn't the artifact itself—it's what his discovery will reveal about the world he thought
+                he knew.
               </p>
               
               <Link 
