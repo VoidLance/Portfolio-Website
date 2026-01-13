@@ -14,6 +14,7 @@ export default function Games() {
           <div className="glass-darker p-6 rounded-lg border-2 border-indie-accent-green/50">
             <h2 className="text-2xl text-indie-accent-pink font-bold mb-3">Curse of Semna</h2>
             <p className="mb-4">A strategic trading card game set in a fantasy world cursed by the goddess Semna. Players are immortal strategists summoned to break the curse and change history.</p>
+            <p className="text-sm text-indie-text-gray/70 italic mb-4">Status: Work in Progress</p>
             <a 
               href="/#/games/curse-semna"
               className="inline-block bg-indie-accent-green text-indie-bg-main px-6 py-2 rounded-lg font-bold hover:bg-[#1cdba2] transition-colors shadow-indie"

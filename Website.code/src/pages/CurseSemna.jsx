@@ -345,6 +345,13 @@ export default function CurseSemna() {
         <h2 className="text-2xl text-indie-accent-pink font-bold mb-3">{tabs[activeTab].title}</h2>
         {tabs[activeTab].content}
       </article>
+
+      {/* Work in Progress Status */}
+      <div className="mt-8 text-center">
+        <p className="text-sm text-indie-text-gray/70 italic">
+          Status: Work in Progress
+        </p>
+      </div>
     </PageWrapper>
   )
 }
