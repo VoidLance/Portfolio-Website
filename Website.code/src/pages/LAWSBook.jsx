@@ -6,7 +6,7 @@ export default function LAWSBook() {
   return (
     <PageWrapper>
       <h1 className="text-4xl text-indie-accent-green text-center mb-4">
-        L.A.W.S - Los Angeles Witch School
+        L.A.W.S
       </h1>
       <hr className="border-0 border-t border-indie-accent-green/50 my-4" />
       
@@ -15,7 +15,7 @@ export default function LAWSBook() {
           <div className="md:w-1/3 flex-shrink-0">
             <img 
               src="/laws-cover.png" 
-              alt="L.A.W.S Book Cover - Cybernetic hand holding magical energy"
+              alt="L.A.W.S Book Cover"
               className="w-full rounded-lg shadow-lg border-2 border-indie-accent-green/30"
             />
           </div>
@@ -30,7 +30,8 @@ export default function LAWSBook() {
               Tom Elwood leads the Copper Fist—a crew of skilled criminals fighting for survival 
               and the common people. When Tom discovers the legendary Elwood Sword in a Sheffield 
               scrapyard, he unknowingly triggers a collision between two worlds: the gritty streets 
-              of a fallen nation and the magical realm of the Los Angeles Witch School.
+              of a fallen nation and an institution operating from the heights of power and privilege 
+              on the other side of the Atlantic.
             </p>
           </div>
         </div>
@@ -58,7 +59,7 @@ export default function LAWSBook() {
           </p>
 
           <p>
-            <strong className="text-indie-accent-green">The Los Angeles Witch School:</strong> Across 
+            <strong className="text-indie-accent-green">L.A.W.S:</strong> Across 
             the Atlantic, three elite students from a prestigious institution are on the hunt. Liam 
             (field leader), Jackie (combat operative), and Abi (tactical specialist) form a specialized 
             recovery unit trained to track and retrieve something very specific. Their methods are cutting-edge.
@@ -85,16 +86,16 @@ export default function LAWSBook() {
           </p>
 
           <p>
-            The narrative weaves between gritty heist planning and magical academy politics, between 
-            the desperate survival of Britain's underclass and the privileged missions of American 
-            magical students, building toward an inevitable confrontation that will test both sides' 
-            understanding of justice, power, and what it means to be human in a world transformed by 
-            both magic and machines.
+            The narrative weaves between gritty heist planning and high-stakes institutional politics, between 
+            the desperate survival of Britain's underclass and the privileged missions of an elite American 
+            organization, building toward an inevitable confrontation that will test both sides' 
+            understanding of justice, power, and what it means to be human in a world far more complex 
+            than either side realizes.
           </p>
         </div>
 
         <div className="mt-8 p-6 bg-indie-bg-nav rounded-lg border border-indie-accent-green/30">
-          <h2 className="text-2xl text-indie-accent-green mb-4">World Building Highlights</h2>
+          <h2 className="text-2xl text-indie-accent-green mb-4">Story Elements</h2>
           <ul className="space-y-2 list-disc list-inside">
             <li><strong>The Copper Fist:</strong> Named after "a beggar with a handful of pennies 
             closed tight to his chest"—representing champions of the common people fighting against 
@@ -106,9 +107,9 @@ export default function LAWSBook() {
             means breaking laws</li>
             <li><strong>The Elwood Sword:</strong> An artifact of significant historical and mysterious 
             significance, sought by powerful interests for reasons Tom will come to understand</li>
-            <li><strong>Contrasting Worlds:</strong> Two fundamentally different societies—one built on 
-            desperation and the will to survive, one built on resources and advanced capabilities—
-            are about to discover they want the same thing</li>
+            <li><strong>Two Opposing Forces:</strong> One side operates from desperation and survival instinct; 
+            the other from institutional resources and methods Tom doesn't initially understand—yet both are 
+            equally determined to possess the sword</li>
           </ul>
         </div>
 
