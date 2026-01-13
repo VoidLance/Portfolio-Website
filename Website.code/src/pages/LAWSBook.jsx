@@ -41,7 +41,7 @@ export default function LAWSBook() {
         <div className="space-y-4 leading-relaxed">
           <p>
             <strong className="text-indie-accent-green">Tom Elwood's World:</strong> After escaping 
-            from Britain's highest security prison with his reunited crew—the Copper Fist—Tom returns 
+            from Britain's highest security prison with his reunited crew — the Copper Fist — Tom returns 
             to Sheffield to support his family through increasingly dangerous jobs. The country has 
             descended into chaos under governmental tyranny, where suspected terrorism charges are 
             weaponized against anyone who challenges the system. Tom and his crew—Butcher (a demolitions expert with a soft heart 
