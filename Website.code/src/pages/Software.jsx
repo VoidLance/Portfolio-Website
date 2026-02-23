@@ -16,7 +16,7 @@ export default function Software() {
             <p className="mb-4">A full-featured movie review application built with Next.js, featuring TMDB API integration, search functionality, dark mode, and advanced filtering.</p>
             <p className="text-sm text-indie-text-gray/70 italic mb-4">Status: Completed</p>
             <a 
-              href="/Software/Movie-Review-App" 
+              href="/Software/Movie-Review-App/index.html" 
               target="_blank" 
               rel="noopener noreferrer"
               className="inline-block bg-indie-accent-green text-indie-bg-main px-6 py-2 rounded-lg font-bold hover:bg-[#1cdba2] transition-colors shadow-indie"

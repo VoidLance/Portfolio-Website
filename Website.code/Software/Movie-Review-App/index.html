@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Review App - Next.js Project</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            color: #333;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 800px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        h1 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 2.5em;
+        }
+        
+        .subtitle {
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 1.1em;
+        }
+        
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .tech-badge {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+        
+        .features {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .features h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .features ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .features li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .features li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .instructions {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        
+        .instructions h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+        
+        .code-block {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background: #6c757d;
+            color: white;
+        }
+        
+        .screenshots {
+            margin: 30px 0;
+        }
+        
+        .screenshots h2 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .screenshot-placeholder {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            border-radius: 10px;
+            padding: 40px 20px;
+            text-align: center;
+            color: #999;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎬 Movie Review App</h1>
+        <p class="subtitle">A modern, full-featured movie review application built with Next.js</p>
+        
+        <div class="tech-stack">
+            <span class="tech-badge">Next.js 14</span>
+            <span class="tech-badge">TypeScript</span>
+            <span class="tech-badge">React</span>
+            <span class="tech-badge">Tailwind CSS</span>
+            <span class="tech-badge">TMDB API</span>
+        </div>
+        
+        <div class="features">
+            <h2>✨ Features</h2>
+            <ul>
+                <li>Browse popular and highly-rated movies from TMDB</li>
+                <li>Search movies by title or actor name</li>
+                <li>Actor-based search with cast prominence sorting</li>
+                <li>Toggle between Light and Dark mode themes</li>
+                <li>Advanced filtering (genre, rating, release date, popularity)</li>
+                <li>Genre-specific pages (Action, Comedy, Fantasy, Romance)</li>
+                <li>Responsive design with modern UI</li>
+                <li>Real-time movie data integration</li>
+            </ul>
+        </div>
+        
+        <div class="instructions">
+            <h3>⚠️ This is a Next.js Application</h3>
+            <p>This project requires Bun and cannot run directly as a static HTML page. To view this project:</p>
+            
+            <h4 style="margin-top: 15px; color: #856404;">Run Locally:</h4>
+            <div class="code-block">
+                <div>cd Software/Movie-Review-App</div>
+                <div>bun install</div>
+                <div>bun run dev</div>
+            </div>
+            <p style="margin-top: 10px;">Then open <strong>http://localhost:3000</strong> in your browser</p>
+            
+            <h4 style="margin-top: 15px; color: #856404;">Requirements:</h4>
+            <ul style="margin-left: 20px; margin-top: 10px;">
+                <li>Bun (latest version)</li>
+                <li>TMDB API key (configured in .env.local)</li>
+            </ul>
+        </div>
+        
+        <div class="buttons">
+            <a href="../../../" class="btn btn-secondary">← Back to Portfolio</a>
+            <a href="README.md" class="btn btn-primary" target="_blank">View Documentation</a>
+        </div>
+        
+        <div class="screenshots">
+            <h2>🖼️ Project Highlights</h2>
+            <div class="screenshot-grid">
+                <div class="screenshot-placeholder">Light Mode UI</div>
+                <div class="screenshot-placeholder">Dark Mode UI</div>
+                <div class="screenshot-placeholder">Search & Filter</div>
+                <div class="screenshot-placeholder">Movie Details</div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -70,6 +70,9 @@ export default function Navigation() {
             <NavLink to="/software" onClick={closeDropdown}>Software</NavLink>
           </li>
           <li className="dropdown-item">
+            <a href="/Software/Movie-Review-App/index.html" target="_blank" rel="noopener noreferrer" onClick={closeDropdown}>Movie Review App</a>
+          </li>
+          <li className="dropdown-item">
             <a href="/Software/Personal-Website/index.html" target="_blank" rel="noopener noreferrer" onClick={closeDropdown}>Personal Website</a>
           </li>
           <li className="dropdown-item">
