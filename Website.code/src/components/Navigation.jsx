@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom'
 
 export default function Navigation() {
   const [openDropdown, setOpenDropdown] = useState(null)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const toggleDropdown = (name) => {
     setOpenDropdown(openDropdown === name ? null : name)
@@ -12,74 +13,111 @@ export default function Navigation() {
     setOpenDropdown(null)
   }
 
+  const closeMobileMenu = () => {
+    setMobileMenuOpen(false)
+    setOpenDropdown(null)
+  }
+
   return (
-    <ul className="flex flex-row gap-6 items-center justify-center relative p-4 bg-indie-bg-nav">
-      <li className="menu-item group relative">
-        <NavLink to="/" onClick={closeDropdown}>Home</NavLink>
+    <>
+      {/* Mobile hamburger button */}
+      <div className="md:hidden w-full flex justify-end p-3 bg-indie-bg-nav border-b border-indie-accent-green/50">
+        <button
+          className="text-indie-accent-green text-2xl focus:outline-none transition-colors hover:text-[#1cdba2]"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          aria-label="Toggle menu"
+          aria-expanded={mobileMenuOpen}
+        >
+          {mobileMenuOpen ? '✕' : '☰'}
+        </button>
+      </div>
+
+      {/* Navigation menu - hidden on mobile until hamburger is clicked */}
+      <ul className={`flex flex-col md:flex-row gap-3 md:gap-6 items-stretch md:items-center justify-start md:justify-center relative p-3 md:p-4 bg-indie-bg-nav ${
+        mobileMenuOpen ? 'block' : 'hidden md:flex'
+      }`}>
+      <li className="menu-item group relative w-full md:w-auto">
+        <NavLink to="/" onClick={closeMobileMenu} className="block md:inline text-base md:text-base">Home</NavLink>
       </li>
-      <li className="menu-item group relative">
-        <NavLink to="/helpdesk" onClick={closeDropdown}>HelpDesk</NavLink>
+      <li className="menu-item group relative w-full md:w-auto">
+        <NavLink to="/helpdesk" onClick={closeMobileMenu} className="block md:inline text-base md:text-base">HelpDesk</NavLink>
       </li>
-      <li className="menu-item group relative">
-        <NavLink to="/3d-models" onClick={closeDropdown}>3D Models</NavLink>
+      <li className="menu-item group relative w-full md:w-auto">
+        <NavLink to="/3d-models" onClick={closeMobileMenu} className="block md:inline text-base md:text-base">3D Models</NavLink>
       </li>
       <li 
-        className="menu-item group relative"
+        className="menu-item group relative w-full md:w-auto"
         onMouseEnter={() => setOpenDropdown('games')}
         onMouseLeave={() => setOpenDropdown(null)}
       >
-        <button className="cursor-pointer text-indie-text-light">Games ᐁ</button>
-        <ul className={`dropdown ${openDropdown === 'games' ? 'opacity-100 visible' : ''}`}>
+        <button 
+          className="cursor-pointer text-indie-text-light w-full md:w-auto flex justify-between items-center md:justify-start gap-2 text-base md:text-base"
+          onClick={() => toggleDropdown('games')}
+        >
+          Games <span className="md:hidden">{openDropdown === 'games' ? '▼' : '▶'}</span><span className="hidden md:inline">ᐁ</span>
+        </button>
+        <ul className={`dropdown w-full md:w-auto md:relative md:top-0 md:left-0 ${openDropdown === 'games' ? 'opacity-100 visible block md:absolute md:top-full md:left-0' : 'hidden md:opacity-0 md:invisible md:absolute'}`}>
           <li className="dropdown-item">
-            <NavLink to="/games" onClick={closeDropdown}>Games List</NavLink>
+            <NavLink to="/games" onClick={closeMobileMenu} className="block text-base">Games List</NavLink>
           </li>
           <li className="dropdown-item">
-            <NavLink to="/games/curse-semna" onClick={closeDropdown}>Curse of Semna</NavLink>
+            <NavLink to="/games/curse-semna" onClick={closeMobileMenu} className="block text-base">Curse of Semna</NavLink>
           </li>
           <li className="dropdown-item">
-            <NavLink to="/games/dungeon-crawler" onClick={closeDropdown}>Dungeon Crawler</NavLink>
+            <NavLink to="/games/dungeon-crawler" onClick={closeMobileMenu} className="block text-base">Dungeon Crawler</NavLink>
           </li>
         </ul>
       </li>
       <li 
-        className="menu-item group relative"
+        className="menu-item group relative w-full md:w-auto"
         onMouseEnter={() => setOpenDropdown('books')}
         onMouseLeave={() => setOpenDropdown(null)}
       >
-        <button className="cursor-pointer text-indie-text-light">Books ᐁ</button>
-        <ul className={`dropdown ${openDropdown === 'books' ? 'opacity-100 visible' : ''}`}>
+        <button 
+          className="cursor-pointer text-indie-text-light w-full md:w-auto flex justify-between items-center md:justify-start gap-2 text-base md:text-base"
+          onClick={() => toggleDropdown('books')}
+        >
+          Books <span className="md:hidden">{openDropdown === 'books' ? '▼' : '▶'}</span><span className="hidden md:inline">ᐁ</span>
+        </button>
+        <ul className={`dropdown w-full md:w-auto md:relative md:top-0 md:left-0 ${openDropdown === 'books' ? 'opacity-100 visible block md:absolute md:top-full md:left-0' : 'hidden md:opacity-0 md:invisible md:absolute'}`}>
           <li className="dropdown-item">
-            <NavLink to="/books" onClick={closeDropdown}>Books</NavLink>
+            <NavLink to="/books" onClick={closeMobileMenu} className="block text-base">Books</NavLink>
           </li>
           <li className="dropdown-item">
-            <NavLink to="/books/laws" onClick={closeDropdown}>L.A.W.S</NavLink>
+            <NavLink to="/books/laws" onClick={closeMobileMenu} className="block text-base">L.A.W.S</NavLink>
           </li>
         </ul>
       </li>
-      <li className="menu-item group relative">
-        <NavLink to="/blog" onClick={closeDropdown}>Blog</NavLink>
+      <li className="menu-item group relative w-full md:w-auto">
+        <NavLink to="/blog" onClick={closeMobileMenu} className="block md:inline text-base md:text-base">Blog</NavLink>
       </li>
       <li 
-        className="menu-item group relative"
+        className="menu-item group relative w-full md:w-auto"
         onMouseEnter={() => setOpenDropdown('software')}
         onMouseLeave={() => setOpenDropdown(null)}
       >
-        <button className="cursor-pointer text-indie-text-light">Software ᐁ</button>
-        <ul className={`dropdown ${openDropdown === 'software' ? 'opacity-100 visible' : ''}`}>
+        <button 
+          className="cursor-pointer text-indie-text-light w-full md:w-auto flex justify-between items-center md:justify-start gap-2 text-base md:text-base"
+          onClick={() => toggleDropdown('software')}
+        >
+          Software <span className="md:hidden">{openDropdown === 'software' ? '▼' : '▶'}</span><span className="hidden md:inline">ᐁ</span>
+        </button>
+        <ul className={`dropdown w-full md:w-auto md:relative md:top-0 md:left-0 ${openDropdown === 'software' ? 'opacity-100 visible block md:absolute md:top-full md:left-0' : 'hidden md:opacity-0 md:invisible md:absolute'}`}>
           <li className="dropdown-item">
-            <NavLink to="/software" onClick={closeDropdown}>Software</NavLink>
+            <NavLink to="/software" onClick={closeMobileMenu} className="block text-base">Software</NavLink>
           </li>
           <li className="dropdown-item">
-            <a href="/Software/Movie-Review-App/index.html" target="_blank" rel="noopener noreferrer" onClick={closeDropdown}>Movie Review App</a>
+            <a href="/Software/Movie-Review-App/index.html" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block text-base">Movie Review App</a>
           </li>
           <li className="dropdown-item">
-            <a href="/Software/Personal-Website/index.html" target="_blank" rel="noopener noreferrer" onClick={closeDropdown}>Personal Website</a>
+            <a href="/Software/Personal-Website/index.html" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block text-base">Personal Website</a>
           </li>
           <li className="dropdown-item">
-            <a href="/Software/Pokemon-Team-Finder/index.html" target="_blank" rel="noopener noreferrer" onClick={closeDropdown}>Pokemon Team Finder</a>
+            <a href="/Software/Pokemon-Team-Finder/index.html" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block text-base">Pokemon Team Finder</a>
           </li>
         </ul>
       </li>
     </ul>
+    </>
   )
 }

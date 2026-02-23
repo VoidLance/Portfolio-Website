@@ -8,13 +8,13 @@ export default function Home() {
     <div className="w-full max-w-[95%] mx-auto px-2 lg:px-4" style={{ marginTop: '2rem' }}>
       <div className="flex flex-col lg:flex-row gap-5 lg:gap-6">
         <main 
-          className="w-full lg:w-[78%] glass-effect p-5 rounded-xl mb-5 shadow-indie border-2 border-indie-accent-green min-w-0 order-1 lg:order-2"
+          className="w-full lg:w-[78%] glass-effect p-4 sm:p-5 rounded-xl mb-5 shadow-indie border-2 border-indie-accent-green min-w-0 order-1 lg:order-2"
           role="main"
         >
-          <h2 className="text-4xl text-indie-accent-green text-center mb-4">Welcome to my website!</h2>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl text-indie-accent-green text-center mb-4">Welcome to my website!</h2>
           <hr className="border-0 border-t border-indie-accent-green/50 my-2.5" />
           
-          <article className="text-indie-text-gray">
+          <article className="text-indie-text-gray text-sm sm:text-base md:text-lg leading-relaxed">
             <p>
               Hi, I'm <strong className="text-indie-accent-green font-bold">Alistair Sweeting</strong>, and welcome to my website! 
               It is still heavily under construction, but eventually it should serve as my central page, as an alternative to social media, 
@@ -83,8 +83,8 @@ export default function Home() {
             <hr className="border-0 border-t border-indie-accent-green/50 my-4" />
             
             <div className="flex justify-center mt-4">
-              <a href="https://vampire-club.neocities.org/" target="_blank" rel="noopener noreferrer" aria-label="Vampire Club member" className="w-full">
-                <img src="/Images/vcskull.gif" className="w-full h-auto" alt="Vampire Club skull banner - I'm a member!" loading="lazy" />
+              <a href="https://vampire-club.neocities.org/" target="_blank" rel="noopener noreferrer" aria-label="Vampire Club member" className="w-full max-w-xs">
+                <img src="../../Images/vcskull.gif" className="w-full h-auto" alt="Vampire Club skull banner - I'm a member!" loading="lazy" />
               </a>
             </div>
           </article>

@@ -7,7 +7,7 @@ export default function Header() {
     <header 
       className="relative w-full bg-cover bg-center bg-no-repeat border-b-2 border-indie-accent-green"
       style={{
-        height: '192px',
+        height: 'clamp(120px, 30vw, 192px)',
         backgroundImage: "url('/Images/header-image.jpg')"
       }}
       role="banner"
