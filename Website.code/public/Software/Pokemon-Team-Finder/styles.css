@@ -614,9 +614,9 @@
    ============================================================ */
 
 @media (max-width: 1400px) {
-    /* Stack Pokemon cards on top of each other */
+    /* Keep side-by-side comparison on tablets */
     #comparison-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr;
     }
 
     .pokemon-card {
@@ -642,21 +642,95 @@
 
     .pokemon-card {
         grid-template-columns: 1fr;
-        padding: 20px;
+        padding: 16px;
+    }
+
+    .pokemon-left {
+        margin-bottom: 16px;
     }
 
     .pokemon-card img {
-        width: 120px;
-        height: 120px;
+        width: 160px;
+        height: 160px;
     }
 
     .pokemon-card h2 {
-        font-size: 1.5em;
+        font-size: 1.75em;
     }
 
     /* Adjust team grid for small screens */
     .team-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    
+    /* Make stat bars more compact */
+    .stat-bar-row {
+        font-size: 0.85em;
+    }
+    
+    .stat-name {
+        width: 80px;
+        font-size: 0.85em;
+    }
+    
+    /* Improve type badge readability */
+    #pokemon-types li {
+        padding: 5px 12px;
+        font-size: 0.85em;
+    }
+    
+    /* Better spacing for effectiveness lists */
+    #pokemon-weaknesses li,
+    #pokemon-resistances li,
+    #pokemon-immunities li {
+        padding: 4px 10px;
+        font-size: 0.8em;
+    }
+    
+    /* Compact comparison grids */
+    .summary-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+    
+    /* Full width summary sections on mobile */
+    .summary-section {
+        padding: 10px;
+    }
+    
+    .summary-section h3 {
+        font-size: 0.95em;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+    .pokemon-card {
+        padding: 12px;
+    }
+    
+    .pokemon-card h2 {
+        font-size: 1.5em;
+    }
+    
+    .pokemon-card img {
+        width: 140px;
+        height: 140px;
+    }
+    
+    #pokemon-info p {
+        font-size: 0.9em;
+        padding: 8px;
+    }
+    
+    /* Make team member cards smaller */
+    .team-member-image {
+        width: 56px;
+        height: 56px;
+    }
+    
+    .team-member-name {
+        font-size: 0.85em;
     }
 }
 

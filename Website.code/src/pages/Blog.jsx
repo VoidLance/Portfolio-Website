@@ -6,6 +6,7 @@ export default function Blog() {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
+  const [selectedPost, setSelectedPost] = useState(null)
 
   useEffect(() => {
     // Update meta tags for blog page SEO
@@ -224,20 +225,78 @@ export default function Blog() {
                 {preview}{preview.length >= 300 ? '...' : ''}
               </p>
               
+              <div className="hidden" itemProp="articleBody">
+                {getPlainText(post.content)}
+              </div>
+              
               <footer>
-                <a 
-                  href={post.link} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  className="text-indie-accent-green hover:underline font-bold text-sm sm:text-base"
+                <button 
+                  onClick={() => setSelectedPost(post)}
+                  className="text-indie-accent-green hover:underline font-bold text-sm sm:text-base hover:text-[#1cdba2] transition-colors cursor-pointer bg-transparent border-none p-0"
                 >
                   Read full post →
-                </a>
+                </button>
               </footer>
             </article>
           )
         })}
       </div>
+      
+      {/* Modal for full post display */}
+      {selectedPost && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn"
+          onClick={() => setSelectedPost(null)}
+          style={{ backgroundColor: 'rgba(0, 0, 0, 0.75)' }}
+        >
+          <div 
+            className="glass-effect w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl border-2 border-indie-accent-green shadow-2xl animate-scaleIn"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close button */}
+            <div className="sticky top-0 z-10 bg-indie-bg-main/95 backdrop-blur-sm border-b-2 border-indie-accent-green/50 p-4 flex justify-between items-center">
+              <h2 className="text-xl sm:text-2xl text-indie-accent-green font-bold flex-1 pr-4">
+                {selectedPost.title}
+              </h2>
+              <button
+                onClick={() => setSelectedPost(null)}
+                className="text-3xl text-indie-accent-green hover:text-indie-accent-pink transition-colors flex-shrink-0 w-10 h-10 flex items-center justify-center rounded-lg hover:bg-indie-accent-green/10"
+                aria-label="Close modal"
+              >
+                ×
+              </button>
+            </div>
+            
+            {/* Post metadata */}
+            <div className="p-4 sm:p-6 border-b border-indie-accent-green/30">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3 text-xs sm:text-sm">
+                <time className="text-indie-accent-pink italic">
+                  {selectedPost.published}
+                </time>
+                <span className="hidden sm:inline text-indie-accent-pink/60">•</span>
+                <span className="text-indie-accent-pink">
+                  By {selectedPost.author}
+                </span>
+                <span className="hidden sm:inline text-indie-accent-pink/60">•</span>
+                <a 
+                  href={selectedPost.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-indie-accent-green hover:underline text-xs sm:text-sm"
+                >
+                  View on Blogger ↗
+                </a>
+              </div>
+            </div>
+            
+            {/* Full post content */}
+            <div 
+              className="p-4 sm:p-6 text-indie-text-light prose prose-invert prose-lg max-w-none blog-post-content"
+              dangerouslySetInnerHTML={{ __html: selectedPost.content }}
+            />
+          </div>
+        </div>
+      )}
     </PageWrapper>
   )
 }

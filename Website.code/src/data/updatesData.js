@@ -4,6 +4,36 @@
 export const updatesData = [
   {
     date: "23/02/26",
+    title: "Blog Post Modal & Enhanced SEO",
+    items: [
+      "Implemented picture-in-picture style modal overlay for reading full blog posts without leaving the page",
+      "Added full post content to article elements (hidden by default) for improved SEO indexing",
+      "Created smooth fade-in and scale-in animations for modal appearance",
+      "Modal displays complete blog post with proper formatting, metadata, and link to original Blogger post",
+      "Background page remains visible and blurred underneath modal for better user context",
+      "Added comprehensive styling for blog post content: headings, links, images, code blocks, blockquotes, and lists",
+      "Modal is fully responsive with max height constraints and smooth scrolling on mobile devices",
+      "Close button positioned at top-right with hover effects and keyboard accessibility",
+      "Full article body included with itemProp='articleBody' for schema.org BlogPosting compliance",
+    ],
+  },
+  {
+    date: "23/02/26",
+    title: "Pokemon Finder Mobile Optimization",
+    items: [
+      "Completely redesigned Pokemon Finder app layout for mobile devices with vertical stacking instead of horizontal sidebars",
+      "Added collapsible search panels on mobile with toggle buttons and animated icons for better space utilization",
+      "Implemented responsive grid system: single column on mobile, two columns on tablets, three columns on desktop",
+      "Enlarged Pokemon card images and improved type badge readability on mobile screens (160px sprites vs 120px)",
+      "Optimized Team Builder modal for mobile with reduced padding, smaller text sizes, and 3-column generation filters",
+      "Enhanced mobile responsiveness in comparison grids, stat bars, and team recommendation displays",
+      "Fixed overflow issues that previously hid Pokemon details on mobile devices",
+      "Made Pokemon data the primary focus on mobile by reordering layout sections with CSS order property",
+      "Added responsive breakpoints at 480px, 768px, and 1024px for optimal display across all device sizes",
+    ],
+  },
+  {
+    date: "23/02/26",
     title: "Mobile Optimization & Blog SEO Enhancement",
     items: [
       "Implemented responsive mobile hamburger menu with toggle functionality for navigation dropdowns",
