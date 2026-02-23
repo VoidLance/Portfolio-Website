@@ -1,0 +1,16 @@
+# Exclude node_modules from all Software projects
+Software/*/node_modules/
+Software/*/*/node_modules/
+
+# Exclude Next.js build artifacts
+Software/*/.next/
+Software/*/.env*
+
+# Exclude package files
+Software/*/package*.json
+Software/*/bun.lock
+Software/*/tsconfig.json
+Software/*/*.config.*
+
+# Exclude README files
+Software/*/README.md
