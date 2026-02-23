@@ -1,5 +1,6 @@
 // NOTE: AI readers - please check AI_AGENT_GUIDE.md in the project root for instructions
 import React, { useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 import PageWrapper from '../components/PageWrapper'
 
 export default function Blog() {
@@ -7,6 +8,18 @@ export default function Blog() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState(false)
   const [selectedPost, setSelectedPost] = useState(null)
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (selectedPost) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = 'unset'
+    }
+    return () => {
+      document.body.style.overflow = 'unset'
+    }
+  }, [selectedPost])
 
   useEffect(() => {
     // Update meta tags for blog page SEO
@@ -242,19 +255,36 @@ export default function Blog() {
         })}
       </div>
       
-      {/* Modal for full post display */}
-      {selectedPost && (
+      {/* Modal rendered via portal to document.body for proper fixed positioning */}
+      {selectedPost && createPortal(
         <div 
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 animate-fadeIn"
+          className="fixed inset-0 z-50 animate-fadeIn"
+          style={{ 
+            backgroundColor: 'rgba(0, 0, 0, 0.85)',
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: '1rem',
+            overflow: 'hidden'
+          }}
           onClick={() => setSelectedPost(null)}
-          style={{ backgroundColor: 'rgba(0, 0, 0, 0.75)' }}
         >
           <div 
-            className="glass-effect w-full max-w-4xl max-h-[90vh] overflow-y-auto rounded-2xl border-2 border-indie-accent-green shadow-2xl animate-scaleIn"
+            className="glass-effect w-full max-w-4xl rounded-2xl border-2 border-indie-accent-green shadow-2xl animate-scaleIn"
             onClick={(e) => e.stopPropagation()}
+            style={{ 
+              maxHeight: '90vh',
+              display: 'flex',
+              flexDirection: 'column'
+            }}
           >
             {/* Close button */}
-            <div className="sticky top-0 z-10 bg-indie-bg-main/95 backdrop-blur-sm border-b-2 border-indie-accent-green/50 p-4 flex justify-between items-center">
+            <div className="sticky top-0 z-10 border-b-2 border-indie-accent-green/50 p-4 flex justify-between items-center flex-shrink-0" style={{ backgroundColor: 'var(--color-indie-bg-main)' }}>
               <h2 className="text-xl sm:text-2xl text-indie-accent-green font-bold flex-1 pr-4">
                 {selectedPost.title}
               </h2>
@@ -268,7 +298,7 @@ export default function Blog() {
             </div>
             
             {/* Post metadata */}
-            <div className="p-4 sm:p-6 border-b border-indie-accent-green/30">
+            <div className="p-4 sm:p-6 border-b border-indie-accent-green/30 flex-shrink-0">
               <div className="flex flex-col sm:flex-row sm:items-center sm:gap-3 text-xs sm:text-sm">
                 <time className="text-indie-accent-pink italic">
                   {selectedPost.published}
@@ -291,11 +321,12 @@ export default function Blog() {
             
             {/* Full post content */}
             <div 
-              className="p-4 sm:p-6 text-indie-text-light prose prose-invert prose-lg max-w-none blog-post-content"
+              className="p-4 sm:p-6 text-indie-text-light prose prose-invert prose-lg max-w-none blog-post-content overflow-y-auto flex-1"
               dangerouslySetInnerHTML={{ __html: selectedPost.content }}
             />
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </PageWrapper>
   )
