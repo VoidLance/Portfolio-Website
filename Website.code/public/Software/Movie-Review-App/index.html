@@ -201,13 +201,18 @@
             <p>This project requires Bun and cannot run directly as a static HTML page. To view this project:</p>
             
             <h4 style="margin-top: 15px; color: #856404;">Step 1: Download the Project</h4>
-            <p style="margin-top: 10px;">You can download the project files from GitHub:</p>
+            <p style="margin-top: 10px;"><strong>Option A:</strong> Download just this project folder (recommended):</p>
             <div class="code-block">
-                <div># Clone the entire repository</div>
+                <div># Using SVN to download just this folder</div>
+                <div>svn export https://github.com/VoidLance/Course-Files/trunk/JavaScript/React/movie-review-app</div>
+                <div>cd movie-review-app</div>
+            </div>
+            <p style="margin-top: 10px;"><strong>Option B:</strong> Clone the entire repository:</p>
+            <div class="code-block">
                 <div>git clone https://github.com/VoidLance/Course-Files.git</div>
                 <div>cd Course-Files/JavaScript/React/movie-review-app</div>
             </div>
-            <p style="margin-top: 10px;">Or download directly from: <a href="https://github.com/VoidLance/Course-Files/tree/main/JavaScript/React/movie-review-app" target="_blank" style="color: #667eea; text-decoration: underline;">GitHub Repository</a></p>
+            <p style="margin-top: 10px;">Or download manually from: <a href="https://github.com/VoidLance/Course-Files/tree/main/JavaScript/React/movie-review-app" target="_blank" style="color: #667eea; text-decoration: underline;">GitHub Repository</a></p>
             
             <h4 style="margin-top: 15px; color: #856404;">Step 2: Install & Run Locally</h4>
             <div class="code-block">
@@ -219,6 +224,7 @@
             <h4 style="margin-top: 15px; color: #856404;">Requirements:</h4>
             <ul style="margin-left: 20px; margin-top: 10px;">
                 <li>Bun (latest version)</li>
+                <li>SVN (for Option A) - usually pre-installed on Mac/Linux, or Git only (for Option B)</li>
                 <li>TMDB API key (configured in .env.local)</li>
             </ul>
         </div>
