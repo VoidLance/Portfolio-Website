@@ -10,6 +10,21 @@ export default function Software() {
       
       <article className="text-indie-text-gray">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Movie Review App */}
+          <div className="glass-darker p-6 rounded-lg border-2 border-indie-accent-green/50">
+            <h2 className="text-2xl text-indie-accent-pink font-bold mb-3">Movie Review App</h2>
+            <p className="mb-4">A full-featured movie review application built with Next.js, featuring TMDB API integration, search functionality, dark mode, and advanced filtering.</p>
+            <p className="text-sm text-indie-text-gray/70 italic mb-4">Status: Completed</p>
+            <a 
+              href="/Software/Movie-Review-App" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block bg-indie-accent-green text-indie-bg-main px-6 py-2 rounded-lg font-bold hover:bg-[#1cdba2] transition-colors shadow-indie"
+            >
+              View Project →
+            </a>
+          </div>
+
           {/* Personal Website */}
           <div className="glass-darker p-6 rounded-lg border-2 border-indie-accent-green/50">
             <h2 className="text-2xl text-indie-accent-pink font-bold mb-3">Personal Website</h2>
