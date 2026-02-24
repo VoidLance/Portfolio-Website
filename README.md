@@ -12,11 +12,11 @@ My modern portfolio website showcasing my projects, skills, and experience.
 - Contact information
 
 ## Getting Started
+If, for whatever reason, you want to run this website yourself, you can do it using:
 
 ### Prerequisites
 
 - Node.js (or my relevant runtime)
-- Neocities CLI
 
 ### Installation
 
