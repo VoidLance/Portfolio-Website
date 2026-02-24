@@ -9,6 +9,7 @@ import Games from './pages/Games'
 import Blog from './pages/Blog'
 import Books from './pages/Books'
 import Helpdesk from './pages/Helpdesk'
+import HelpdeskAdmin from './pages/HelpdeskAdmin'
 import ThreeDModels from './pages/3DModels'
 import Software from './pages/Software'
 import CurseSemna from './pages/CurseSemna'
@@ -43,6 +44,7 @@ export default function App() {
             <Route path="/books" element={<Books />} />
             <Route path="/books/laws" element={<LAWSBook />} />
             <Route path="/helpdesk" element={<Helpdesk />} />
+            <Route path="/helpdesk/admin" element={<HelpdeskAdmin />} />
             <Route path="/3d-models" element={<ThreeDModels />} />
             <Route path="/software" element={<Software />} />
             <Route path="/games/curse-semna" element={<CurseSemna />} />

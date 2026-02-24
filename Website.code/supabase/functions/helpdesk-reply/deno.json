@@ -1,0 +1,6 @@
+{
+  "extend": "../deno.json",
+  "imports": {
+    "https://deno.land/std@0.203.0/http/server.ts": "https://deno.land/std@0.203.0/http/server.ts"
+  }
+}

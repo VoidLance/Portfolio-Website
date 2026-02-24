@@ -4,6 +4,73 @@
 export const updatesData = [
   {
     date: "24/02/26",
+    title: "Helpdesk Notifications",
+    items: [
+      "Send assignment notification emails whenever the ticket assignee changes, including self-assignments",
+      "Notify assignees by email when a customer reply updates their ticket",
+    ],
+  },
+  {
+    date: "24/02/26",
+    title: "Helpdesk Email Configuration",
+    items: [
+      "Updated Edge Function to send emails from helpdesk@alistairsweeting.online with Gmail as reply-to",
+      "Simplified email configuration - only Resend API key required",
+      "Separated internal notes from email replies with distinct UI and functionality",
+    ],
+  },
+  {
+    date: "24/02/26",
+    title: "Helpdesk Admin Kanban + Replies",
+    items: [
+      "Redesigned the helpdesk admin dashboard into a Kanban view with Open, Assigned to Me, and Closed columns",
+      "Added assignment controls so tickets can be assigned to the current admin or any user email",
+      "Implemented ticket detail panel with conversation history and reply composer",
+      "Replies can be sent as email or stored as internal notes, with all replies tracked in a new ticket_replies table",
+      "Added Edge Function scaffolding for outbound email replies and inbound reply webhooks",
+    ],
+  },
+  {
+    date: "24/02/26",
+    title: "Helpdesk Insert Fix",
+    items: [
+      "Removed post-insert row selection in Helpdesk form to avoid requiring anon SELECT policy",
+      "Helpdesk submissions now rely only on INSERT permissions for public users",
+    ],
+  },
+  {
+    date: "24/02/26",
+    title: "Supabase Key Fix",
+    items: [
+      "Switched Supabase client to prefer the anon public JWT for database access",
+      "Updated env templates and setup guide to use the anon public key",
+      "Removed duplicate env entries to prevent key resolution issues",
+    ],
+  },
+  {
+    date: "24/02/26",
+    title: "Supabase Key Naming Update",
+    items: [
+      "Switched Supabase config to use the publishable key naming convention",
+      "Updated environment templates and setup guide to match publishable key usage",
+      "Kept backward compatibility by supporting the legacy anon key name",
+    ],
+  },
+  {
+    date: "24/02/26",
+    title: "Helpdesk System with Supabase Backend",
+    items: [
+      "Integrated Supabase database for storing helpdesk tickets with secure backend",
+      "Added ticket submission form that saves inquiries to cloud database with status tracking",
+      "Created admin dashboard (/#/helpdesk/admin) with authentication for viewing and managing tickets",
+      "Admin can mark tickets as open/closed, view all submissions with timestamps, and reply via email links",
+      "Implemented Row Level Security (RLS) policies - public can submit tickets, only authenticated admins can view/edit",
+      "Added success/error feedback messages for form submissions",
+      "Created comprehensive setup guide (SUPABASE_SETUP.md) with database schema and security configuration",
+    ],
+  },
+  {
+    date: "24/02/26",
     title: "Software Page GitHub Integration",
     items: [
       "Added collapsible GitHub integration to Software page displaying course projects from VoidLance/Course-Files repository",

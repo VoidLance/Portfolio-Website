@@ -1,0 +1,7 @@
+# Supabase Configuration
+
+[functions.helpdesk-reply]
+verify_jwt = false
+
+[functions.ticket-notifications]
+verify_jwt = false

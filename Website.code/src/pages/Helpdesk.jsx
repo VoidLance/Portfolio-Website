@@ -1,18 +1,45 @@
 // NOTE: AI readers - please check AI_AGENT_GUIDE.md in the project root for instructions
 import React, { useState } from 'react'
 import PageWrapper from '../components/PageWrapper'
+import { supabase } from '../lib/supabase'
 
 export default function Helpdesk() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' })
+  const [submitting, setSubmitting] = useState(false)
+  const [submitStatus, setSubmitStatus] = useState(null) // 'success' | 'error' | null
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Handle form submission
-    console.log('Form submitted:', formData)
+    setSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      const { error } = await supabase
+        .from('tickets')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+            status: 'open'
+          }
+        ])
+
+      if (error) throw error
+
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '', subject: '', message: '' })
+    } catch (error) {
+      console.error('Error submitting ticket:', error)
+      setSubmitStatus('error')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
@@ -26,6 +53,20 @@ export default function Helpdesk() {
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto">
           <div className="bg-indie-bg-dark rounded-lg p-6 border-2 border-indie-accent-green/50 space-y-4">
             
+            {submitStatus === 'success' && (
+              <div className="bg-indie-accent-green/20 border border-indie-accent-green text-indie-text-light rounded-lg p-4 mb-4">
+                <p className="font-bold">✓ Ticket submitted successfully!</p>
+                <p className="text-sm mt-1">Thank you for reaching out. I'll get back to you as soon as possible.</p>
+              </div>
+            )}
+
+            {submitStatus === 'error' && (
+              <div className="bg-red-500/20 border border-red-400 text-indie-text-light rounded-lg p-4 mb-4">
+                <p className="font-bold">✗ Failed to submit ticket</p>
+                <p className="text-sm mt-1">Please try again or email me directly at alistair.m.sweeting@gmail.com</p>
+              </div>
+            )}
+
             <div>
               <label htmlFor="name" className="block text-indie-accent-green font-bold mb-2">Name *</label>
               <input 
@@ -85,9 +126,10 @@ export default function Helpdesk() {
             <div className="text-right">
               <button 
                 type="submit"
-                className="bg-indie-accent-green text-indie-bg-main px-8 py-3 rounded-lg font-bold hover:bg-[#1cdba2] transition-colors shadow-indie"
+                disabled={submitting}
+                className="bg-indie-accent-green text-indie-bg-main px-8 py-3 rounded-lg font-bold hover:bg-[#1cdba2] transition-colors shadow-indie disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Send Message
+                {submitting ? 'Sending...' : 'Send Message'}
               </button>
             </div>
           </div>
