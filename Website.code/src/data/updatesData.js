@@ -4,6 +4,16 @@
 export const updatesData = [
   {
     date: "24/02/26",
+    title: "Software Page GitHub Integration",
+    items: [
+      "Added collapsible GitHub integration to Software page displaying course projects from VoidLance/Course-Files repository",
+      "Fetches and displays all JavaScript and React subfolder projects dynamically from GitHub API",
+      "Course projects section is collapsed by default and visually de-emphasized compared to featured projects",
+      "Projects displayed in compact grid layout with category labels and direct links to GitHub folders",
+    ],
+  },
+  {
+    date: "24/02/26",
     title: "UX Improvements",
     items: [
       "Fixed dropdown menu hover behavior by adding invisible bridge between menu items and dropdown menus",
