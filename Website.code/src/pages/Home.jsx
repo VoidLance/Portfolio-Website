@@ -82,7 +82,7 @@ export default function Home() {
 
             <div className="flex justify-center mt-4">
               <a href="https://vampire-club.neocities.org/" target="_blank" rel="noopener noreferrer" aria-label="Vampire Club member" className="w-full max-w-xs">
-                <img src="../../Images/vcskull.gif" className="w-full h-auto" alt="Vampire Club skull banner - I'm a member!" loading="lazy" />
+                <img src="../../Images/vcskull.gif" className="w-full h-auto" alt="Vampire Club skull banner" loading="lazy" />
               </a>
             </div>
           </article>

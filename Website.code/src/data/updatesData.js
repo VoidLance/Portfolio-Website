@@ -3,6 +3,25 @@
 
 export const updatesData = [
   {
+    date: "24/02/26",
+    title: "UX Improvements",
+    items: [
+      "Fixed dropdown menu hover behavior by adding invisible bridge between menu items and dropdown menus",
+      "Dropdowns now remain open when mouse travels through the visual gap, improving usability without changing appearance",
+    ],
+  },
+  {
+    date: "24/02/26",
+    title: "Deployment Optimization",
+    items: [
+      "Fixed slow git push pre-push hook by removing unnecessary node_modules and source files from deployment",
+      "Created automated cleanup script that removes node_modules, .next directories, TypeScript source files, and config files from dist folder before deployment",
+      "Added proper error handling to pre-push hook - git push now fails if Neocities deployment fails",
+      "Reduced deployment time from several minutes to under 30 seconds by excluding thousands of unnecessary files",
+      "Deployment now only uploads essential production files (HTML, CSS, JS, images) instead of entire development dependencies",
+    ],
+  },
+  {
     date: "23/02/26",
     title: "Blog Post Modal & Enhanced SEO",
     items: [

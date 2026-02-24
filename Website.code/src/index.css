@@ -157,6 +157,19 @@ a.block,
   margin-top: 0.5rem;
 }
 
+/* Invisible bridge to fill the gap between menu item and dropdown */
+@media (min-width: 768px) {
+  .dropdown::before {
+    content: '';
+    position: absolute;
+    top: -0.5rem; /* Extends up to cover the margin-top gap */
+    left: 0;
+    right: 0;
+    height: 0.5rem; /* Matches the margin-top */
+    background: transparent;
+  }
+}
+
 @media (min-width: 768px) {
   .dropdown {
     position: absolute;
