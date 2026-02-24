@@ -10,6 +10,30 @@ This guide ensures AI agents (Claude, Copilot, etc.) understand project requirem
 
 2. **Read this file** - You're reading it now! ✓
 
+## ⚠️ CRITICAL: Never Assume Cache Issues
+
+**IT IS NEVER A CACHE ISSUE.** The developer:
+- Always hard refreshes (Ctrl+Shift+R / Cmd+Shift+R) after every change
+- Often works on a dev server with automatic hot-reload
+- Has browser cache disabled during development
+
+**If changes aren't appearing:**
+- Check for typos in code or class names
+- Verify files were actually saved
+- Check for JavaScript errors in console
+- Ensure correct file paths and imports
+- Verify build process completed successfully
+- Check for CSS specificity issues
+- Look for conflicting styles or logic
+
+**DO NOT suggest:**
+- "Try clearing your cache"
+- "Hard refresh the page"
+- "Clear browser storage"
+- "Restart the dev server" (unless there's an actual error)
+
+The issue is in the code, not the cache. Debug accordingly.
+
 ## 📋 Mandatory Requirements
 
 ### Changelog Updates

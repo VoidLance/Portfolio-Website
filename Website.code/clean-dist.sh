@@ -1,4 +1,5 @@
 #!/bin/bash
+# AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
 # Clean unnecessary files from dist before deployment
 
 echo "Cleaning dist folder..."

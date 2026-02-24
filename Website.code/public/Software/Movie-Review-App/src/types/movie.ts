@@ -1,3 +1,4 @@
+// AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
 export const GENRES = ['action', 'fantasy', 'romance', 'comedy', 'anime', 'drama', 'horror'] as const;
 
 export type Genre = (typeof GENRES)[number];

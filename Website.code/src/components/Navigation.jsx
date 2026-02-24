@@ -1,3 +1,4 @@
+// AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
@@ -20,10 +21,23 @@ export default function Navigation() {
 
   return (
     <>
-      {/* Mobile hamburger button */}
-      <div className="md:hidden w-full flex justify-end p-3 bg-indie-bg-nav border-b border-indie-accent-green/50">
+      {/* Mobile hamburger button - sticks to top with full header height and background */}
+      <div 
+        className="md:hidden w-full flex justify-end items-start p-3 fixed top-0 left-0 right-0 z-50 bg-cover bg-center border-b-2 border-indie-accent-green"
+        style={{
+          height: 'clamp(120px, 30vw, 192px)',
+          backgroundImage: "url('/Images/header-image.jpg')",
+          backgroundSize: 'cover',
+          backgroundPosition: 'center'
+        }}
+      >
+        {/* Gradient overlay matching header */}
+        <div 
+          className="absolute inset-0"
+          style={{ background: 'linear-gradient(to bottom, transparent 0%, rgba(24, 24, 32, 0.393) 100%)' }}
+        />
         <button
-          className="text-indie-accent-green text-2xl focus:outline-none transition-colors hover:text-[#1cdba2]"
+          className="text-indie-accent-green text-2xl focus:outline-none transition-colors hover:text-[#1cdba2] relative z-10"
           onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           aria-label="Toggle menu"
           aria-expanded={mobileMenuOpen}
@@ -33,9 +47,11 @@ export default function Navigation() {
       </div>
 
       {/* Navigation menu - hidden on mobile until hamburger is clicked */}
-      <ul className={`flex flex-col md:flex-row gap-3 md:gap-6 items-stretch md:items-center justify-start md:justify-center relative p-3 md:p-4 bg-indie-bg-nav ${
-        mobileMenuOpen ? 'block' : 'hidden md:flex'
-      }`}>
+      <ul 
+        className={`flex flex-col md:flex-row gap-3 md:gap-6 items-stretch md:items-center justify-start md:justify-center max-md:fixed max-md:left-0 max-md:right-0 max-md:z-40 max-md:overflow-y-auto p-3 md:p-4 md:bg-indie-bg-nav md:relative mobile-menu ${
+          !mobileMenuOpen ? 'max-md:hidden' : ''
+        }`}
+      >
       <li className="menu-item group relative w-full md:w-auto">
         <NavLink to="/" onClick={closeMobileMenu} className="block md:inline text-base md:text-base">Home</NavLink>
       </li>

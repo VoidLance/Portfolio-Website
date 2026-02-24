@@ -1,3 +1,4 @@
+// AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Navigation from './Navigation'
@@ -21,7 +22,7 @@ export default function Header() {
       {/* Navigation Bar positioned over header */}
       <nav 
         id="navbar" 
-        className="bg-indie-bg-nav border-t-2 border-indie-accent-green/50"
+        className="bg-indie-bg-nav"
         style={{ position: 'absolute', bottom: 0, left: 0, right: 0 }}
       >
         <Navigation />

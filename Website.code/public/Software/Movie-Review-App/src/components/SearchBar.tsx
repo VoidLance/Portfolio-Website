@@ -1,3 +1,4 @@
+// AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
 import { useState } from 'react';
 import { useTheme } from '../context/ThemeContext';
 import { GENRES, type Genre } from '../types/movie';

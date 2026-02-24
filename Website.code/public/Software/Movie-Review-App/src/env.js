@@ -1,3 +1,4 @@
+// AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
 import { createEnv } from "@t3-oss/env-nextjs";
 import { z } from "zod";
 

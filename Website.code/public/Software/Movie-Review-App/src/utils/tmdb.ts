@@ -1,3 +1,4 @@
+// AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
 import { type Movie, TMDB_GENRE_MAP, type Genre, type Actor } from '../types/movie';
 
 const TMDB_BASE_URL = 'https://api.themoviedb.org/3';

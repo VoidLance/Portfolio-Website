@@ -1,4 +1,5 @@
 #!/bin/bash
+# AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
 # Build script for React app
 # Installs dependencies and builds the production-ready app
 

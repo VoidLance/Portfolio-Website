@@ -1,3 +1,4 @@
+// AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
 import React from 'react'
 import Sidebar from './Sidebar'
 

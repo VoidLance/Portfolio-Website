@@ -1,3 +1,4 @@
+/* AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements */
 @import "tailwindcss";
 
 @import url('https://fonts.googleapis.com/css2?family=Asul:wght@400;700&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
@@ -347,4 +348,16 @@ body {
 .blog-post-content pre code {
   background: none;
   padding: 0;
+}
+
+/* Mobile menu styling - translucent overlay */
+@media (max-width: 767px) {
+  .mobile-menu {
+    background-color: rgba(19, 9, 45, 0.98);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-top: 1px solid rgba(67, 234, 124, 0.3);
+    top: clamp(120px, 30vw, 192px);
+    max-height: calc(100vh - clamp(120px, 30vw, 192px));
+  }
 }

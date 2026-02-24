@@ -1,3 +1,4 @@
+// AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
 import Image from 'next/image';
 import { useTheme } from '../context/ThemeContext';
 import type { Movie } from '../types/movie';

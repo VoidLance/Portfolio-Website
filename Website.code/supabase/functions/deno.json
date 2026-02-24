@@ -1,0 +1,11 @@
+// AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
+{
+  "compilerOptions": {
+    "lib": ["deno.window"],
+    "strict": true
+  },
+  "imports": {
+    "std/": "https://deno.land/std@0.203.0/",
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2"
+  }
+}

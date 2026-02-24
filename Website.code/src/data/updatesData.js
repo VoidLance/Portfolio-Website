@@ -4,6 +4,23 @@
 export const updatesData = [
   {
     date: "24/02/26",
+    title: "AI Agent Instructions & Code Quality",
+    items: [
+      "Added critical developer workflow instructions: AI agents now understand it's never a cache issue - changes are always hard refreshed with dev server auto-reload",
+      "Fixed all TypeScript errors in Supabase edge functions with proper Deno runtime configuration",
+      "Added AI agent instruction comments to every code file directing to project guidelines",
+    ],
+  },
+  {
+    date: "24/02/26",
+    title: "Mobile Navigation Menu Fix",
+    items: [
+      "Fixed burger menu to properly display all navigation items on mobile, following traditional mobile-first design patterns",
+      "Ensured mobile menu styling doesn\'t affect desktop layout",
+    ],
+  },
+  {
+    date: "24/02/26",
     title: "Helpdesk Admin UX Refinements",
     items: [
       "Close ticket workflow now requires closing notes for better documentation and accountability",

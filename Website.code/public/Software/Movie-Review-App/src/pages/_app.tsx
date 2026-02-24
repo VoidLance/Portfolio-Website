@@ -1,3 +1,4 @@
+// AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
 import { type AppType } from "next/app";
 import { Montserrat } from "next/font/google";
 import { ThemeProvider } from "~/context/ThemeContext";

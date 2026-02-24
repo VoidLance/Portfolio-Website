@@ -1,3 +1,5 @@
+// AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
+// @ts-nocheck - Deno runtime types
 import { serve } from 'https://deno.land/std@0.203.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 import { corsHeaders } from '../_shared/cors.ts'
@@ -72,7 +74,7 @@ const getResendEmailContent = async (emailId: string) => {
     console.log('Email content fetched successfully, text length:', data?.text?.length || 0)
     return data
   } catch (error) {
-    console.error('Error fetching email content:', error?.message ?? error)
+    console.error('Error fetching email content:', error instanceof Error ? error.message : error)
     return null
   }
 }
@@ -145,7 +147,7 @@ Open the admin dashboard to respond: https://alistairsweeting.online/#/helpdesk/
   }
 }
 
-serve(async (req) => {
+serve(async (req: Request) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
@@ -226,7 +228,7 @@ serve(async (req) => {
           })
         }
       } catch (notifyError) {
-        console.error('Failed to send assignee update:', notifyError?.message ?? notifyError)
+        console.error('Failed to send assignee update:', notifyError instanceof Error ? notifyError.message : notifyError)
       }
 
       return new Response(JSON.stringify({ ok: true }), {
@@ -262,7 +264,7 @@ serve(async (req) => {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   } catch (error) {
-    return new Response(JSON.stringify({ error: error?.message ?? 'Unknown error' }), {
+    return new Response(JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })

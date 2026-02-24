@@ -1,5 +1,9 @@
 # AI Agent Instructions for Portfolio Website
 
+## ⚠️ CRITICAL: Never Assume Cache Issues
+
+**IT IS NEVER A CACHE ISSUE.** The developer always hard refreshes after every change and often works on a dev server with automatic hot-reload. If changes aren't appearing, the problem is in the code - look for typos, incorrect paths, JavaScript errors, CSS specificity issues, or logic errors. DO NOT suggest clearing cache, hard refresh, or restarting servers.
+
 ## Automatic Changelog Updates
 
 **IMPORTANT**: Whenever you make changes to this codebase, you MUST update the changelog in `Website.code/src/data/updatesData.js`.

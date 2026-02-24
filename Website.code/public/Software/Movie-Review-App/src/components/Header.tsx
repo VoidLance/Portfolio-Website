@@ -1,3 +1,4 @@
+// AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
 import Link from "next/link";
 import { useTheme } from "../context/ThemeContext";
 

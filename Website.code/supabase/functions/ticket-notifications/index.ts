@@ -1,3 +1,5 @@
+// AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
+// @ts-nocheck - Deno runtime types
 import { serve } from 'https://deno.land/std@0.203.0/http/server.ts'
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 import { corsHeaders } from '../_shared/cors.ts'
@@ -116,7 +118,7 @@ const handleDailyDigest = async (payload: NotificationPayload) => {
   return { ok: true, ticketsCount: tickets.length }
 }
 
-serve(async (req) => {
+serve(async (req: Request) => {
   if (req.method === 'OPTIONS') {
     return new Response('ok', { headers: corsHeaders })
   }
@@ -148,7 +150,7 @@ serve(async (req) => {
     })
   } catch (error) {
     console.error('Notification error:', error)
-    return new Response(JSON.stringify({ error: error?.message ?? 'Unknown error' }), {
+    return new Response(JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })

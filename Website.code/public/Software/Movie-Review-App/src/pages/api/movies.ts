@@ -1,3 +1,4 @@
+// AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { env } from '../../env';
 import type { Movie } from '../../types/movie';

@@ -1,4 +1,5 @@
 #!/usr/bin/env fish
+# AI Agent: Check AI_AGENT_GUIDE.md for project instructions including changelog requirements
 
 # Simple changelog helper script
 # Usage: ./add-changelog.fish "Your update message"
