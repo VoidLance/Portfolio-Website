@@ -44,6 +44,28 @@ For multiple related updates with a title:
 5. **Escape single quotes** in descriptions using `\'`
 6. **Insert at the top** of the updates array, right after `const updates = [`
 
+### Writing Style Guidelines
+
+**BE CONCISE AND IMPACTFUL** - The updates should be engaging, not verbose or AI-like.
+
+- **Focus on intention and outcomes** over specific implementation details
+- **Consolidate related changes** into single impactful statements (e.g., 7 helpdesk entries → 1 comprehensive entry)
+- **Highlight impressive achievements** that would stand out to employers (e.g., performance improvements, full-stack capabilities, modern architecture)
+- **Remove excessive technical specifics** (config file names, exact property changes, etc.)
+- **Keep authentic human moments** (learning experiences, challenges overcome)
+- **Use metrics when impressive** ("3 min → 30 sec deployment", "mobile-first responsive design")
+- **Sound natural** - avoid phrases like "implemented comprehensive", "enhanced functionality", "optimized performance" unless they tell a real story
+
+Good examples:
+- "Built custom ticket management system with Supabase backend, real-time email notifications, and Kanban-style admin dashboard"
+- "Engineered picture-in-picture modal system for blog posts with custom animations and blur effects"
+- "Created animated gradient background with scroll-based color transitions"
+
+Bad examples (too verbose/technical):
+- "Updated Edge Function to send emails from helpdesk@alistairsweeting.online with Gmail as reply-to"
+- "Removed post-insert row selection in Helpdesk form to avoid requiring anon SELECT policy"
+- "Added comprehensive responsive text sizes across all pages using sm: and md: breakpoints"
+
 ### Example Workflow
 
 When you make changes:

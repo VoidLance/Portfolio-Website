@@ -190,12 +190,68 @@ export default function HelpdeskAdmin() {
     }
   }
 
-  const handleCloseTicket = () => {
+  const handleCloseTicket = async () => {
     if (!selectedTicket) return
+    
+    // If there's a note, post it before closing
+    if (noteMessage.trim()) {
+      setSendingNote(true)
+      try {
+        const { error } = await supabase
+          .from('ticket_replies')
+          .insert([{
+            ticket_id: selectedTicket.id,
+            author_email: user?.email || 'admin',
+            body: noteMessage.trim(),
+            direction: 'internal',
+            message_id: null,
+          }])
+        
+        if (error) throw error
+        setNoteMessage('')
+      } catch (error) {
+        console.error('Error adding note:', error)
+        setActionError('Failed to add closing note.')
+        setSendingNote(false)
+        return
+      } finally {
+        setSendingNote(false)
+      }
+    } else {
+      // No note present, ask for one
+      const closeNote = prompt('Add a closing note (required):');
+      if (!closeNote || !closeNote.trim()) {
+        return // User cancelled or provided empty note
+      }
+      
+      // Post the note
+      try {
+        const { error } = await supabase
+          .from('ticket_replies')
+          .insert([{
+            ticket_id: selectedTicket.id,
+            author_email: user?.email || 'admin',
+            body: closeNote.trim(),
+            direction: 'internal',
+            message_id: null,
+          }])
+        
+        if (error) throw error
+      } catch (error) {
+        console.error('Error adding note:', error)
+        setActionError('Failed to add closing note.')
+        return
+      }
+    }
+    
+    // Now close the ticket
     updateTicket(selectedTicket.id, {
       status: 'closed',
       resolved_at: new Date().toISOString(),
     })
+    
+    // Refresh replies to show the note
+    fetchReplies(selectedTicket.id)
   }
 
   const handleReopenTicket = () => {
@@ -348,7 +404,7 @@ export default function HelpdeskAdmin() {
             
             <button 
               type="submit"
-              className="w-full bg-indie-accent-green text-indie-bg-main px-6 py-3 rounded-lg font-bold hover:bg-[#1cdba2] transition-colors"
+              className="w-full bg-indie-accent-green text-indie-bg-main px-6 py-3 rounded-lg font-bold hover:bg-[#1cdba2] transition-colors cursor-pointer"
             >
               Login
             </button>
@@ -365,7 +421,7 @@ export default function HelpdeskAdmin() {
         <h1 className="text-4xl text-indie-accent-green">Helpdesk Admin</h1>
         <button 
           onClick={handleLogout}
-          className="text-sm text-indie-text-gray hover:text-indie-accent-green transition-colors"
+          className="text-sm text-indie-text-gray hover:text-indie-accent-green transition-colors cursor-pointer"
         >
           Logout
         </button>
@@ -387,7 +443,7 @@ export default function HelpdeskAdmin() {
                   <button
                     key={ticket.id}
                     onClick={() => handleSelectTicket(ticket)}
-                    className={`w-full text-left rounded-lg border p-3 transition-colors ${
+                    className={`w-full text-left rounded-lg border p-3 transition-colors cursor-pointer ${
                       selectedTicket?.id === ticket.id
                         ? 'border-indie-accent-green bg-indie-bg-main'
                         : 'border-indie-accent-green/30 bg-indie-bg-main/40 hover:border-indie-accent-green/60'
@@ -419,7 +475,7 @@ export default function HelpdeskAdmin() {
                   <button
                     key={ticket.id}
                     onClick={() => handleSelectTicket(ticket)}
-                    className={`w-full text-left rounded-lg border p-3 transition-colors ${
+                    className={`w-full text-left rounded-lg border p-3 transition-colors cursor-pointer ${
                       selectedTicket?.id === ticket.id
                         ? 'border-indie-accent-green bg-indie-bg-main'
                         : 'border-indie-accent-green/30 bg-indie-bg-main/40 hover:border-indie-accent-green/60'
@@ -446,7 +502,7 @@ export default function HelpdeskAdmin() {
                   <button
                     key={ticket.id}
                     onClick={() => handleSelectTicket(ticket)}
-                    className={`w-full text-left rounded-lg border p-3 transition-colors ${
+                    className={`w-full text-left rounded-lg border p-3 transition-colors cursor-pointer ${
                       selectedTicket?.id === ticket.id
                         ? 'border-indie-accent-green bg-indie-bg-main'
                         : 'border-indie-accent-green/30 bg-indie-bg-main/40 hover:border-indie-accent-green/60'
@@ -490,27 +546,27 @@ export default function HelpdeskAdmin() {
                 <div className="flex flex-wrap gap-2">
                   <button
                     onClick={handleAssignToMe}
-                    className="bg-indie-accent-green text-indie-bg-main px-3 py-2 rounded-lg text-sm font-bold hover:bg-[#1cdba2] transition-colors"
+                    className="bg-indie-accent-green text-indie-bg-main px-3 py-2 rounded-lg text-sm font-bold hover:bg-[#1cdba2] transition-colors cursor-pointer"
                   >
                     Assign to me
                   </button>
                   <button
                     onClick={handleUnassign}
-                    className="bg-indie-bg-main text-indie-text-light px-3 py-2 rounded-lg text-sm border border-indie-accent-green/40 hover:border-indie-accent-green/70 transition-colors"
+                    className="bg-indie-bg-main text-indie-text-light px-3 py-2 rounded-lg text-sm border border-indie-accent-green/40 hover:border-indie-accent-green/70 transition-colors cursor-pointer"
                   >
                     Unassign
                   </button>
                   {selectedTicket.status === 'closed' ? (
                     <button
                       onClick={handleReopenTicket}
-                      className="bg-indie-accent-green text-indie-bg-main px-3 py-2 rounded-lg text-sm font-bold hover:bg-[#1cdba2] transition-colors"
+                      className="bg-indie-accent-green text-indie-bg-main px-3 py-2 rounded-lg text-sm font-bold hover:bg-[#1cdba2] transition-colors cursor-pointer"
                     >
                       Reopen
                     </button>
                   ) : (
                     <button
                       onClick={handleCloseTicket}
-                      className="bg-indie-text-gray text-indie-bg-main px-3 py-2 rounded-lg text-sm font-bold hover:bg-indie-text-gray/80 transition-colors"
+                      className="bg-indie-text-gray text-indie-bg-main px-3 py-2 rounded-lg text-sm font-bold hover:bg-indie-text-gray/80 transition-colors cursor-pointer"
                     >
                       Close
                     </button>
@@ -528,7 +584,7 @@ export default function HelpdeskAdmin() {
                     />
                     <button
                       onClick={handleAssignToEmail}
-                      className="bg-indie-accent-pink text-indie-text-light px-3 py-2 rounded-lg text-sm font-bold hover:bg-indie-accent-pink/80 transition-colors"
+                      className="bg-indie-accent-pink text-indie-text-light px-3 py-2 rounded-lg text-sm font-bold hover:bg-indie-accent-pink/80 transition-colors cursor-pointer"
                     >
                       Assign
                     </button>
@@ -586,7 +642,7 @@ export default function HelpdeskAdmin() {
                   <button
                     onClick={handleSendEmailReply}
                     disabled={sendingReply}
-                    className="bg-indie-accent-pink text-indie-text-light px-4 py-2 rounded-lg text-sm font-bold hover:bg-indie-accent-pink/80 transition-colors disabled:opacity-60"
+                    className="bg-indie-accent-pink text-indie-text-light px-4 py-2 rounded-lg text-sm font-bold hover:bg-indie-accent-pink/80 transition-colors disabled:opacity-60 cursor-pointer"
                   >
                     {sendingReply ? 'Sending...' : 'Send Email Reply'}
                   </button>
@@ -606,7 +662,7 @@ export default function HelpdeskAdmin() {
                   <button
                     onClick={handleSendNote}
                     disabled={sendingNote}
-                    className="bg-yellow-600 text-indie-bg-main px-4 py-2 rounded-lg text-sm font-bold hover:bg-yellow-500 transition-colors disabled:opacity-60"
+                    className="bg-yellow-600 text-indie-bg-main px-4 py-2 rounded-lg text-sm font-bold hover:bg-yellow-500 transition-colors disabled:opacity-60 cursor-pointer"
                   >
                     {sendingNote ? 'Adding...' : 'Add Internal Note'}
                   </button>
