@@ -1,5 +1,27 @@
 # React Refactor Deployment Guide
 
+## Primary Hosting Workflow (S3 + CloudFront)
+
+Neocities is now legacy for this project. The recommended workflow is:
+
+1. Work in this Website.code project only
+2. Build to dist/
+3. Deploy dist/ directly to S3 and invalidate CloudFront
+
+Use these commands:
+
+```bash
+npm run build
+npm run deploy:s3
+```
+
+For setup details, read `S3_CLOUDFRONT_WORKFLOW.md`.
+
+## Important: No Separate Flattened Workspace Required
+
+This project now copies non-Vite static folders (Games and Images) into dist automatically during build.
+That means dist is your complete deploy artifact for S3 static hosting.
+
 ## What Changed
 
 My website has been refactored from static HTML pages to a React single-page application (SPA). This means:

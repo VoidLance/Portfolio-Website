@@ -4,7 +4,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node add-cache-headers.js",
+    "build": "npm run build:site",
+    "build:site": "vite build && node add-cache-headers.js && node sync-static-assets.js",
+    "deploy:s3": "npm run build:site && bash scripts/deploy-s3.sh",
+    "deploy:s3:dry-run": "npm run build:site && DRY_RUN=1 bash scripts/deploy-s3.sh",
     "preview": "vite preview",
     "lint": "eslint src --ext js,jsx"
   },

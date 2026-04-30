@@ -3,6 +3,24 @@
 
 export const updatesData = [
   {
+    date: "30/04/26",
+    title: "S3 + CloudFront Deployment Workflow",
+    items: [
+      "Made Website.code the single source of truth for hosting updates by automating static asset packaging into dist.",
+      "Added a one-command AWS deploy flow for S3 sync plus optional CloudFront invalidation, removing the need for manual flattening workflows.",
+      "Documented exactly which folders are source-only versus static-host ready so future updates are safer and faster.",
+    ]
+  },
+  {
+    date: "30/04/26",
+    title: "We're on AWS!",
+    items: [
+      "Migrated to AWS full-time",
+      "Used CloudFront to host an S3 website for maximum performance and global CDN delivery",
+      "Route 53 → CloudFront → S3 architecture provides custom domain management, HTTPS via ACM, edge caching, and near-zero hosting costs at scale"
+    ]
+  },
+  {
     date: "24/02/26",
     title: "AI Agent Instructions & Code Quality",
     items: [

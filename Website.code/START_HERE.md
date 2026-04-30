@@ -52,6 +52,9 @@ Pick one based on my needs:
 
 ### If I want to...
 
+**Deploy to AWS S3 + CloudFront** (10 min)
+→ Read [S3_CLOUDFRONT_WORKFLOW.md](./S3_CLOUDFRONT_WORKFLOW.md)
+
 **Just see it working** (5 min)
 → I'm done! Keep running `npm run dev`
 
