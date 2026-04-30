@@ -73,18 +73,9 @@ export default function Home() {
                 >
                   here.
                 </a>{' '}
-                This website's source code is also available there in a public repository now, and I am using the neocities git integration to
-                automatically push updates when I make changes. It's pretty cool! However, not all of the content on the website is licensed the same way, some of it is copyrighted by me and some of it may use other licenses, so I'm not sure if there's any issues with making the source code for the website available with no license. I hope it's okay because I want people to be able to see how it works. I'm pretty proud of how I've done it.
+                This website's source code is also available there in a public repository. The live site is deployed from this project to AWS S3 + CloudFront. Not all of the content on the website is licensed the same way, some of it is copyrighted by me and some of it may use other licenses.
               </p>
             </section>
-
-            <hr className="border-0 border-t border-indie-accent-green/50 my-4" />
-
-            <div className="flex justify-center mt-4">
-              <a href="https://vampire-club.neocities.org/" target="_blank" rel="noopener noreferrer" aria-label="Vampire Club member" className="w-full max-w-xs">
-                <img src="../../Images/vcskull.gif" className="w-full h-auto" alt="Vampire Club skull banner" loading="lazy" />
-              </a>
-            </div>
           </article>
         </main>
 

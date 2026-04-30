@@ -30,7 +30,7 @@ Start with **[START_HERE.md](./START_HERE.md)** for a 5-minute quick intro, then
 ✅ **All Design Preserved** - Original Tailwind CSS colors and fonts  
 ✅ **Responsive** - Mobile, tablet, and desktop ready  
 ✅ **Modern Stack** - React 18.2, Vite 5, Tailwind CSS 4.1  
-✅ **Production Ready** - Deploy to Neocities or anywhere  
+✅ **Production Ready** - Deploy to AWS S3 + CloudFront or anywhere  
 ✅ **Well Documented** - 9 comprehensive guides included  
 
 ## 📊 What's New
@@ -78,7 +78,7 @@ npm run build       # Creates dist/ folder
 # Upload dist/ to my hosting
 ```
 
-Works on Neocities, Netlify, Vercel, or any static host!
+Works on AWS S3 + CloudFront, Netlify, Vercel, or any static host!
 
 ## 📖 Files Included
 
@@ -107,7 +107,7 @@ Works on Neocities, Netlify, Vercel, or any static host!
 
 **Deployment**: Automated via git pre-push hook
 - Builds React app with Vite
-- Uploads to Neocities automatically
+- Uploads to AWS S3 + CloudFront automatically
 - Uses HashRouter for static hosting compatibility
 
 **Last Updated**: 12 January 2026  

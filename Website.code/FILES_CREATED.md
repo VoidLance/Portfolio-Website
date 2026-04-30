@@ -252,7 +252,7 @@ Read in this order:
 
 5. **DEPLOYMENT.md** (10 min)
    - Build for production
-   - Deploy to Neocities
+   - Deploy to AWS S3 + CloudFront
    - Troubleshooting
 
 6. **BEFORE_AFTER.md** (10 min)

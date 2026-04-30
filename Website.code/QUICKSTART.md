@@ -26,7 +26,7 @@ git push origin main  # Automatically builds and deploys!
 **Or manually**:
 ```bash
 npm run build
-neocities push dist
+npm run deploy:s3
 ```
 
 **Live at**: https://alistairsweeting.online
@@ -134,10 +134,10 @@ Done! 🎉
 
 ## 🚢 Deployment Options
 
-### Neocities
+### AWS S3 + CloudFront
 ```bash
 npm run build
-# Upload dist/ folder to Neocities
+# Upload dist/ folder to AWS S3 + CloudFront
 ```
 
 ### Netlify / Vercel
@@ -211,7 +211,7 @@ A: Yes, my original HTML files are still there.
 **Q: How do I add dynamic content?**
 A: Fetch data in React components using hooks like `useEffect`.
 
-**Q: Does this work on Neocities?**
+**Q: Does this work on AWS S3 + CloudFront?**
 A: Yes! See [DEPLOYMENT.md](./DEPLOYMENT.md) for any needed configuration.
 
 **Q: Can I modify the design?**

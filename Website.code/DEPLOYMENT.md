@@ -2,7 +2,7 @@
 
 ## Primary Hosting Workflow (S3 + CloudFront)
 
-Neocities is now legacy for this project. The recommended workflow is:
+The recommended workflow for this project is AWS S3 + CloudFront:
 
 1. Work in this Website.code project only
 2. Build to dist/
@@ -63,7 +63,7 @@ npm run build
 
 The optimized site is now in the `dist/` folder.
 
-## Deploying to Neocities
+## Deploying to AWS S3 + CloudFront
 
 ### ✅ Automated Deployment (Current Setup)
 
@@ -78,7 +78,7 @@ git push origin main  # This triggers automatic build & deploy!
 The git pre-push hook (`.git/hooks/pre-push`) automatically:
 1. Navigates to Website.code directory
 2. Runs `npm run build` to create production files
-3. Runs `neocities push dist` to upload to my site
+3. Runs `npm run deploy:s3` to upload to my site
 4. If any step fails, the push is aborted
 
 **Live Site**: https://alistairsweeting.online
@@ -91,14 +91,14 @@ cd Website.code
 npm run build
 ```
 
-2. Upload using Neocities CLI:
+2. Upload using AWS S3 + CloudFront CLI:
 ```bash
-neocities push dist
+npm run deploy:s3
 ```
 
 3. My site is now live!
 
-**Note**: I'm using HashRouter (URLs like `/#/games`) because Neocities is a static host and doesn't support server-side routing.
+**Note**: I'm using HashRouter (URLs like `/#/games`) because AWS S3 + CloudFront is a static host and doesn't support server-side routing.
 
 ## Important Notes
 
@@ -143,9 +143,9 @@ Upload the entire `dist/` folder contents to my hosting.
 
 ## Troubleshooting
 
-### Page not found on Neocities
+### Page not found on AWS S3 + CloudFront
 
-Neocities is a static host and doesn't support single-page app routing by default. I may need to:
+AWS S3 + CloudFront is a static host and doesn't support single-page app routing by default. I may need to:
 
 1. **Option A**: Add a `_redirects` file to dist/ before uploading:
 ```

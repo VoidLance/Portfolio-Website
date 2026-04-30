@@ -126,9 +126,9 @@ Hover interactions managed with React state for a smooth, responsive experience.
 
 ## Deployment
 
-### For Neocities
+### For AWS S3 + CloudFront
 1. Run `npm run build`
-2. Upload the contents of the `dist/` folder to my Neocities site
+2. Upload the contents of the `dist/` folder to my AWS S3 + CloudFront site
 3. Ensure my server supports client-side routing (may need `_redirects` or similar configuration)
 
 ### For Other Static Hosts

@@ -171,7 +171,7 @@ The function expects JSON like:
 
 If your provider sends a different payload, you will need to map it in the function.
 
-## 10. Configure Neocities Deployment
+## 10. Configure AWS S3 + CloudFront Deployment
 
 ### Option A: Using Supabase Database Webhooks
 
@@ -194,7 +194,7 @@ Use **EmailJS** or **SendGrid** API directly from the form submission
 - Less reliable (client-side)
 - But simplest to set up
 
-## 9. Configure Neocities Deployment
+## 9. Configure AWS S3 + CloudFront Deployment
 
 Since you're using environment variables, you'll need to either:
 

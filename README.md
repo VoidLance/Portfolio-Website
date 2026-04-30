@@ -34,11 +34,11 @@ npm run dev
 
 ### Deployment
 
-This repository is configured to automatically deploy to my Neocities site using a git pre-push hook and the Neocities CLI. When I push changes to GitHub, the hook automatically:
+This repository is configured to deploy to AWS S3 + CloudFront using a git pre-push hook. When I push changes to GitHub, the hook automatically:
 
 1. Builds the React app with Vite (creates optimized production bundle)
-2. Uploads the dist/ folder contents to Neocities
-3. Maintains all static assets (Games, Software folders)
+2. Syncs the dist/ folder contents to S3
+3. Invalidates CloudFront cache for updated paths
 
 ```bash
 git push origin main  # Automatically builds and deploys!
@@ -48,8 +48,8 @@ git push origin main  # Automatically builds and deploys!
 
 - **Local**: I make all my changes in this repository (React source in Website.code/)
 - **Build**: Git hook runs `npm run build` to create optimized production files
-- **Live**: Built files from dist/ automatically sync to Neocities at alistairsweeting.online
-- **Status**: My GitHub repo and Neocities site stay in sync with every push
+- **Live**: Built files from dist/ automatically sync to AWS S3 + CloudFront at alistairsweeting.online
+- **Status**: My GitHub repo and AWS-hosted site stay in sync with every push
 - **Architecture**: React SPA with HashRouter for static hosting compatibility
 
 ## Technologies
@@ -57,7 +57,7 @@ git push origin main  # Automatically builds and deploys!
 - HTML5
 - CSS3
 - JavaScript
-- Neocities
+- AWS S3 + CloudFront
 
 ## License
 

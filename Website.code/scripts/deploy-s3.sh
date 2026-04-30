@@ -22,6 +22,15 @@ echo "Syncing non-asset files to s3://${S3_BUCKET}"
 aws s3 sync dist "s3://${S3_BUCKET}" \
   --delete \
   --exclude "assets/*" \
+  --exclude "Software/*/node_modules/*" \
+  --exclude "Software/*/*/node_modules/*" \
+  --exclude "Software/*/.next/*" \
+  --exclude "Software/*/.env*" \
+  --exclude "Software/*/package*.json" \
+  --exclude "Software/*/bun.lock" \
+  --exclude "Software/*/tsconfig.json" \
+  --exclude "Software/*/*.config.*" \
+  --exclude "Software/*/README.md" \
   --cache-control "public,max-age=300" \
   ${DRY_RUN_FLAG}
 

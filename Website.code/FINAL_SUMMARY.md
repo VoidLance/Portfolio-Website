@@ -227,7 +227,7 @@ STYLING
 
 DEPLOYMENT
 └── Static files (no server needed!)
-    Works on: Neocities, Netlify, Vercel, AWS S3, etc.
+    Works on: AWS S3 + CloudFront, Netlify, Vercel, AWS S3, etc.
 ```
 
 ---
@@ -289,7 +289,7 @@ npm run lint              # Check code style
 ### When Ready to Go Live
 ```bash
 npm run build           # Create production build
-# Upload dist/ folder to Neocities or other hosting
+# Upload dist/ folder to AWS S3 + CloudFront or other hosting
 ```
 
 ---

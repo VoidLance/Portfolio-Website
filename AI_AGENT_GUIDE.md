@@ -94,8 +94,8 @@ Portfolio-Website/
 
 ## 🚀 Deployment Info
 
-- **Automatic**: Git pre-push hook builds and deploys to Neocities
-- **How**: Changes to GitHub are built with Vite and uploaded to Neocities
+- **Automatic**: Git pre-push hook builds and deploys to AWS S3 + CloudFront
+- **How**: Changes to GitHub are built with Vite, synced to S3, and CloudFront is invalidated
 - **Result**: Website automatically updates when you push to main
 
 ## ❓ Common Questions

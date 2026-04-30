@@ -1,6 +1,6 @@
 # S3 + CloudFront Workflow (Primary Hosting)
 
-This project no longer needs a separate flattened Neocities workspace for deployment.
+This project no longer needs a separate flattened deployment mirror for publishing.
 
 Use Website.code as the source of truth:
 
@@ -30,7 +30,7 @@ Static-host ready (upload result):
 
 ## Why Flattening Was Needed Before
 
-Your old neocities-alistairsweeting folder was effectively a deployment snapshot.
+Your old flattened deployment mirror folder was effectively a deployment snapshot.
 That snapshot included built assets plus copied static folders (Games, Images, Software).
 
 Now this is automatic:
@@ -98,12 +98,12 @@ npm run deploy:s3:dry-run
 - If using S3 website endpoint directly, ensure custom error handling routes unknown paths to index.html.
 - Because the app uses HashRouter, deep-link routing is already static-host friendly.
 
-## Migration Plan Away from neocities-alistairsweeting
+## Migration Plan Away from a Flattened Mirror Folder
 
 1. Treat Website.code as the only project you edit.
-2. Stop manually copying files to neocities-alistairsweeting.
+2. Stop manually copying files into a separate flattened mirror folder.
 3. Use npm run deploy:s3 for all production updates.
-4. Keep neocities-alistairsweeting only as an archive until you are fully confident.
+4. Keep that old mirror folder only as an archive until you are fully confident.
 
 ## EC2 Future-Proofing
 

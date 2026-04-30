@@ -217,7 +217,7 @@ npm run build        # Build optimized version
 ```
 
 Works on:
-- ✅ Neocities
+- ✅ AWS S3 + CloudFront
 - ✅ Netlify
 - ✅ Vercel
 - ✅ Any static host

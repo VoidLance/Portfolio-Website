@@ -42,13 +42,13 @@ Then open http://localhost:5173
 
 **Automated deployment**:
 ```bash
-git push origin main  # Auto-builds and uploads to Neocities!
+git push origin main  # Auto-builds and uploads to AWS S3 + CloudFront!
 ```
 
 **Manual deployment**:
 ```bash
 npm run build
-neocities push dist
+npm run deploy:s3
 ```
 
 ### Option 3: Want to Understand It First?
@@ -266,13 +266,13 @@ Key breakpoints:
 
 ## 🚢 Deployment
 
-### For Neocities
+### For AWS S3 + CloudFront
 ```bash
 npm run build
-# Upload dist/ folder to Neocities
+# Upload dist/ folder to AWS S3 + CloudFront
 ```
 
-See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed Neocities setup.
+See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed AWS S3 + CloudFront setup.
 
 ### For Netlify/Vercel
 ```bash
@@ -299,7 +299,7 @@ A: See [BEFORE_AFTER.md](./BEFORE_AFTER.md) for detailed comparison.
 **Q: Can I edit the design?**  
 A: Yes! Edit components in `src/` or styles in `tailwind.config.js`.
 
-**Q: Will this work on Neocities?**  
+**Q: Will this work on AWS S3 + CloudFront?**  
 A: Yes! See [DEPLOYMENT.md](./DEPLOYMENT.md).
 
 **Q: Do I need Node.js on my server?**  

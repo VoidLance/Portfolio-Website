@@ -81,6 +81,6 @@ When you make changes:
 
 ## Deployment
 
-The site auto-deploys to Neocities when the user pushes to GitHub via a pre-push hook.
-- Pre-push hook: builds with `npm run build` and uploads with `neocities push dist`
+The site auto-deploys to AWS S3 + CloudFront when the user pushes to GitHub via a pre-push hook.
+- Pre-push hook: runs `npm run deploy:s3` from `Website.code`
 - No need to manually deploy or build during development

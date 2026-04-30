@@ -185,7 +185,7 @@ npm run build           # Creates dist/ folder
 ```
 
 ### Deploy to
-- ✅ Neocities
+- ✅ AWS S3 + CloudFront
 - ✅ Netlify
 - ✅ Vercel
 - ✅ GitHub Pages

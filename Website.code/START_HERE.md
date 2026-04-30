@@ -133,13 +133,13 @@ git push origin main
 
 The pre-push hook automatically:
 1. Runs `npm run build` to create production files
-2. Uploads `dist/` folder to Neocities
+2. Uploads `dist/` folder to AWS S3 + CloudFront
 3. My site updates within seconds!
 
 **Manual deployment** (if needed):
 ```bash
 npm run build
-neocities push dist
+npm run deploy:s3
 ```
 
 See [DEPLOYMENT.md](./DEPLOYMENT.md) for detailed instructions.
@@ -160,7 +160,7 @@ A: Yes! Edit files in `src/` and changes appear instantly.
 **Q: How do I add a new page?**
 A: Create a new component in `src/pages/` and add a route in `src/App.jsx`.
 
-**Q: Does this work on Neocities?**
+**Q: Does this work on AWS S3 + CloudFront?**
 A: Yes! See [DEPLOYMENT.md](./DEPLOYMENT.md) for setup.
 
 ---

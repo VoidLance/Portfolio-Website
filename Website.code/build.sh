@@ -10,4 +10,4 @@ echo "Building React app with Vite..."
 npm run build
 
 echo "Build complete! The dist/ folder contains your optimized site."
-echo "Upload the contents of dist/ to your web server or Neocities account."
+echo "Upload the contents of dist/ to your web server or AWS S3 + CloudFront account."

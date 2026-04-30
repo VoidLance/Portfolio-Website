@@ -4,6 +4,16 @@
 export const updatesData = [
   {
     date: "30/04/26",
+    title: "Legacy Hosting Cleanup + Git Push Fix",
+    items: [
+      "Removed legacy hosting references from the site content and project docs to align everything with AWS S3 + CloudFront hosting.",
+      "Replaced the local pre-push deployment hook with the AWS deployment flow so pushes are no longer blocked by old deployment tooling.",
+      "Removed obsolete hosting-specific project files and kept Website.code as the single deployment source of truth.",
+      "Updated S3 sync exclusions to avoid uploading large development-only files from software subprojects during deploy.",
+    ]
+  },
+  {
+    date: "30/04/26",
     title: "S3 + CloudFront Deployment Workflow",
     items: [
       "Made Website.code the single source of truth for hosting updates by automating static asset packaging into dist.",
@@ -75,7 +85,7 @@ export const updatesData = [
     title: "React Migration & Modern Architecture",
     items: [
       "Refactored entire site from vanilla HTML to React with component-based architecture and client-side routing",
-      "Set up automated CI/CD pipeline with git hooks for instant Neocities deployment",
+      "Set up automated CI/CD pipeline with git hooks for streamlined static hosting deployment",
       "Migrated to Vite + Tailwind CSS v4 build system while preserving all legacy content",
     ],
   },

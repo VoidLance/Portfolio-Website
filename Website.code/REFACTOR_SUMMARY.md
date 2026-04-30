@@ -207,7 +207,7 @@ npm run preview
 
 ## Troubleshooting
 
-**"Page won't load on Neocities"**
+**"Page won't load on AWS S3 + CloudFront"**
 → See DEPLOYMENT.md for SPA configuration
 
 **"Styles look broken"**

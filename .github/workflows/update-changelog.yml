@@ -1,4 +1,4 @@
-name: Deploy to Neocities
+name: Post Push Repository Check
 
 on:
   push:
@@ -12,4 +12,4 @@ jobs:
     
     steps:
       - name: Deployment handled by local pre-push hook
-        run: echo "Deployment is handled by the local pre-push hook. No action needed here."
+        run: echo "Deployment is handled by the local AWS pre-push hook. No action needed here."
