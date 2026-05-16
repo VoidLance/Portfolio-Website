@@ -65,8 +65,8 @@ export default function CurseSemna() {
             </div>
           </div>
 
-          <h3 id="factions-second" className="text-xl font-bold text-indie-accent-pink mb-3 mt-8">Factions of the Second Era</h3>
-          <p className="text-sm text-indie-text-gray/70 italic mb-4">The extended loops</p>
+          <h3 id="factions-second" className="text-xl font-bold text-indie-accent-pink mb-3 mt-8">Factions of the Second Era (Part of the Fractured Eras)</h3>
+          <p className="text-sm text-indie-text-gray/70 italic mb-4">The extended loops, marking the beginning of the Fractured Eras</p>
           <div className="space-y-4">
             <div className="glass-darker p-4 rounded-lg border border-indie-accent-green/20">
               <h4 className="text-lg font-bold text-indie-accent-green mb-2">The Abyss</h4>
