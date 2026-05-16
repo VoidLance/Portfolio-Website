@@ -397,8 +397,8 @@ export default function CurseSemna() {
             }}
             aria-current={activeTab === tabKey ? 'page' : undefined}
             className={`px-4 py-2 rounded-t-lg font-bold text-sm transition-all duration-200 cursor-pointer inline-flex items-center gap-2 border-b-4 ${activeTab === tabKey
-                ? 'border-b-indie-accent-green text-indie-accent-green bg-indie-accent-green/10'
-                : 'border-b-transparent text-indie-text-light hover:text-indie-accent-green hover:bg-indie-accent-green/5'
+              ? 'border-b-indie-accent-green text-indie-accent-green bg-indie-accent-green/10'
+              : 'border-b-transparent text-indie-text-light hover:text-indie-accent-green hover:bg-indie-accent-green/5'
               }`}
           >
             {(() => {
