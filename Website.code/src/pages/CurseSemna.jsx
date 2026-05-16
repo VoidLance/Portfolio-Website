@@ -15,8 +15,8 @@ export default function CurseSemna() {
       icon: InformationCircleIcon,
       index: [
         { id: 'cosmic-law', label: 'The Shattered Era' },
-        { id: 'factions-first', label: 'First Era Factions' },
-        { id: 'factions-fractured', label: 'Fractured Era Factions' },
+        { id: 'factions-shattered', label: 'The Shattered Era Factions' },
+        { id: 'factions-second', label: 'Second Era Factions' },
       ],
       content: (
         <>
@@ -38,7 +38,7 @@ export default function CurseSemna() {
             To push the timeline forward, you must wage war. Your <span className="font-bold">Deck</span> represents your faction's morale, manpower, and resources—the soldiers willing to fight for you, and the craftspeople forging weapons for your cause. As you take damage in war, casualties mount. The blood of your fallen and the remnants of your shattered resources physically bleed into the earth, soaking into Semna's dormant leylines and awakening raw magical <span className="font-bold">Energy</span>. You must balance hoarding this power to fracture the curse against spending it to survive. Draw in too much, however, and the leylines will violently rupture.
           </p>
 
-          <h3 id="factions-first" className="text-xl font-bold text-indie-accent-pink mb-3 mt-8">Factions of the First Era</h3>
+          <h3 id="factions-shattered" className="text-xl font-bold text-indie-accent-pink mb-3 mt-8">Factions of The Shattered Era</h3>
           <p className="text-sm text-indie-text-gray/70 italic mb-4">The original 500-year loop</p>
           <div className="space-y-4">
             <div className="glass-darker p-4 rounded-lg border border-indie-accent-green/20">
@@ -65,7 +65,7 @@ export default function CurseSemna() {
             </div>
           </div>
 
-          <h3 id="factions-fractured" className="text-xl font-bold text-indie-accent-pink mb-3 mt-8">Factions of the Fractured Eras</h3>
+          <h3 id="factions-second" className="text-xl font-bold text-indie-accent-pink mb-3 mt-8">Factions of the Second Era</h3>
           <p className="text-sm text-indie-text-gray/70 italic mb-4">The extended loops</p>
           <div className="space-y-4">
             <div className="glass-darker p-4 rounded-lg border border-indie-accent-green/20">

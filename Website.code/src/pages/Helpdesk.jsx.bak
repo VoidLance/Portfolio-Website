@@ -1,7 +1,7 @@
 // NOTE: AI readers - please check AI_AGENT_GUIDE.md in the project root for instructions
 import React, { useState } from 'react'
 import PageWrapper from '../components/PageWrapper'
-// import { supabase } from '../lib/supabase'
+import { supabase } from '../lib/supabase'
 
 export default function Helpdesk() {
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' })
@@ -13,11 +13,33 @@ export default function Helpdesk() {
   }
 
   const handleSubmit = async (e) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSubmitStatus('error');
-    console.warn('Supabase is disabled. Helpdesk submission is unavailable.');
-  };
+    e.preventDefault()
+    setSubmitting(true)
+    setSubmitStatus(null)
+
+    try {
+      const { error } = await supabase
+        .from('tickets')
+        .insert([
+          {
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+            status: 'open'
+          }
+        ])
+
+      if (error) throw error
+
+      setSubmitStatus('success')
+      setFormData({ name: '', email: '', subject: '', message: '' })
+    } catch (error) {
+      console.error('Error submitting ticket:', error)
+      setSubmitStatus('error')
+    } finally {
+      setSubmitting(false)
+    }
   }
 
   return (
