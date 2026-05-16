@@ -39,10 +39,14 @@ type ResendInboundWebhook = {
 const supabaseUrl = Deno.env.get('SUPABASE_URL')
 const serviceRoleKey = Deno.env.get('SUPABASE_SERVICE_ROLE_KEY')
 const resendApiKey = Deno.env.get('RESEND_API_KEY')
-const replyToEmail = Deno.env.get('HELPDESK_REPLY_TO_EMAIL') || 'alistair.m.sweeting@gmail.com'
+const replyToEmail = Deno.env.get('HELPDESK_REPLY_TO_EMAIL')
 
 if (!supabaseUrl || !serviceRoleKey) {
-  console.warn('Missing SUPABASE_URL or SUPABASE_SERVICE_ROLE_KEY')
+  console.error('Missing required environment variables')
+}
+
+if (!replyToEmail) {
+  console.error('Missing HELPDESK_REPLY_TO_EMAIL environment variable')
 }
 
 const supabaseAdmin = createClient(supabaseUrl ?? '', serviceRoleKey ?? '')
@@ -53,7 +57,6 @@ const getResendEmailContent = async (emailId: string) => {
   }
 
   try {
-    console.log('Calling Resend API for email_id:', emailId)
     // Use the correct Resend receiving API endpoint: GET /emails/receiving/:id
     const response = await fetch(`https://api.resend.com/emails/receiving/${emailId}`, {
       method: 'GET',
@@ -62,19 +65,15 @@ const getResendEmailContent = async (emailId: string) => {
       },
     })
 
-    console.log('Resend API response status:', response.status)
-
     if (!response.ok) {
-      const errorText = await response.text()
-      console.error(`Failed to fetch email content: ${response.status} - ${errorText}`)
+      console.error(`Failed to fetch email content: ${response.status}`)
       return null
     }
 
     const data = await response.json()
-    console.log('Email content fetched successfully, text length:', data?.text?.length || 0)
     return data
   } catch (error) {
-    console.error('Error fetching email content:', error instanceof Error ? error.message : error)
+    console.error('Error fetching email content')
     return null
   }
 }
@@ -173,10 +172,8 @@ serve(async (req: Request) => {
 
       const { from, subject, email_id, message_id } = webhook.data
       
-      console.log('Email fields extracted:', { from, subject, email_id, message_id })
-      
       if (!from || !subject || !email_id) {
-        console.error('Missing required fields - from:', from, 'subject:', subject, 'email_id:', email_id)
+        console.error('Missing required fields in webhook data')
         return new Response(JSON.stringify({ error: 'Missing from, subject, or email_id in webhook' }), {
           status: 400,
           headers: { ...corsHeaders, 'Content-Type': 'application/json' },
@@ -195,7 +192,6 @@ serve(async (req: Request) => {
       const ticketId = ticketMatch[1]
       
       // Fetch the full email content from Resend
-      console.log('Fetching email content for:', email_id)
       const emailContent = await getResendEmailContent(email_id)
       const emailBody = emailContent?.text || emailContent?.html || `[Email received from ${from}]`
 
@@ -228,7 +224,7 @@ serve(async (req: Request) => {
           })
         }
       } catch (notifyError) {
-        console.error('Failed to send assignee update:', notifyError instanceof Error ? notifyError.message : notifyError)
+        console.error('Failed to send assignee update')
       }
 
       return new Response(JSON.stringify({ ok: true }), {

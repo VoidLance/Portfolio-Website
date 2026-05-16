@@ -7,15 +7,15 @@ export default function Games() {
     <PageWrapper>
       <h1 className="text-4xl text-indie-accent-green text-center mb-4">Games</h1>
       <hr className="border-0 border-t border-indie-accent-green/50 my-4" />
-      
+
       <article className="text-indie-text-gray">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Curse of Semna */}
+          {/* Semna: Shattered Cycles */}
           <div className="glass-darker p-6 rounded-lg border-2 border-indie-accent-green/50">
-            <h2 className="text-2xl text-indie-accent-pink font-bold mb-3">Curse of Semna</h2>
-            <p className="mb-4">A strategic trading card game set in a fantasy world cursed by the goddess Semna. Players are immortal strategists summoned to break the curse and change history.</p>
+            <h2 className="text-2xl text-indie-accent-pink font-bold mb-3">Semna: Shattered Cycles</h2>
+            <p className="mb-4">A strategic trading card game set in a world condemned to an eternal 500-year loop. As an immortal Strategist, wage war across fractured timelines to break the curse and rewrite history.</p>
             <p className="text-sm text-indie-text-gray/70 italic mb-4">Status: Work in Progress</p>
-            <a 
+            <a
               href="/#/games/curse-semna"
               className="inline-block bg-indie-accent-green text-indie-bg-main px-6 py-2 rounded-lg font-bold hover:bg-[#1cdba2] transition-colors shadow-indie"
             >
@@ -28,7 +28,7 @@ export default function Games() {
             <h2 className="text-2xl text-indie-accent-pink font-bold mb-3">Dungeon Crawler</h2>
             <p className="mb-4">An interactive dungeon crawler game built with JavaScript. Navigate through dungeons, battle enemies, and collect treasure in this classic adventure.</p>
             <p className="text-sm text-indie-text-gray/70 italic mb-4">Status: Completed</p>
-            <a 
+            <a
               href="/#/games/dungeon-crawler"
               className="inline-block bg-indie-accent-green text-indie-bg-main px-6 py-2 rounded-lg font-bold hover:bg-[#1cdba2] transition-colors shadow-indie"
             >

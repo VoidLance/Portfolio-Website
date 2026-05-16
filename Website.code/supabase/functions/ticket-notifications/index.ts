@@ -78,7 +78,6 @@ const handleDailyDigest = async (payload: NotificationPayload) => {
 
   // Don't send email if no tickets
   if (!tickets || tickets.length === 0) {
-    console.log('No tickets created today, skipping digest email')
     return { ok: true, ticketsCount: 0 }
   }
 
@@ -149,8 +148,8 @@ serve(async (req: Request) => {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })
   } catch (error) {
-    console.error('Notification error:', error)
-    return new Response(JSON.stringify({ error: error instanceof Error ? error.message : 'Unknown error' }), {
+    console.error('Notification processing failed')
+    return new Response(JSON.stringify({ error: 'Internal server error' }), {
       status: 500,
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
     })

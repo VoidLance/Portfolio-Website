@@ -3,6 +3,28 @@
 
 export const updatesData = [
   {
+    date: "16/05/26",
+    title: "Semna: Shattered Cycles – Full Rulebook & Lore Overhaul",
+    items: [
+      "Renamed the game from \'Curse of Semna\' to \'Semna: Shattered Cycles\' across navigation, the Games page, and the rulebook page itself",
+      "Rewrote all game content with the official lore: cosmic law, The Shattered Era, the Strategists & Fractured Cycles mechanic, and full faction profiles for 7 factions across two eras",
+      "Replaced the old simplified win conditions (35 Energy loss) with the full tri-condition system: Historical Relapse, Energy Victory (30–34), Overload Loss (35+), and Effect Victory, with simultaneous resolution priority",
+      "Overhauled deckbuilding rules: 50-card main deck, neutral faction cards, updated Artefact deck rules",
+      "Rewrote the full turn structure (6 stages), combat, and energy/leyline bleeding mechanic",
+      "Added comprehensive Keywords section: Ambush, Armour, Breach, Cleave, Decaying, Energise, Guardian, Heal, Level Down, Manifest, Sacrifice, Shift"
+    ]
+  },
+  {
+    date: "16/05/26",
+    title: "Security Hardening - No Secrets Exposed",
+    items: [
+      "Removed sensitive data from console logs in Supabase Edge Functions to prevent accidental exposure of email addresses and message IDs",
+      "Eliminated hardcoded personal email address fallback that could expose PII, now requires explicit environment variable configuration",
+      "Verified client-side code only uses Supabase anon key, never exposing service role keys to browsers",
+      "Added environment variable documentation for Supabase functions with security best practices"
+    ]
+  },
+  {
     date: "30/04/26",
     title: "Legacy Hosting Cleanup + Git Push Fix",
     items: [
