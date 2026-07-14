@@ -6,9 +6,9 @@ export const updatesData = [
     date: "14/07/26",
     title: "Software Menu GitHub Shortcuts",
     items: [
-      "Moved the highlighted project shortcuts into the Software dropdown in the top navigation so employers can see key GitHub repos before opening the Software page.",
-      "Replaced the mistaken non-owned showcase items with a curated set of repository links spanning React, PHP, Python, SQL, and JavaScript work.",
-      "Removed the extra featured card section from the Software page so the page now stays focused on the live GitHub repository list.",
+      "Added dynamic project links to the Software page for all GitHub repositories under the VoidLance account, with expandable sections for each language and stack",
+      "Added highlighted shortcut links to the Software menu for the most impressive projects",
+      "Restored functionality of the Software menu to direct straight to the Software page with the GitHub list.",
     ]
   },
   {

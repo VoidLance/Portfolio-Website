@@ -144,12 +144,23 @@ export default function Navigation() {
           onMouseEnter={() => setOpenDropdown('software')}
           onMouseLeave={() => setOpenDropdown(null)}
         >
-          <button
-            className="cursor-pointer text-indie-text-light w-full md:w-auto flex justify-between items-center md:justify-start gap-2 text-base md:text-base"
-            onClick={() => toggleDropdown('software')}
-          >
-            Software <span className="md:hidden">{openDropdown === 'software' ? '▼' : '▶'}</span><span className="hidden md:inline">ᐁ</span>
-          </button>
+          <div className="flex w-full md:w-auto items-center justify-between md:justify-start gap-2">
+            <NavLink
+              to="/software"
+              onClick={closeMobileMenu}
+              className="cursor-pointer text-indie-text-light block md:inline text-base md:text-base"
+            >
+              Software
+            </NavLink>
+            <button
+              type="button"
+              className="cursor-pointer text-indie-text-light flex-shrink-0 md:flex justify-between items-center md:justify-start gap-2 text-base md:text-base"
+              onClick={() => toggleDropdown('software')}
+              aria-label="Toggle Software menu"
+            >
+              <span className="md:hidden">{openDropdown === 'software' ? '▼' : '▶'}</span><span className="hidden md:inline">ᐁ</span>
+            </button>
+          </div>
           <ul className={`dropdown w-full md:w-auto md:relative md:top-0 md:left-0 ${openDropdown === 'software' ? 'opacity-100 visible block md:absolute md:top-full md:left-0' : 'hidden md:opacity-0 md:invisible md:absolute'}`}>
             <li className="dropdown-item">
               <NavLink to="/software" onClick={closeMobileMenu} className="block text-base">Software</NavLink>
