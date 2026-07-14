@@ -2,6 +2,39 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 
+const FEATURED_SOFTWARE_REPOS = [
+  {
+    label: 'Portfolio Website',
+    href: 'https://github.com/VoidLance/Portfolio-Website',
+    description: 'React and deployment workflow',
+  },
+  {
+    label: 'React Helpdesk',
+    href: 'https://github.com/VoidLance/course-files-javascript-react-helpdesk',
+    description: 'React and TypeScript',
+  },
+  {
+    label: 'PHP Task Management',
+    href: 'https://github.com/VoidLance/course-files-php-taskmanagementsystem',
+    description: 'PHP backend work',
+  },
+  {
+    label: 'Python Library Inventory',
+    href: 'https://github.com/VoidLance/course-files-python-library-inventory-management',
+    description: 'Python application logic',
+  },
+  {
+    label: 'SQL Final Projects',
+    href: 'https://github.com/VoidLance/course-files-sql-final-projects',
+    description: 'SQL and database design',
+  },
+  {
+    label: 'JavaScript React Movie Review',
+    href: 'https://github.com/VoidLance/course-files-javascript-react-movie-review-app',
+    description: 'React UI and API work',
+  },
+]
+
 export default function Navigation() {
   const [openDropdown, setOpenDropdown] = useState(null)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
@@ -121,14 +154,24 @@ export default function Navigation() {
             <li className="dropdown-item">
               <NavLink to="/software" onClick={closeMobileMenu} className="block text-base">Software</NavLink>
             </li>
-            <li className="dropdown-item">
-              <a href="/Software/Movie-Review-App/index.html" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block text-base">Movie Review App</a>
-            </li>
-            <li className="dropdown-item">
-              <a href="/Software/Personal-Website/index.html" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block text-base">Personal Website</a>
-            </li>
-            <li className="dropdown-item">
-              <a href="/Software/Pokemon-Team-Finder/index.html" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block text-base">Pokemon Team Finder</a>
+            <li className="dropdown-item px-4 py-2">
+              <div className="text-[11px] uppercase tracking-[0.2em] text-indie-accent-green/60 mb-2">Featured GitHub Projects</div>
+              <ul className="space-y-1">
+                {FEATURED_SOFTWARE_REPOS.map(repo => (
+                  <li key={repo.href} className="rounded-md hover:bg-white/5 transition-colors">
+                    <a
+                      href={repo.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onClick={closeMobileMenu}
+                      className="block px-2 py-2 text-sm text-indie-text-light"
+                    >
+                      <span className="block font-medium">{repo.label}</span>
+                      <span className="block text-xs text-indie-text-gray/60">{repo.description}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </li>
           </ul>
         </li>

@@ -32,51 +32,6 @@ const CATEGORY_PRIORITY = [
   'Other',
 ]
 
-const FEATURED_GITHUB_PROJECTS = [
-  {
-    repoName: 'Portfolio-Website',
-    title: 'Portfolio Website',
-    focus: 'JavaScript · React',
-    description: 'The site itself, showing a modern React build, static hosting, and deployment workflow.',
-  },
-  {
-    repoName: 'actions-for-nautilus',
-    title: 'Actions for Nautilus',
-    focus: 'JavaScript · Desktop extension',
-    description: 'A GNOME Files extension that adds custom actions to file selections.',
-  },
-  {
-    repoName: 'streamdeck-elite',
-    title: 'Stream Deck Elite',
-    focus: 'Plugin tooling',
-    description: 'An Elgato Stream Deck plugin for Elite Dangerous.',
-  },
-  {
-    repoName: 'course-files-javascript-react-helpdesk',
-    title: 'React Helpdesk',
-    focus: 'TypeScript · React',
-    description: 'A helpdesk application that demonstrates component structure, state flow, and UI workflow.',
-  },
-  {
-    repoName: 'course-files-php-taskmanagementsystem',
-    title: 'PHP Task Management System',
-    focus: 'PHP',
-    description: 'Server-side task management with CRUD workflows and data handling in PHP.',
-  },
-  {
-    repoName: 'course-files-python-library-inventory-management',
-    title: 'Python Library Inventory',
-    focus: 'Python',
-    description: 'Inventory management and application logic implemented in Python.',
-  },
-  {
-    repoName: 'course-files-sql-final-projects',
-    title: 'SQL Final Projects',
-    focus: 'SQL · Python',
-    description: 'Database-focused work showing querying, schema design, and data analysis.',
-  },
-]
-
 function inferCategory(repo) {
   const searchText = `${repo.name ?? ''} ${repo.description ?? ''} ${repo.language ?? ''}`
 
@@ -151,10 +106,6 @@ function groupReposByCategory(repos) {
     }))
 }
 
-function buildFeaturedProjectUrl(repoName) {
-  return `https://github.com/${GITHUB_OWNER}/${repoName}`
-}
-
 export default function Software() {
   const [repos, setRepos] = useState([])
   const [loading, setLoading] = useState(true)
@@ -224,57 +175,6 @@ export default function Software() {
       <hr className="border-0 border-t border-indie-accent-green/50 my-4" />
 
       <article className="text-indie-text-gray">
-        <section className="mt-8">
-          <div className="mb-4 flex flex-col gap-2">
-            <h2 className="text-xl text-indie-accent-green font-bold">Featured GitHub Projects</h2>
-            <p className="text-sm text-indie-text-gray/60">
-              Curated repositories that span web apps, desktop extensions, PHP, Python, SQL, and tooling.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
-            {FEATURED_GITHUB_PROJECTS.map(project => {
-              const matchingRepo = repos.find(repo => repo.name === project.repoName)
-              const updatedAt = matchingRepo?.pushed_at || matchingRepo?.updated_at
-              const stars = matchingRepo?.stargazers_count || 0
-
-              return (
-                <a
-                  key={project.repoName}
-                  href={buildFeaturedProjectUrl(project.repoName)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="glass-darker p-5 rounded-lg border border-indie-accent-green/20 hover:border-indie-accent-green/50 transition-colors group"
-                >
-                  <div className="flex items-start justify-between gap-3 mb-2">
-                    <h3 className="text-lg text-indie-text-light font-bold group-hover:text-indie-accent-green transition-colors">
-                      {project.title}
-                    </h3>
-                    {stars > 0 && (
-                      <span className="text-[11px] text-indie-text-gray/60 whitespace-nowrap">
-                        ★ {stars}
-                      </span>
-                    )}
-                  </div>
-
-                  <div className="text-xs uppercase tracking-[0.18em] text-indie-accent-green/70 mb-2">
-                    {project.focus}
-                  </div>
-
-                  <p className="text-sm text-indie-text-gray/75 mb-4 min-h-[3.5rem]">
-                    {project.description}
-                  </p>
-
-                  <div className="text-xs text-indie-text-gray/55 flex items-center justify-between gap-3">
-                    <span>GitHub repo</span>
-                    <span>{updatedAt ? `Updated ${formatPushDate(updatedAt)}` : 'Live on GitHub'}</span>
-                  </div>
-                </a>
-              )
-            })}
-          </div>
-        </section>
-
         <div className="mt-12 pt-8 border-t border-indie-accent-green/20">
           <div className="mb-4 flex flex-col gap-2">
             <h2 className="text-xl text-indie-accent-green font-bold">All GitHub Projects</h2>
