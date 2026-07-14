@@ -27,10 +27,10 @@ export const updatesData = [
     date: "16/05/26",
     title: "Security Hardening - No Secrets Exposed",
     items: [
-      "Removed sensitive data from console logs in Supabase Edge Functions to prevent accidental exposure of email addresses and message IDs",
+      "Removed sensitive data from serverless function logs to prevent accidental exposure of email addresses and message IDs",
       "Eliminated hardcoded personal email address fallback that could expose PII, now requires explicit environment variable configuration",
-      "Verified client-side code only uses Supabase anon key, never exposing service role keys to browsers",
-      "Added environment variable documentation for Supabase functions with security best practices"
+      "Verified client-side code only uses public-safe configuration values, never exposing privileged service credentials to browsers",
+      "Added environment variable documentation for serverless functions with security best practices"
     ]
   },
   {
@@ -75,7 +75,7 @@ export const updatesData = [
     title: "AI Agent Instructions & Code Quality",
     items: [
       "Added critical developer workflow instructions: AI agents now understand it's never a cache issue - changes are always hard refreshed with dev server auto-reload",
-      "Fixed all TypeScript errors in Supabase edge functions with proper Deno runtime configuration",
+      "Fixed TypeScript errors in serverless backend functions with proper runtime configuration",
       "Added AI agent instruction comments to every code file directing to project guidelines",
     ],
   },
@@ -99,9 +99,9 @@ export const updatesData = [
     date: "24/02/26",
     title: "Full-Stack Helpdesk System",
     items: [
-      "Built custom ticket management system with Supabase backend, real-time email notifications, and Kanban-style admin dashboard",
+      "Built custom ticket management system with AWS backend services, real-time email notifications, and Kanban-style admin dashboard",
       "Implemented automated reply threading and internal notes - emails route through custom domain with proper Gmail integration",
-      "Secured with Row Level Security policies and authentication, optimized deployment from 3+ minutes to under 30 seconds",
+      "Secured with authentication and access controls, optimized deployment from 3+ minutes to under 30 seconds",
     ],
   },
   {

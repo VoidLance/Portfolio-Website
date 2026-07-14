@@ -81,7 +81,7 @@ export default function Home() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
                 <div className="glass-dark rounded-lg p-3 border border-indie-accent-green/35">
                   <h4 className="text-indie-accent-green font-semibold text-sm uppercase tracking-wide mb-2">Languages</h4>
-                  <p className="text-sm text-indie-text-light">JavaScript (React), HTML, CSS, SQL (Supabase), YAML (AWS SAM)</p>
+                  <p className="text-sm text-indie-text-light">JavaScript (React), HTML, CSS, JSON, YAML (AWS SAM)</p>
                 </div>
                 <div className="glass-dark rounded-lg p-3 border border-indie-accent-green/35">
                   <h4 className="text-indie-accent-green font-semibold text-sm uppercase tracking-wide mb-2">Core Stack and Tools</h4>
@@ -105,7 +105,7 @@ export default function Home() {
                   <rect x="40" y="70" width="220" height="92" rx="12" fill="#241445" stroke="#43ea7c" strokeWidth="2" />
                   <text x="150" y="102" textAnchor="middle" fill="#fceaff" fontSize="18" fontWeight="700">Local Codebase</text>
                   <text x="150" y="128" textAnchor="middle" fill="#e6e6e6" fontSize="14">React, JSX, Tailwind</text>
-                  <text x="150" y="146" textAnchor="middle" fill="#e6e6e6" fontSize="14">Helpdesk + Supabase</text>
+                  <text x="150" y="146" textAnchor="middle" fill="#e6e6e6" fontSize="14">Helpdesk + AWS services</text>
 
                   <rect x="330" y="70" width="210" height="92" rx="12" fill="#241445" stroke="#43ea7c" strokeWidth="2" />
                   <text x="435" y="102" textAnchor="middle" fill="#fceaff" fontSize="18" fontWeight="700">Build Pipeline</text>
@@ -133,9 +133,9 @@ export default function Home() {
                   <text x="180" y="438" textAnchor="middle" fill="#e6e6e6" fontSize="14">DynamoDB + Cognito + SES</text>
 
                   <rect x="370" y="370" width="220" height="92" rx="12" fill="#13092d" stroke="#ed64f5" strokeWidth="2" />
-                  <text x="480" y="398" textAnchor="middle" fill="#fceaff" fontSize="17" fontWeight="700">Supabase</text>
-                  <text x="480" y="420" textAnchor="middle" fill="#e6e6e6" fontSize="14">Postgres data</text>
-                  <text x="480" y="438" textAnchor="middle" fill="#e6e6e6" fontSize="14">Edge functions</text>
+                  <text x="480" y="398" textAnchor="middle" fill="#fceaff" fontSize="17" fontWeight="700">AWS Data Layer</text>
+                  <text x="480" y="420" textAnchor="middle" fill="#e6e6e6" fontSize="14">DynamoDB ticket data</text>
+                  <text x="480" y="438" textAnchor="middle" fill="#e6e6e6" fontSize="14">Lambda business logic</text>
 
                   <line x1="260" y1="116" x2="330" y2="116" stroke="#43ea7c" strokeWidth="3" markerEnd="url(#arrow-head)" />
                   <line x1="540" y1="116" x2="610" y2="116" stroke="#43ea7c" strokeWidth="3" markerEnd="url(#arrow-head)" />
