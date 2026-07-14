@@ -68,9 +68,8 @@ Portfolio-Website/
 │   ├── package.json
 │   ├── vite.config.js
 │   └── tailwind.config.js
-├── Games/                    ← Static game assets
-├── Software/                 ← Static software projects
-└── Images/                   ← Static images
+├── README.md                 ← Repository overview
+└── AI_AGENT_GUIDE.md         ← This onboarding guide
 ```
 
 ## 🔄 Typical AI Agent Workflow
@@ -78,7 +77,7 @@ Portfolio-Website/
 1. Read `.cursorrules` at conversation start
 2. Understand task requirements
 3. Make code changes
-4. **Update `Updates.jsx` with changelog entry** ← Don't forget!
+4. **Update `Website.code/src/data/updatesData.js` with changelog entry** ← Don't forget!
 5. Test changes if applicable
 6. Summarize work completed
 
@@ -114,5 +113,5 @@ A: DD/MM/YY (e.g., '12/01/26' for January 12, 2026)
 
 ---
 
-**Updated**: 12/01/26  
+**Updated**: 14/07/26  
 **Applies to**: All AI agents (Claude, GitHub Copilot, Cursor, etc.)

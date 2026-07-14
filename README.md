@@ -1,64 +1,77 @@
-# My Portfolio Website
+# Portfolio Website
 
-My modern portfolio website showcasing my projects, skills, and experience.
+Personal portfolio website for showcasing projects, writing, games, and software work.
 
-> **⚠️ IMPORTANT FOR AI AGENTS**: Please read [`.cursorrules`](/.cursorrules) before making any changes. It contains mandatory requirements including changelog updates.
+> ⚠️ Important for AI agents: read [`.cursorrules`](./.cursorrules) before making changes. It includes mandatory workflow requirements.
 
 ## Features
 
-- Responsive design
-- My project showcase
-- Skills overview
-- Contact information
+- Responsive, mobile-first interface across portfolio pages
+- Single-page app navigation with React Router for fast transitions
+- Dedicated portfolio areas for games, software, writing, and 3D work
+- Live GitHub project integration for software listings
+- Integrated helpdesk flow with AWS-backed ticket handling
+- Automated AWS deployment workflow for fast publish cycles
+
+## Repository Layout
+
+- `Website.code/`: Main React application (active source of truth)
+- `.github/`: Repository-level GitHub and Copilot instructions
+- `AI_AGENT_GUIDE.md`: Agent onboarding notes for this repository
 
 ## Getting Started
-If, for whatever reason, you want to run this website yourself, you can do it using:
 
 ### Prerequisites
 
-- Node.js (or my relevant runtime)
+- Node.js 18+
 
-### Installation
+### Install
 
 ```bash
-git clone https://github.com/myusername/Portfolio-Website.git
-cd Portfolio-Website
+git clone https://github.com/VoidLance/Portfolio-Website.git
+cd Portfolio-Website/Website.code
 npm install
 ```
 
-### Development
+### Run Locally
 
 ```bash
 npm run dev
 ```
 
-### Deployment
+## Build and Deploy
 
-This repository is configured to deploy to AWS S3 + CloudFront using a git pre-push hook. When I push changes to GitHub, the hook automatically:
-
-1. Builds the React app with Vite (creates optimized production bundle)
-2. Syncs the dist/ folder contents to S3
-3. Invalidates CloudFront cache for updated paths
+From `Website.code/`:
 
 ```bash
-git push origin main  # Automatically builds and deploys!
+npm run build
+npm run deploy:s3
 ```
 
-## Deployment Details
+The deployment target is AWS S3 + CloudFront.
 
-- **Local**: I make all my changes in this repository (React source in Website.code/)
-- **Build**: Git hook runs `npm run build` to create optimized production files
-- **Live**: Built files from dist/ automatically sync to AWS S3 + CloudFront at alistairsweeting.online
-- **Status**: My GitHub repo and AWS-hosted site stay in sync with every push
-- **Architecture**: React SPA with HashRouter for static hosting compatibility
+## Architecture Summary
 
-## Technologies
+- Frontend: React + React Router + Tailwind CSS
+- Build tooling: Vite
+- Hosting: S3 + CloudFront
+- Platform services: Route 53 + ACM + CloudWatch
+- Helpdesk backend: API Gateway + Lambda + DynamoDB + Cognito + SES
 
-- HTML5
-- CSS3
-- JavaScript
-- AWS S3 + CloudFront
+## Engineering Highlights
+
+- End-to-end ownership: frontend UI, backend APIs, infrastructure, and deployment
+- Production cloud architecture on AWS with CDN delivery and managed platform services
+- Serverless backend design for support workflows (authentication, ticket lifecycle, notifications)
+- Operational maturity: cache invalidation flow, deployment automation, and monitoring hooks
+- Maintainable project structure with reusable components and documented workflows
+
+## Additional Docs
+
+- [`Website.code/README.md`](./Website.code/README.md)
+- [`Website.code/DEPLOYMENT.md`](./Website.code/DEPLOYMENT.md)
+- [`Website.code/HELPDESK_AWS_SETUP.md`](./Website.code/HELPDESK_AWS_SETUP.md)
 
 ## License
 
-MIT License - see LICENSE file for details
+MIT License. See [LICENSE](./LICENSE).

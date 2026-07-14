@@ -2,6 +2,7 @@
 // Shared updates data used by both Sidebar and Updates page components
 
 export const updatesData = [
+  
   {
     date: "14/07/26",
     title: "Software Menu GitHub Shortcuts",
