@@ -22,25 +22,6 @@ Parameters:
     Type: String
     Default: https://alistairsweeting.online/#/helpdesk/admin
     Description: URL to the admin dashboard, included in notification emails.
-  AdminEmail:
-    Type: String
-    Description: Admin login email for the helpdesk dashboard.
-  AdminName:
-    Type: String
-    Default: Admin
-    Description: Display name for the initial helpdesk admin user.
-  AdminPasswordSha256:
-    Type: String
-    NoEcho: true
-    Description: SHA-256 hash of pepper:password for the initial helpdesk admin user.
-  AdminPasswordPepper:
-    Type: String
-    NoEcho: true
-    Description: Extra secret appended before hashing admin passwords.
-  AdminJwtSecret:
-    Type: String
-    NoEcho: true
-    Description: Secret used to sign helpdesk admin session tokens.
 
 Resources:
   HelpdeskTable:
@@ -72,6 +53,40 @@ Resources:
         AllowOrigins:
           - '*'
 
+  HelpdeskAdminUserPool:
+    Type: AWS::Cognito::UserPool
+    Properties:
+      UserPoolName: portfolio-helpdesk-admins
+      UsernameAttributes:
+        - email
+      AutoVerifiedAttributes:
+        - email
+      Policies:
+        PasswordPolicy:
+          MinimumLength: 10
+          RequireLowercase: true
+          RequireUppercase: true
+          RequireNumbers: true
+          RequireSymbols: false
+      Schema:
+        - Name: email
+          Mutable: true
+          Required: true
+        - Name: name
+          Mutable: true
+          Required: false
+
+  HelpdeskAdminUserPoolClient:
+    Type: AWS::Cognito::UserPoolClient
+    Properties:
+      ClientName: portfolio-helpdesk-admin-client
+      UserPoolId: !Ref HelpdeskAdminUserPool
+      GenerateSecret: false
+      ExplicitAuthFlows:
+        - ALLOW_USER_PASSWORD_AUTH
+        - ALLOW_REFRESH_TOKEN_AUTH
+      PreventUserExistenceErrors: ENABLED
+
   HelpdeskApiFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -83,11 +98,7 @@ Resources:
           HELP_DESK_FROM_EMAIL: !Ref HelpdeskFromEmail
           HELP_DESK_NOTIFICATION_EMAILS: !Ref HelpdeskNotificationEmails
           HELP_DESK_APP_URL: !Ref HelpdeskAppUrl
-          ADMIN_EMAIL: !Ref AdminEmail
-          ADMIN_NAME: !Ref AdminName
-          ADMIN_PASSWORD_SHA256: !Ref AdminPasswordSha256
-          ADMIN_PASSWORD_PEPPER: !Ref AdminPasswordPepper
-          ADMIN_JWT_SECRET: !Ref AdminJwtSecret
+          COGNITO_CLIENT_ID: !Ref HelpdeskAdminUserPoolClient
       Policies:
         - DynamoDBCrudPolicy:
             TableName: !Ref HelpdeskTable
@@ -97,6 +108,11 @@ Resources:
                 - ses:SendEmail
                 - ses:SendRawEmail
               Resource: '*'
+            - Effect: Allow
+              Action:
+                - cognito-idp:InitiateAuth
+                - cognito-idp:GetUser
+              Resource: !GetAtt HelpdeskAdminUserPool.Arn
       Events:
         Root:
           Type: HttpApi
@@ -118,3 +134,9 @@ Outputs:
   HelpdeskTableName:
     Description: DynamoDB table storing tickets and replies.
     Value: !Ref HelpdeskTable
+  HelpdeskAdminUserPoolId:
+    Description: Cognito User Pool ID for helpdesk admins.
+    Value: !Ref HelpdeskAdminUserPool
+  HelpdeskAdminUserPoolClientId:
+    Description: Cognito App Client ID for helpdesk admin login.
+    Value: !Ref HelpdeskAdminUserPoolClient

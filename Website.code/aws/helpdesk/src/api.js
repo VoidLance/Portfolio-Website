@@ -2,9 +2,11 @@ import crypto from 'node:crypto'
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb'
 import { DynamoDBDocumentClient, GetCommand, PutCommand, QueryCommand, ScanCommand, UpdateCommand } from '@aws-sdk/lib-dynamodb'
 import { SESv2Client, SendEmailCommand } from '@aws-sdk/client-sesv2'
+import { CognitoIdentityProviderClient, GetUserCommand, InitiateAuthCommand } from '@aws-sdk/client-cognito-identity-provider'
 
 const dynamo = DynamoDBDocumentClient.from(new DynamoDBClient({}))
 const ses = new SESv2Client({})
+const cognito = new CognitoIdentityProviderClient({})
 
 const tableName = process.env.HELP_DESK_TABLE_NAME
 const fromEmail = process.env.HELP_DESK_FROM_EMAIL
@@ -12,18 +14,8 @@ const notificationEmails = (process.env.HELP_DESK_NOTIFICATION_EMAILS || '')
   .split(',')
   .map((value) => value.trim())
   .filter(Boolean)
-const adminPasswordPepper = process.env.ADMIN_PASSWORD_PEPPER || ''
-const adminJwtSecret = process.env.ADMIN_JWT_SECRET || ''
 const appUrl = process.env.HELP_DESK_APP_URL || 'https://alistairsweeting.online/#/helpdesk/admin'
-const adminUsers = process.env.ADMIN_EMAIL
-  ? [
-      {
-        email: process.env.ADMIN_EMAIL,
-        name: process.env.ADMIN_NAME || process.env.ADMIN_EMAIL,
-        passwordSha256: process.env.ADMIN_PASSWORD_SHA256 || '',
-      },
-    ]
-  : []
+const cognitoClientId = process.env.COGNITO_CLIENT_ID || ''
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -54,72 +46,27 @@ function parseJson(body) {
   }
 }
 
-function base64UrlEncode(input) {
-  return Buffer.from(input)
-    .toString('base64')
-    .replace(/=/g, '')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-}
-
-function base64UrlDecode(input) {
-  const normalized = input.replace(/-/g, '+').replace(/_/g, '/')
-  const padding = 4 - (normalized.length % 4 || 4)
-  return Buffer.from(normalized + '='.repeat(padding), 'base64').toString('utf8')
-}
-
-function sha256(input) {
-  return crypto.createHash('sha256').update(input).digest('hex')
-}
-
-function signToken(payload) {
-  const header = base64UrlEncode(JSON.stringify({ alg: 'HS256', typ: 'JWT' }))
-  const body = base64UrlEncode(JSON.stringify(payload))
-  const signature = crypto
-    .createHmac('sha256', adminJwtSecret)
-    .update(`${header}.${body}`)
-    .digest('base64')
-    .replace(/=/g, '')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-
-  return `${header}.${body}.${signature}`
-}
-
-function verifyToken(token) {
-  if (!token || !adminJwtSecret) {
-    throw new Error('Missing admin token.')
-  }
-
-  const [header, body, signature] = token.split('.')
-  const expectedSignature = crypto
-    .createHmac('sha256', adminJwtSecret)
-    .update(`${header}.${body}`)
-    .digest('base64')
-    .replace(/=/g, '')
-    .replace(/\+/g, '-')
-    .replace(/\//g, '_')
-
-  if (expectedSignature !== signature) {
-    throw new Error('Invalid token signature.')
-  }
-
-  const payload = JSON.parse(base64UrlDecode(body))
-  if (!payload.exp || payload.exp * 1000 < Date.now()) {
-    throw new Error('Token expired.')
-  }
-
-  return payload
-}
-
-function requireAdmin(event) {
+async function requireAdmin(event) {
   const authHeader = event.headers?.authorization || event.headers?.Authorization
   if (!authHeader?.startsWith('Bearer ')) {
     throw Object.assign(new Error('Missing authorization header.'), { statusCode: 401 })
   }
 
   try {
-    return verifyToken(authHeader.slice('Bearer '.length))
+    const accessToken = authHeader.slice('Bearer '.length)
+    const userResult = await cognito.send(new GetUserCommand({
+      AccessToken: accessToken,
+    }))
+
+    const emailAttribute = (userResult.UserAttributes || []).find((attribute) => attribute.Name === 'email')
+    const nameAttribute = (userResult.UserAttributes || []).find((attribute) => attribute.Name === 'name')
+
+    return {
+      sub: userResult.Username,
+      email: emailAttribute?.Value || userResult.Username,
+      name: nameAttribute?.Value || emailAttribute?.Value || userResult.Username,
+      accessToken,
+    }
   } catch (error) {
     throw Object.assign(new Error(error.message || 'Unauthorized'), { statusCode: 401 })
   }
@@ -246,30 +193,49 @@ async function createTicket(body) {
 }
 
 async function login(body) {
+  if (!cognitoClientId) {
+    return response(500, { error: 'COGNITO_CLIENT_ID is not configured.' })
+  }
+
   const email = String(body.email || '').trim().toLowerCase()
   const password = String(body.password || '')
-  const admin = adminUsers.find((candidate) => candidate.email.toLowerCase() === email)
 
-  if (!admin) {
+  if (!email || !password) {
+    return response(400, { error: 'Email and password are required.' })
+  }
+
+  let authResult
+  try {
+    const cognitoResult = await cognito.send(new InitiateAuthCommand({
+      AuthFlow: 'USER_PASSWORD_AUTH',
+      ClientId: cognitoClientId,
+      AuthParameters: {
+        USERNAME: email,
+        PASSWORD: password,
+      },
+    }))
+
+    authResult = cognitoResult.AuthenticationResult
+  } catch (error) {
     return response(401, { error: 'Invalid email or password.' })
   }
 
-  const attemptedHash = sha256(`${adminPasswordPepper}:${password}`)
-  if (attemptedHash !== admin.passwordSha256) {
+  if (!authResult?.AccessToken) {
     return response(401, { error: 'Invalid email or password.' })
   }
 
-  const token = signToken({
-    sub: admin.email,
-    name: admin.name || admin.email,
-    exp: Math.floor(Date.now() / 1000) + 60 * 60 * 8,
-  })
+  const userResult = await cognito.send(new GetUserCommand({
+    AccessToken: authResult.AccessToken,
+  }))
+
+  const emailAttribute = (userResult.UserAttributes || []).find((attribute) => attribute.Name === 'email')
+  const nameAttribute = (userResult.UserAttributes || []).find((attribute) => attribute.Name === 'name')
 
   return response(200, {
-    token,
+    token: authResult.AccessToken,
     admin: {
-      email: admin.email,
-      name: admin.name || admin.email,
+      email: emailAttribute?.Value || email,
+      name: nameAttribute?.Value || emailAttribute?.Value || email,
     },
   })
 }
@@ -398,7 +364,7 @@ async function addReply(ticketId, body, admin) {
     entityType: 'reply',
     id: replyId,
     ticketId,
-    authorEmail: admin.sub,
+    authorEmail: admin.email,
     body: replyBody,
     direction,
     createdAt,
@@ -463,7 +429,7 @@ export async function handler(event) {
       return await createTicket(body)
     }
 
-    const admin = requireAdmin(event)
+    const admin = await requireAdmin(event)
 
     if (method === 'GET' && segments[0] === 'tickets' && segments.length === 1) {
       return await listTickets()

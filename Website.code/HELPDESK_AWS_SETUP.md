@@ -16,6 +16,7 @@ This repo now contains an AWS-native helpdesk implementation for the public Help
   - API Gateway HTTP API
   - Lambda
   - DynamoDB
+  - Cognito User Pool
   - SES
 
 ## 1. Install backend dependencies
@@ -26,33 +27,7 @@ From `aws/helpdesk`:
 npm install
 ```
 
-## 2. Prepare admin credentials
-
-The backend expects a JSON array in `AdminUsersJson`, with each user containing:
-
-- `email`
-- `name`
-- `passwordSha256`
-
-Generate a password hash with the same pepper you will pass to CloudFormation:
-
-```bash
-node -e "const crypto=require('crypto'); const pepper='replace-with-secret-pepper'; const password='replace-with-password'; console.log(crypto.createHash('sha256').update(`${pepper}:${password}`).digest('hex'))"
-```
-
-Example JSON:
-
-```json
-[
-  {
-    "email": "you@example.com",
-    "name": "Alistair",
-    "passwordSha256": "generated-hash-here"
-  }
-]
-```
-
-## 3. Deploy the backend
+## 2. Deploy the backend stack
 
 From `aws/helpdesk`:
 
@@ -66,11 +41,41 @@ Provide values for:
 - `HelpdeskFromEmail`
 - `HelpdeskNotificationEmails`
 - `HelpdeskAppUrl`
-- `AdminUsersJson`
-- `AdminPasswordPepper`
-- `AdminJwtSecret`
 
 `HelpdeskFromEmail` must already be verified in Amazon SES.
+
+## 3. Create your first Cognito admin user (type your password directly)
+
+After deploy, open CloudFormation stack outputs and copy:
+
+- `HelpdeskAdminUserPoolId`
+
+Then create the admin user in Cognito:
+
+1. Open Cognito in `eu-west-2`
+2. Open user pool `portfolio-helpdesk-admins`
+3. Go to Users, click Create user
+4. Enter your email
+5. Set a temporary password and create
+6. Open that user and set a permanent password
+
+You can also do this with AWS CLI:
+
+```bash
+aws cognito-idp admin-create-user \
+  --region eu-west-2 \
+  --user-pool-id <HelpdeskAdminUserPoolId> \
+  --username you@example.com \
+  --user-attributes Name=email,Value=you@example.com Name=name,Value="Your Name" \
+  --temporary-password 'TempPassword123!'
+
+aws cognito-idp admin-set-user-password \
+  --region eu-west-2 \
+  --user-pool-id <HelpdeskAdminUserPoolId> \
+  --username you@example.com \
+  --password 'YourRealPassword123!' \
+  --permanent
+```
 
 ## 4. Configure the frontend
 
@@ -108,4 +113,5 @@ npm run deploy:s3
 
 - The DynamoDB table uses a simple single-table layout with one `META` record per ticket and `REPLY#...` records for conversation entries.
 - Ticket listing currently uses a table scan, which is fine for a low-volume personal portfolio helpdesk. If ticket volume grows, add GSIs for status and assignee queries.
+- Admin authentication now uses Cognito User Pool (`USER_PASSWORD_AUTH`).
 - Outbound admin replies and assignment notifications are sent via SES.
