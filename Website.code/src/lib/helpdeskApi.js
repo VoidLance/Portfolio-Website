@@ -113,6 +113,14 @@ export async function loginHelpdeskAdmin(credentials) {
   return session
 }
 
+export async function changeHelpdeskAdminPassword(data) {
+  return request('/auth/change-password', {
+    method: 'POST',
+    headers: getAdminHeaders(),
+    body: JSON.stringify(data),
+  })
+}
+
 export async function listTickets() {
   const payload = await request('/tickets', {
     method: 'GET',

@@ -3,6 +3,7 @@ import PageWrapper from '../components/PageWrapper'
 import {
   addTicketReply,
   assignTicket,
+  changeHelpdeskAdminPassword,
   clearHelpdeskSession,
   closeTicket,
   getHelpdeskSession,
@@ -16,6 +17,12 @@ import {
 const initialLoginState = {
   email: '',
   password: '',
+}
+
+const initialPasswordFormState = {
+  currentPassword: '',
+  newPassword: '',
+  confirmPassword: '',
 }
 
 export default function HelpdeskAdmin() {
@@ -36,6 +43,8 @@ export default function HelpdeskAdmin() {
   const [sendingNote, setSendingNote] = useState(false)
   const [actionError, setActionError] = useState(null)
   const [actionNotice, setActionNotice] = useState(null)
+  const [passwordForm, setPasswordForm] = useState(initialPasswordFormState)
+  const [changingPassword, setChangingPassword] = useState(false)
 
   const loadTickets = async (preferredTicketId = null) => {
     setLoadingTickets(true)
@@ -164,8 +173,51 @@ export default function HelpdeskAdmin() {
     setReplyMessage('')
     setNoteMessage('')
     setAssignEmail('')
+    setPasswordForm(initialPasswordFormState)
     setActionError(null)
     setActionNotice(null)
+  }
+
+  const handlePasswordFieldChange = (event) => {
+    const { name, value } = event.target
+    setPasswordForm((current) => ({
+      ...current,
+      [name]: value,
+    }))
+  }
+
+  const handleChangePassword = async (event) => {
+    event.preventDefault()
+
+    if (!passwordForm.currentPassword || !passwordForm.newPassword || !passwordForm.confirmPassword) {
+      setActionError('Please fill in all password fields.')
+      setActionNotice(null)
+      return
+    }
+
+    if (passwordForm.newPassword !== passwordForm.confirmPassword) {
+      setActionError('New password and confirm password must match.')
+      setActionNotice(null)
+      return
+    }
+
+    setChangingPassword(true)
+    setActionError(null)
+    setActionNotice(null)
+
+    try {
+      await changeHelpdeskAdminPassword({
+        previousPassword: passwordForm.currentPassword,
+        nextPassword: passwordForm.newPassword,
+      })
+      setPasswordForm(initialPasswordFormState)
+      setActionNotice('Password updated successfully.')
+    } catch (error) {
+      console.error('Failed to change admin password:', error)
+      setActionError(error.message || 'Failed to update password.')
+    } finally {
+      setChangingPassword(false)
+    }
   }
 
   const handleSelectTicket = (ticket) => {
@@ -362,6 +414,55 @@ export default function HelpdeskAdmin() {
         </button>
       </div>
       <hr className="border-0 border-t border-indie-accent-green/50 my-4" />
+
+      <section className="mb-6 bg-indie-bg-dark rounded-lg border border-indie-accent-green/40 p-4">
+        <h2 className="text-sm font-bold text-indie-accent-green mb-3">Change Password</h2>
+        <form onSubmit={handleChangePassword} className="grid grid-cols-1 lg:grid-cols-[1fr_1fr_1fr_auto] gap-3 items-end">
+          <div>
+            <label htmlFor="currentPassword" className="block text-xs text-indie-text-gray/80 mb-1">Current password</label>
+            <input
+              type="password"
+              id="currentPassword"
+              name="currentPassword"
+              value={passwordForm.currentPassword}
+              onChange={handlePasswordFieldChange}
+              required
+              className="w-full px-3 py-2 rounded-lg bg-indie-bg-main border border-indie-accent-green/30 text-sm text-indie-text-light focus:border-indie-accent-green focus:outline-none"
+            />
+          </div>
+          <div>
+            <label htmlFor="newPassword" className="block text-xs text-indie-text-gray/80 mb-1">New password</label>
+            <input
+              type="password"
+              id="newPassword"
+              name="newPassword"
+              value={passwordForm.newPassword}
+              onChange={handlePasswordFieldChange}
+              required
+              className="w-full px-3 py-2 rounded-lg bg-indie-bg-main border border-indie-accent-green/30 text-sm text-indie-text-light focus:border-indie-accent-green focus:outline-none"
+            />
+          </div>
+          <div>
+            <label htmlFor="confirmPassword" className="block text-xs text-indie-text-gray/80 mb-1">Confirm new password</label>
+            <input
+              type="password"
+              id="confirmPassword"
+              name="confirmPassword"
+              value={passwordForm.confirmPassword}
+              onChange={handlePasswordFieldChange}
+              required
+              className="w-full px-3 py-2 rounded-lg bg-indie-bg-main border border-indie-accent-green/30 text-sm text-indie-text-light focus:border-indie-accent-green focus:outline-none"
+            />
+          </div>
+          <button
+            type="submit"
+            disabled={changingPassword}
+            className="bg-indie-accent-green text-indie-bg-main px-4 py-2 rounded-lg text-sm font-bold hover:bg-[#1cdba2] transition-colors disabled:opacity-60 cursor-pointer"
+          >
+            {changingPassword ? 'Updating...' : 'Update Password'}
+          </button>
+        </form>
+      </section>
 
       {(actionError || actionNotice) && (
         <div className={`mb-4 rounded-lg border p-3 text-sm ${actionError ? 'bg-red-500/15 border-red-400 text-indie-text-light' : 'bg-indie-accent-green/15 border-indie-accent-green text-indie-text-light'}`}>

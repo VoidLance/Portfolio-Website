@@ -2,7 +2,7 @@ import crypto from 'node:crypto'
 import { DynamoDBClient } from '@aws-sdk/client-dynamodb'
 import { DynamoDBDocumentClient, GetCommand, PutCommand, QueryCommand, ScanCommand, UpdateCommand } from '@aws-sdk/lib-dynamodb'
 import { SESv2Client, SendEmailCommand } from '@aws-sdk/client-sesv2'
-import { CognitoIdentityProviderClient, GetUserCommand, InitiateAuthCommand } from '@aws-sdk/client-cognito-identity-provider'
+import { ChangePasswordCommand, CognitoIdentityProviderClient, GetUserCommand, InitiateAuthCommand } from '@aws-sdk/client-cognito-identity-provider'
 
 const dynamo = DynamoDBDocumentClient.from(new DynamoDBClient({}))
 const ses = new SESv2Client({})
@@ -105,15 +105,31 @@ function formatReply(item) {
   }
 }
 
-async function sendEmail({ to, subject, text }) {
-  if (!fromEmail || !to) {
-    return
+async function sendEmail({ to, subject, text, optional = false }) {
+  if (!fromEmail) {
+    if (optional) {
+      return
+    }
+
+    throw Object.assign(new Error('HELP_DESK_FROM_EMAIL is not configured.'), { statusCode: 500 })
+  }
+
+  const toAddresses = (Array.isArray(to) ? to : [to])
+    .map((value) => String(value || '').trim())
+    .filter(Boolean)
+
+  if (!toAddresses.length) {
+    if (optional) {
+      return
+    }
+
+    throw Object.assign(new Error('A recipient email address is required.'), { statusCode: 400 })
   }
 
   await ses.send(new SendEmailCommand({
     FromEmailAddress: fromEmail,
     Destination: {
-      ToAddresses: Array.isArray(to) ? to : [to],
+      ToAddresses: toAddresses,
     },
     Content: {
       Simple: {
@@ -139,6 +155,7 @@ async function notifyNewTicket(ticket) {
     to: notificationEmails,
     subject: `New helpdesk ticket: ${ticket.subject}`,
     text: `A new helpdesk ticket has been created.\n\nFrom: ${ticket.name} <${ticket.email}>\nSubject: ${ticket.subject}\nTicket ID: ${ticket.id}\n\nMessage:\n${ticket.message}\n\nOpen dashboard: ${appUrl}`,
+    optional: true,
   })
 }
 
@@ -151,7 +168,45 @@ async function notifyAssignment(ticket, assigneeEmail) {
     to: assigneeEmail,
     subject: `Ticket assigned: ${ticket.subject}`,
     text: `Ticket ${ticket.id} has been assigned to you.\n\nFrom: ${ticket.name} <${ticket.email}>\nSubject: ${ticket.subject}\n\nOpen dashboard: ${appUrl}`,
+    optional: true,
   })
+}
+
+async function changePassword(body, admin) {
+  const previousPassword = String(body.previousPassword || '')
+  const nextPassword = String(body.nextPassword || '')
+
+  if (!previousPassword || !nextPassword) {
+    return response(400, { error: 'Current password and new password are required.' })
+  }
+
+  if (previousPassword === nextPassword) {
+    return response(400, { error: 'New password must be different from current password.' })
+  }
+
+  try {
+    await cognito.send(new ChangePasswordCommand({
+      AccessToken: admin.accessToken,
+      PreviousPassword: previousPassword,
+      ProposedPassword: nextPassword,
+    }))
+  } catch (error) {
+    if (error?.name === 'NotAuthorizedException') {
+      return response(401, { error: 'Current password is incorrect.' })
+    }
+
+    if (error?.name === 'InvalidPasswordException') {
+      return response(400, { error: error.message || 'New password does not meet policy requirements.' })
+    }
+
+    if (error?.name === 'PasswordHistoryPolicyViolationException') {
+      return response(400, { error: error.message || 'Cannot reuse a recent password.' })
+    }
+
+    throw error
+  }
+
+  return response(200, { ok: true })
 }
 
 async function createTicket(body) {
@@ -390,6 +445,7 @@ async function addReply(ticketId, body, admin) {
       to: ticketResult.Item.email,
       subject: `Re: ${ticketResult.Item.subject}`,
       text: `${replyBody}\n\nTicket reference: ${ticketId}`,
+      optional: false,
     })
   }
 
@@ -433,6 +489,10 @@ export async function handler(event) {
 
     if (method === 'GET' && segments[0] === 'tickets' && segments.length === 1) {
       return await listTickets()
+    }
+
+    if (method === 'POST' && segments[0] === 'auth' && segments[1] === 'change-password') {
+      return await changePassword(body, admin)
     }
 
     if (segments[0] === 'tickets' && segments[1] && segments.length === 2 && method === 'GET') {

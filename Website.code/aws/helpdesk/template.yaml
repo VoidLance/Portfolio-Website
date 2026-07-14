@@ -4,7 +4,7 @@ Description: Portfolio website helpdesk backend powered by Lambda, API Gateway, 
 
 Globals:
   Function:
-    Runtime: nodejs20.x
+    Runtime: nodejs24.x
     Timeout: 15
     MemorySize: 512
     Architectures:
@@ -112,6 +112,7 @@ Resources:
               Action:
                 - cognito-idp:InitiateAuth
                 - cognito-idp:GetUser
+                - cognito-idp:ChangePassword
               Resource: !GetAtt HelpdeskAdminUserPool.Arn
       Events:
         Root:
