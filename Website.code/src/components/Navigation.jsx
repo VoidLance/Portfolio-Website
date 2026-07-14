@@ -191,7 +191,7 @@ export default function Navigation() {
               <NavLink to="/software" onClick={closeMobileMenu} className={dropdownLinkClassName}>View All Projects</NavLink>
             </li>
             <li className="dropdown-item px-4 py-2">
-              <div className="text-[11px] uppercase tracking-[0.2em] text-indie-accent-green/60 mb-2">Featured GitHub Projects</div>
+              <div className="text-[11px] uppercase tracking-[0.2em] text-indie-text-light/80 mb-2">Featured GitHub Projects</div>
               <ul className="space-y-1">
                 {FEATURED_SOFTWARE_REPOS.map(repo => (
                   <li key={repo.href} className="rounded-md hover:bg-white/5 transition-colors">
@@ -210,7 +210,7 @@ export default function Navigation() {
               </ul>
             </li>
             <li className="dropdown-item px-4 py-2 border-t border-indie-accent-green/15 mt-1 pt-3">
-              <div className="text-[11px] uppercase tracking-[0.2em] text-indie-accent-green/60 mb-2">Hosted Projects</div>
+              <div className="text-[11px] uppercase tracking-[0.2em] text-indie-text-light/80 mb-2">Hosted Projects</div>
               <ul className="space-y-1">
                 <li className="rounded-md hover:bg-white/5 transition-colors">
                   <a href="/Software/Movie-Review-App/index.html" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block px-2 py-2 text-sm text-indie-text-light">
