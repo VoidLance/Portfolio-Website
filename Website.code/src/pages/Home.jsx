@@ -21,18 +21,6 @@ export default function Home() {
               for showing off both my personality and my portfolio of games, software, 3D models and writing.
             </p>
 
-            <p className="mt-4">
-              I'm also working on a gemini page for people who use gemini, but due to the more restricted access nature of gemini,
-              this will be my main page from now on - and gemini will be a secondary page for closer friends and people I can show
-              how to use a gemini browser. For those interested, my gemini page will be available at:{' '}
-              <a
-                href="gemini://voidlance.cities.yesterweb.org/"
-                rel="external"
-              >
-                gemini://voidlance.cities.yesterweb.org/
-              </a>
-            </p>
-
             <hr className="border-0 border-t border-indie-accent-green/50 my-4" />
 
             <section aria-labelledby="photography-section">
