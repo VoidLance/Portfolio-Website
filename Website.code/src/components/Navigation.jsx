@@ -105,13 +105,13 @@ export default function Navigation() {
             <NavLink
               to="/games"
               onClick={closeMobileMenu}
-              className="cursor-pointer text-indie-text-light block md:inline text-base md:text-base"
+              className="nav-main-link cursor-pointer text-indie-text-light block md:inline text-base md:text-base"
             >
               Games
             </NavLink>
             <button
               type="button"
-              className="cursor-pointer text-indie-text-light flex-shrink-0 md:flex justify-between items-center md:justify-start gap-2 text-base md:text-base"
+              className="nav-main-toggle cursor-pointer text-indie-text-light flex-shrink-0 md:flex justify-between items-center md:justify-start gap-2 text-base md:text-base"
               onClick={() => toggleDropdown('games')}
               aria-label="Toggle Games menu"
             >
@@ -139,13 +139,13 @@ export default function Navigation() {
             <NavLink
               to="/books"
               onClick={closeMobileMenu}
-              className="cursor-pointer text-indie-text-light block md:inline text-base md:text-base"
+              className="nav-main-link cursor-pointer text-indie-text-light block md:inline text-base md:text-base"
             >
               Books
             </NavLink>
             <button
               type="button"
-              className="cursor-pointer text-indie-text-light flex-shrink-0 md:flex justify-between items-center md:justify-start gap-2 text-base md:text-base"
+              className="nav-main-toggle cursor-pointer text-indie-text-light flex-shrink-0 md:flex justify-between items-center md:justify-start gap-2 text-base md:text-base"
               onClick={() => toggleDropdown('books')}
               aria-label="Toggle Books menu"
             >
@@ -173,13 +173,13 @@ export default function Navigation() {
             <NavLink
               to="/software"
               onClick={closeMobileMenu}
-              className="cursor-pointer text-indie-text-light block md:inline text-base md:text-base"
+              className="nav-main-link cursor-pointer text-indie-text-light block md:inline text-base md:text-base"
             >
               Software
             </NavLink>
             <button
               type="button"
-              className="cursor-pointer text-indie-text-light flex-shrink-0 md:flex justify-between items-center md:justify-start gap-2 text-base md:text-base"
+              className="nav-main-toggle cursor-pointer text-indie-text-light flex-shrink-0 md:flex justify-between items-center md:justify-start gap-2 text-base md:text-base"
               onClick={() => toggleDropdown('software')}
               aria-label="Toggle Software menu"
             >

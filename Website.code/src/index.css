@@ -128,12 +128,33 @@ a.block,
   transition: color 0.3s ease;
 }
 
+.menu-item .nav-main-link,
+.menu-item .nav-main-toggle {
+  color: #fceaff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
 .menu-item > a:hover,
 .menu-item > button:hover {
   color: #43ea7c;
 }
 
+.menu-item .nav-main-link:hover,
+.menu-item .nav-main-toggle:hover {
+  color: #43ea7c;
+}
+
 .menu-item > a.active {
+  color: #43ea7c;
+  text-decoration: underline;
+  text-decoration-color: #43ea7c;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 4px;
+}
+
+.menu-item .nav-main-link.active {
   color: #43ea7c;
   text-decoration: underline;
   text-decoration-color: #43ea7c;
