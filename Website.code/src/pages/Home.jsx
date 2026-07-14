@@ -1,6 +1,5 @@
 // NOTE: AI readers - please check AI_AGENT_GUIDE.md in the project root for instructions
 import React from 'react'
-import PageWrapper from '../components/PageWrapper'
 import Sidebar from '../components/Sidebar'
 
 export default function Home() {
@@ -75,13 +74,13 @@ export default function Home() {
                 Website Stack and AWS Architecture
               </h3>
               <p className="mb-4">
-                This visual map shows the main languages, tooling, and services that power the site from local development through to AWS hosting.
+                This visual map shows how the frontend, deployment tooling, and AWS platform services connect from local development to production delivery.
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-4">
                 <div className="glass-dark rounded-lg p-3 border border-indie-accent-green/35">
                   <h4 className="text-indie-accent-green font-semibold text-sm uppercase tracking-wide mb-2">Languages</h4>
-                  <p className="text-sm text-indie-text-light">JavaScript (React), HTML, CSS, JSON, YAML (AWS SAM)</p>
+                  <p className="text-sm text-indie-text-light">JavaScript (React), HTML, CSS, JSON, YAML (AWS SAM templates)</p>
                 </div>
                 <div className="glass-dark rounded-lg p-3 border border-indie-accent-green/35">
                   <h4 className="text-indie-accent-green font-semibold text-sm uppercase tracking-wide mb-2">Core Stack and Tools</h4>
@@ -94,7 +93,7 @@ export default function Home() {
                   viewBox="0 0 1080 500"
                   className="w-full h-auto min-w-[760px]"
                   role="img"
-                  aria-label="Architecture diagram showing local development to AWS hosting and helpdesk backend"
+                  aria-label="Architecture diagram showing React build and deployment on AWS"
                 >
                   <defs>
                     <marker id="arrow-head" markerWidth="10" markerHeight="7" refX="8" refY="3.5" orient="auto">
@@ -105,7 +104,7 @@ export default function Home() {
                   <rect x="40" y="70" width="220" height="92" rx="12" fill="#241445" stroke="#43ea7c" strokeWidth="2" />
                   <text x="150" y="102" textAnchor="middle" fill="#fceaff" fontSize="18" fontWeight="700">Local Codebase</text>
                   <text x="150" y="128" textAnchor="middle" fill="#e6e6e6" fontSize="14">React, JSX, Tailwind</text>
-                  <text x="150" y="146" textAnchor="middle" fill="#e6e6e6" fontSize="14">Helpdesk + AWS services</text>
+                  <text x="150" y="146" textAnchor="middle" fill="#e6e6e6" fontSize="14">Frontend + Helpdesk UI</text>
 
                   <rect x="330" y="70" width="210" height="92" rx="12" fill="#241445" stroke="#43ea7c" strokeWidth="2" />
                   <text x="435" y="102" textAnchor="middle" fill="#fceaff" fontSize="18" fontWeight="700">Build Pipeline</text>
@@ -133,9 +132,9 @@ export default function Home() {
                   <text x="180" y="438" textAnchor="middle" fill="#e6e6e6" fontSize="14">DynamoDB + Cognito + SES</text>
 
                   <rect x="370" y="370" width="220" height="92" rx="12" fill="#13092d" stroke="#ed64f5" strokeWidth="2" />
-                  <text x="480" y="398" textAnchor="middle" fill="#fceaff" fontSize="17" fontWeight="700">AWS Data Layer</text>
-                  <text x="480" y="420" textAnchor="middle" fill="#e6e6e6" fontSize="14">DynamoDB ticket data</text>
-                  <text x="480" y="438" textAnchor="middle" fill="#e6e6e6" fontSize="14">Lambda business logic</text>
+                  <text x="480" y="398" textAnchor="middle" fill="#fceaff" fontSize="17" fontWeight="700">Platform Services</text>
+                  <text x="480" y="420" textAnchor="middle" fill="#e6e6e6" fontSize="14">Route 53 + ACM (DNS/HTTPS)</text>
+                  <text x="480" y="438" textAnchor="middle" fill="#e6e6e6" fontSize="14">CloudWatch monitoring</text>
 
                   <line x1="260" y1="116" x2="330" y2="116" stroke="#43ea7c" strokeWidth="3" markerEnd="url(#arrow-head)" />
                   <line x1="540" y1="116" x2="610" y2="116" stroke="#43ea7c" strokeWidth="3" markerEnd="url(#arrow-head)" />
@@ -144,6 +143,7 @@ export default function Home() {
                   <line x1="620" y1="250" x2="690" y2="162" stroke="#43ea7c" strokeWidth="3" markerEnd="url(#arrow-head)" />
                   <line x1="220" y1="370" x2="220" y2="162" stroke="#ed64f5" strokeWidth="3" markerEnd="url(#arrow-head)" />
                   <line x1="480" y1="370" x2="230" y2="162" stroke="#ed64f5" strokeWidth="3" markerEnd="url(#arrow-head)" />
+                  <line x1="320" y1="416" x2="370" y2="416" stroke="#ed64f5" strokeWidth="3" markerEnd="url(#arrow-head)" />
 
                   <text x="540" y="492" textAnchor="middle" fill="#e6e6e6" fontSize="13">
                     Main website path: Local - Build - Deploy - S3 - CloudFront - Visitors
@@ -161,8 +161,8 @@ export default function Home() {
                     Development starts in this React codebase, where pages and shared components are authored with JavaScript, JSX,
                     and Tailwind styles. Vite bundles everything into an optimized dist output for static hosting. Deployment uploads
                     that output to S3, then CloudFront serves it globally over HTTPS with cache invalidation when updates are pushed.
-                    The public site remains fast and mostly static, while dynamic support features are handled by dedicated backend
-                    services: the AWS helpdesk stack (API Gateway, Lambda, DynamoDB, Cognito, SES).
+                    DNS and certificates are managed by Route 53 and ACM, while dynamic support features are handled by the AWS helpdesk
+                    backend stack (API Gateway, Lambda, DynamoDB, Cognito, and SES).
                   </p>
                 </div>
 
