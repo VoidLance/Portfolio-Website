@@ -53,7 +53,7 @@ export default function Navigation() {
   }
 
   const dropdownLinkClassName = ({ isActive }) =>
-    `block text-base transition-colors ${isActive ? 'text-indie-accent-green underline decoration-indie-accent-green decoration-2 underline-offset-4' : 'text-indie-text-light hover:text-indie-accent-green'}`
+    `nav-submenu-link block text-base transition-colors ${isActive ? 'text-indie-accent-green underline decoration-indie-accent-green decoration-2 underline-offset-4' : 'text-indie-text-light hover:text-indie-accent-green'}`
 
   return (
     <>

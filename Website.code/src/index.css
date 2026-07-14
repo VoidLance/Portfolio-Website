@@ -203,14 +203,14 @@ a.block,
   border-bottom: none;
 }
 
-.dropdown-item a {
+.dropdown-item a.nav-submenu-link {
   color: #fceaff;
   text-decoration: none;
   display: block;
   transition: color 0.3s ease;
 }
 
-.dropdown-item a:hover {
+.dropdown-item a.nav-submenu-link:hover {
   color: #43ea7c;
 }
 
