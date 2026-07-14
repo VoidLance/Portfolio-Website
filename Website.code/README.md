@@ -32,6 +32,7 @@ Start with **[START_HERE.md](./START_HERE.md)** for a 5-minute quick intro, then
 ✅ **Modern Stack** - React 18.2, Vite 5, Tailwind CSS 4.1  
 ✅ **Production Ready** - Deploy to AWS S3 + CloudFront or anywhere  
 ✅ **Well Documented** - 9 comprehensive guides included  
+✅ **AWS-Only Backend** - Helpdesk and infrastructure services run entirely on AWS  
 
 ## 📊 What's New
 
@@ -61,6 +62,8 @@ src/
 - **Vite 5** - Lightning-fast build tool
 - **Tailwind CSS 4.1** - All original styling preserved
 - **PostCSS & Autoprefixer** - CSS processing
+- **AWS S3 + CloudFront** - Static hosting and global CDN
+- **AWS API Gateway + Lambda + DynamoDB + Cognito + SES** - Helpdesk backend
 
 ## 🔧 Commands
 
@@ -87,6 +90,13 @@ Works on AWS S3 + CloudFront, Netlify, Vercel, or any static host!
 - **6 configuration files** (all setup and ready)
 - **Complete build setup** with Vite and Tailwind CSS
 
+## 🧭 Architecture Notes
+
+- The Home page includes a visual architecture section that explains the stack and deployment flow.
+- Production delivery path: local code -> Vite build (`dist/`) -> S3 -> CloudFront.
+- Platform services include Route 53 (DNS), ACM (TLS certificates), and CloudWatch (monitoring).
+- For helpdesk setup details, see [HELPDESK_AWS_SETUP.md](./HELPDESK_AWS_SETUP.md).
+
 ## 🎯 Next Steps
 
 1. Read [START_HERE.md](./START_HERE.md) (5 min)
@@ -108,7 +118,7 @@ Works on AWS S3 + CloudFront, Netlify, Vercel, or any static host!
 **Deployment**: Automated via git pre-push hook
 - Builds React app with Vite
 - Uploads to AWS S3 + CloudFront automatically
-- Uses HashRouter for static hosting compatibility
+- Uses HashRouter for static hosting compatibility (`/#/route` URLs)
 
 **Last Updated**: 12 January 2026  
 **Created**: January 2026  

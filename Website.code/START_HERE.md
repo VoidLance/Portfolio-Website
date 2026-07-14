@@ -55,6 +55,9 @@ Pick one based on my needs:
 **Deploy to AWS S3 + CloudFront** (10 min)
 → Read [S3_CLOUDFRONT_WORKFLOW.md](./S3_CLOUDFRONT_WORKFLOW.md)
 
+**Configure Helpdesk backend on AWS** (10-20 min)
+→ Read [HELPDESK_AWS_SETUP.md](./HELPDESK_AWS_SETUP.md)
+
 **Just see it working** (5 min)
 → I'm done! Keep running `npm run dev`
 
@@ -106,6 +109,13 @@ My original design is 100% intact:
 - ✅ Responsive design (mobile, tablet, desktop)
 - ✅ Gradients and effects
 - ✅ Layout (sidebar + main content)
+
+## ☁️ AWS Architecture (Current)
+
+- Frontend is built with Vite into `dist/` and deployed to S3.
+- CloudFront provides global caching and HTTPS delivery.
+- Route 53 and ACM manage DNS and certificates.
+- Helpdesk backend runs on API Gateway + Lambda + DynamoDB + Cognito + SES.
 
 ---
 

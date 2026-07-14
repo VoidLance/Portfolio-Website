@@ -17,6 +17,8 @@ npm run deploy:s3
 
 For setup details, read `S3_CLOUDFRONT_WORKFLOW.md`.
 
+For AWS helpdesk backend setup details, read `HELPDESK_AWS_SETUP.md`.
+
 ## Important: No Separate Flattened Workspace Required
 
 This project now copies non-Vite static folders (Games and Images) into dist automatically during build.
@@ -122,8 +124,8 @@ These are external to the React app and will cause a page reload when accessed.
 React Router handles browser history automatically:
 - Back/forward buttons work
 - Bookmarks preserve the page
-- Direct URL access works
-- No `#` in URLs (clean routing)
+- Direct URL access works with HashRouter paths
+- URLs use `/#/` routes for static hosting compatibility
 
 ## File Structure After Build
 
@@ -145,16 +147,15 @@ Upload the entire `dist/` folder contents to my hosting.
 
 ### Page not found on AWS S3 + CloudFront
 
-AWS S3 + CloudFront is a static host and doesn't support single-page app routing by default. I may need to:
+AWS S3 + CloudFront is a static host and doesn't support server-side SPA route handling by default. This project already avoids that problem by using HashRouter (`/#/route`).
 
-1. **Option A**: Add a `_redirects` file to dist/ before uploading:
-```
-/* /index.html 200
-```
+If I ever switch to BrowserRouter in the future, I would then need CloudFront/S3 fallback behavior for deep links.
 
-2. **Option B**: Use a different host like Netlify or Vercel (they have built-in SPA support)
+1. **Option A**: Configure CloudFront custom error responses to serve `index.html` for SPA routes
 
-3. **Option C**: Use hash-based routing (edit `src/App.jsx`):
+2. **Option B**: Use a host with built-in SPA route fallback (Netlify/Vercel)
+
+3. **Option C**: Keep hash-based routing (current setup in `src/App.jsx`):
 ```jsx
 import { HashRouter as Router } from 'react-router-dom'
 // Now URLs will be like /#/games instead of /games
