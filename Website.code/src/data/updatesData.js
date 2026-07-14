@@ -8,7 +8,7 @@ export const updatesData = [
     items: [
       "Added dynamic project links to the Software page for all GitHub repositories under the VoidLance account, with expandable sections for each language and stack",
       "Added highlighted shortcut links to the Software menu for the most impressive projects",
-      "Restored functionality of the Software menu to direct straight to the Software page with the GitHub list.",
+      "Restored functionality of the Software menu to direct straight to the Software page with the GitHub list, and added a View All Projects item for quick access.",
     ]
   },
   {
