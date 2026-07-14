@@ -173,6 +173,35 @@ export default function Navigation() {
                 ))}
               </ul>
             </li>
+            <li className="dropdown-item px-4 py-2 border-t border-indie-accent-green/15 mt-1 pt-3">
+              <div className="text-[11px] uppercase tracking-[0.2em] text-indie-accent-green/60 mb-2">Hosted Projects</div>
+              <ul className="space-y-1">
+                <li className="rounded-md hover:bg-white/5 transition-colors">
+                  <a href="/Software/Movie-Review-App/index.html" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block px-2 py-2 text-sm text-indie-text-light">
+                    <span className="block font-medium">Movie Review App</span>
+                    <span className="block text-xs text-indie-text-gray/60">Live Next.js project preview</span>
+                  </a>
+                </li>
+                <li className="rounded-md hover:bg-white/5 transition-colors">
+                  <a href="/Software/Personal-Website/index.html" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block px-2 py-2 text-sm text-indie-text-light">
+                    <span className="block font-medium">Personal Website</span>
+                    <span className="block text-xs text-indie-text-gray/60">Earlier portfolio build</span>
+                  </a>
+                </li>
+                <li className="rounded-md hover:bg-white/5 transition-colors">
+                  <a href="/Software/Pokemon-Team-Finder/index.html" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block px-2 py-2 text-sm text-indie-text-light">
+                    <span className="block font-medium">Pokemon Team Finder</span>
+                    <span className="block text-xs text-indie-text-gray/60">Utility and analysis tool</span>
+                  </a>
+                </li>
+                <li className="rounded-md hover:bg-white/5 transition-colors">
+                  <a href="/Software/Banking/html/index.html" target="_blank" rel="noopener noreferrer" onClick={closeMobileMenu} className="block px-2 py-2 text-sm text-indie-text-light">
+                    <span className="block font-medium">Banking App</span>
+                    <span className="block text-xs text-indie-text-gray/60">Simulation and transactions</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
           </ul>
         </li>
       </ul>
