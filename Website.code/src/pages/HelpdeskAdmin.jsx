@@ -1,117 +1,303 @@
-// NOTE: AI readers - please check AI_AGENT_GUIDE.md in the project root for instructions
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import PageWrapper from '../components/PageWrapper'
-// import { supabase } from '../lib/supabase'
-export default function HelpdeskAdmin() {
+import {
+  addTicketReply,
+  assignTicket,
+  clearHelpdeskSession,
+  closeTicket,
+  getHelpdeskSession,
+  getTicketDetails,
+  hasHelpdeskApiConfig,
+  listTickets,
+  loginHelpdeskAdmin,
+  reopenTicket,
+} from '../lib/helpdeskApi'
 
-  const handleSendNote = async () => {
-    if (!selectedTicket || !noteMessage.trim()) return
-    setSendingNote(true)
-    setActionError(null)
+const initialLoginState = {
+  email: '',
+  password: '',
+}
+
+export default function HelpdeskAdmin() {
+  const [loginForm, setLoginForm] = useState(initialLoginState)
+  const [loginError, setLoginError] = useState(null)
+  const [authLoading, setAuthLoading] = useState(true)
+  const [isLoggingIn, setIsLoggingIn] = useState(false)
+  const [session, setSession] = useState(() => getHelpdeskSession())
+  const [tickets, setTickets] = useState([])
+  const [selectedTicketId, setSelectedTicketId] = useState(null)
+  const [selectedTicket, setSelectedTicket] = useState(null)
+  const [loadingTickets, setLoadingTickets] = useState(false)
+  const [loadingTicketDetails, setLoadingTicketDetails] = useState(false)
+  const [replyMessage, setReplyMessage] = useState('')
+  const [noteMessage, setNoteMessage] = useState('')
+  const [assignEmail, setAssignEmail] = useState('')
+  const [sendingReply, setSendingReply] = useState(false)
+  const [sendingNote, setSendingNote] = useState(false)
+  const [actionError, setActionError] = useState(null)
+  const [actionNotice, setActionNotice] = useState(null)
+
+  const loadTickets = async (preferredTicketId = null) => {
+    setLoadingTickets(true)
 
     try {
-      const { error } = await supabase
-        .from('ticket_replies')
-        .insert([
-          {
-            ticket_id: selectedTicket.id,
-            author_email: user?.email || 'admin',
-            body: noteMessage.trim(),
-            direction: 'internal',
-            message_id: null,
-          },
-        ])
+      const response = await listTickets()
+      const nextTickets = response.tickets ?? []
+      setTickets(nextTickets)
 
-      if (error) throw error
+      const ticketIdToKeep = preferredTicketId ?? selectedTicketId
+      if (ticketIdToKeep) {
+        const stillExists = nextTickets.some((ticket) => ticket.id === ticketIdToKeep)
+        if (stillExists) {
+          setSelectedTicketId(ticketIdToKeep)
+          return
+        }
+      }
 
-      setNoteMessage('')
-      fetchReplies(selectedTicket.id)
+      setSelectedTicketId(nextTickets[0]?.id ?? null)
     } catch (error) {
-      console.error('Error adding note:', error)
-      setActionError('Failed to add note. Please try again.')
+      console.error('Failed to load helpdesk tickets:', error)
+      if (error.status === 401) {
+        clearHelpdeskSession()
+        setSession(null)
+        setSelectedTicketId(null)
+        setSelectedTicket(null)
+      }
+      setActionError(error.message || 'Failed to load tickets.')
     } finally {
-      setSendingNote(false)
+      setLoadingTickets(false)
+      setAuthLoading(false)
     }
   }
 
-  const handleSendEmailReply = async () => {
-    if (!selectedTicket || !replyMessage.trim()) return
-    setSendingReply(true)
-    setActionError(null)
+  const loadTicketDetails = async (ticketId) => {
+    if (!ticketId) {
+      setSelectedTicket(null)
+      return
+    }
+
+    setLoadingTicketDetails(true)
 
     try {
-      const response = await fetch(
-        'https://vmmgyzzqotovzyddkxnm.supabase.co/functions/v1/helpdesk-reply',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            ticketId: selectedTicket.id,
-            to: selectedTicket.email,
-            subject: `Re: ${selectedTicket.subject}`,
-            message: replyMessage.trim(),
-          }),
-        }
-      )
-
-      if (!response.ok) {
-        const errorData = await response.json()
-        throw new Error(errorData?.error || `HTTP ${response.status}`)
-      }
-
-      const data = await response.json()
-      const outboundMessageId = data?.messageId || null
-
-      const { error: insertError } = await supabase
-        .from('ticket_replies')
-        .insert([
-          {
-            ticket_id: selectedTicket.id,
-            author_email: user?.email || 'admin',
-            body: replyMessage.trim(),
-            direction: 'outbound',
-            message_id: outboundMessageId,
-          },
-        ])
-
-      if (insertError) throw insertError
-
-      setReplyMessage('')
-      fetchReplies(selectedTicket.id)
-      fetchTickets()
+      const response = await getTicketDetails(ticketId)
+      setSelectedTicket(response.ticket ?? null)
+      setAssignEmail(response.ticket?.assigneeEmail ?? '')
     } catch (error) {
-      console.error('Error sending reply:', error)
-      setActionError('Email reply failed. Please try again.')
+      console.error('Failed to load ticket details:', error)
+      setActionError(error.message || 'Failed to load ticket details.')
+    } finally {
+      setLoadingTicketDetails(false)
+    }
+  }
+
+  useEffect(() => {
+    if (!hasHelpdeskApiConfig) {
+      setAuthLoading(false)
+      return
+    }
+
+    if (!session?.token) {
+      setAuthLoading(false)
+      return
+    }
+
+    loadTickets()
+  }, [])
+
+  useEffect(() => {
+    if (session?.token && selectedTicketId) {
+      loadTicketDetails(selectedTicketId)
+    } else if (!selectedTicketId) {
+      setSelectedTicket(null)
+    }
+  }, [session?.token, selectedTicketId])
+
+  const openTickets = useMemo(
+    () => tickets.filter((ticket) => ticket.status === 'open' && ticket.assigneeEmail !== session?.admin?.email),
+    [session?.admin?.email, tickets]
+  )
+
+  const assignedTickets = useMemo(
+    () => tickets.filter((ticket) => ticket.status === 'open' && ticket.assigneeEmail === session?.admin?.email),
+    [session?.admin?.email, tickets]
+  )
+
+  const closedTickets = useMemo(
+    () => tickets.filter((ticket) => ticket.status === 'closed'),
+    [tickets]
+  )
+
+  const handleLoginChange = (event) => {
+    const { name, value } = event.target
+    setLoginForm((current) => ({
+      ...current,
+      [name]: value,
+    }))
+  }
+
+  const handleLogin = async (event) => {
+    event.preventDefault()
+    setIsLoggingIn(true)
+    setLoginError(null)
+
+    try {
+      const nextSession = await loginHelpdeskAdmin(loginForm)
+      setSession(nextSession)
+      setLoginForm(initialLoginState)
+      setAuthLoading(true)
+      await loadTickets()
+    } catch (error) {
+      console.error('Helpdesk admin login failed:', error)
+      setLoginError(error.message || 'Login failed.')
+      setAuthLoading(false)
+    } finally {
+      setIsLoggingIn(false)
+    }
+  }
+
+  const handleLogout = () => {
+    clearHelpdeskSession()
+    setSession(null)
+    setTickets([])
+    setSelectedTicketId(null)
+    setSelectedTicket(null)
+    setReplyMessage('')
+    setNoteMessage('')
+    setAssignEmail('')
+    setActionError(null)
+    setActionNotice(null)
+  }
+
+  const handleSelectTicket = (ticket) => {
+    setSelectedTicketId(ticket.id)
+    setActionError(null)
+    setActionNotice(null)
+  }
+
+  const runTicketAction = async (action, successMessage) => {
+    if (!selectedTicketId) {
+      return
+    }
+
+    setActionError(null)
+    setActionNotice(null)
+
+    try {
+      await action()
+      await loadTickets(selectedTicketId)
+      await loadTicketDetails(selectedTicketId)
+      setActionNotice(successMessage)
+    } catch (error) {
+      console.error('Ticket action failed:', error)
+      setActionError(error.message || 'Action failed.')
+    }
+  }
+
+  const handleAssignToMe = () => runTicketAction(
+    () => assignTicket(selectedTicketId, { assigneeEmail: session?.admin?.email ?? '' }),
+    'Ticket assigned to you.'
+  )
+
+  const handleUnassign = () => runTicketAction(
+    () => assignTicket(selectedTicketId, { assigneeEmail: '' }),
+    'Ticket unassigned.'
+  )
+
+  const handleAssignToEmail = () => runTicketAction(
+    () => assignTicket(selectedTicketId, { assigneeEmail: assignEmail.trim() }),
+    assignEmail.trim() ? 'Ticket reassigned.' : 'Ticket unassigned.'
+  )
+
+  const handleCloseTicket = () => runTicketAction(
+    () => closeTicket(selectedTicketId),
+    'Ticket closed.'
+  )
+
+  const handleReopenTicket = () => runTicketAction(
+    () => reopenTicket(selectedTicketId),
+    'Ticket reopened.'
+  )
+
+  const handleSendReply = async () => {
+    if (!selectedTicketId || !replyMessage.trim()) {
+      return
+    }
+
+    setSendingReply(true)
+    setActionError(null)
+    setActionNotice(null)
+
+    try {
+      await addTicketReply(selectedTicketId, {
+        body: replyMessage.trim(),
+        direction: 'outbound',
+      })
+      setReplyMessage('')
+      await loadTickets(selectedTicketId)
+      await loadTicketDetails(selectedTicketId)
+      setActionNotice('Reply sent to customer.')
+    } catch (error) {
+      console.error('Failed to send helpdesk reply:', error)
+      setActionError(error.message || 'Email reply failed.')
     } finally {
       setSendingReply(false)
     }
   }
 
-  const openTickets = tickets.filter(
-    (ticket) => ticket.status === 'open' && ticket.assignee_email !== user?.email
-  )
-  const assignedTickets = tickets.filter(
-    (ticket) => ticket.status === 'open' && ticket.assignee_email === user?.email
-  )
-  const closedTickets = tickets.filter((ticket) => ticket.status === 'closed')
+  const handleSendNote = async () => {
+    if (!selectedTicketId || !noteMessage.trim()) {
+      return
+    }
 
-  // Login Screen
-  if (loading) {
+    setSendingNote(true)
+    setActionError(null)
+    setActionNotice(null)
+
+    try {
+      await addTicketReply(selectedTicketId, {
+        body: noteMessage.trim(),
+        direction: 'internal',
+      })
+      setNoteMessage('')
+      await loadTicketDetails(selectedTicketId)
+      setActionNotice('Internal note added.')
+    } catch (error) {
+      console.error('Failed to add internal note:', error)
+      setActionError(error.message || 'Failed to add note.')
+    } finally {
+      setSendingNote(false)
+    }
+  }
+
+  if (!hasHelpdeskApiConfig) {
     return (
       <PageWrapper>
-        <p className="text-center text-indie-text-gray">Loading...</p>
+        <h1 className="text-4xl text-indie-accent-green text-center mb-4">Helpdesk Admin</h1>
+        <hr className="border-0 border-t border-indie-accent-green/50 my-4" />
+        <div className="max-w-2xl mx-auto bg-yellow-500/15 border border-yellow-500/50 rounded-lg p-5 text-indie-text-light">
+          <p className="font-bold mb-2">AWS helpdesk API is not configured.</p>
+          <p className="text-sm text-indie-text-gray">
+            Set VITE_HELPDESK_API_BASE_URL after deploying the AWS backend to enable the admin dashboard.
+          </p>
+        </div>
       </PageWrapper>
     )
   }
 
-  if (!user) {
+  if (authLoading) {
+    return (
+      <PageWrapper>
+        <p className="text-center text-indie-text-gray">Loading helpdesk dashboard...</p>
+      </PageWrapper>
+    )
+  }
+
+  if (!session?.token) {
     return (
       <PageWrapper>
         <h1 className="text-4xl text-indie-accent-green text-center mb-4">Admin Login</h1>
         <hr className="border-0 border-t border-indie-accent-green/50 my-4" />
-        
+
         <form onSubmit={handleLogin} className="max-w-md mx-auto">
           <div className="bg-indie-bg-dark rounded-lg p-6 border-2 border-indie-accent-green/50 space-y-4">
             {loginError && (
@@ -119,36 +305,39 @@ export default function HelpdeskAdmin() {
                 {loginError}
               </div>
             )}
-            
+
             <div>
               <label htmlFor="email" className="block text-indie-accent-green font-bold mb-2">Email</label>
-              <input 
-                type="email" 
-                id="email" 
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+              <input
+                type="email"
+                id="email"
+                name="email"
+                value={loginForm.email}
+                onChange={handleLoginChange}
                 required
                 className="w-full px-4 py-2 bg-indie-bg-main border-2 border-indie-accent-green/50 rounded-lg text-indie-text-light focus:border-indie-accent-green focus:outline-none"
               />
             </div>
-            
+
             <div>
               <label htmlFor="password" className="block text-indie-accent-green font-bold mb-2">Password</label>
-              <input 
-                type="password" 
-                id="password" 
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+              <input
+                type="password"
+                id="password"
+                name="password"
+                value={loginForm.password}
+                onChange={handleLoginChange}
                 required
                 className="w-full px-4 py-2 bg-indie-bg-main border-2 border-indie-accent-green/50 rounded-lg text-indie-text-light focus:border-indie-accent-green focus:outline-none"
               />
             </div>
-            
-            <button 
+
+            <button
               type="submit"
-              className="w-full bg-indie-accent-green text-indie-bg-main px-6 py-3 rounded-lg font-bold hover:bg-[#1cdba2] transition-colors cursor-pointer"
+              disabled={isLoggingIn}
+              className="w-full bg-indie-accent-green text-indie-bg-main px-6 py-3 rounded-lg font-bold hover:bg-[#1cdba2] transition-colors disabled:opacity-60 cursor-pointer"
             >
-              Login
+              {isLoggingIn ? 'Signing in...' : 'Login'}
             </button>
           </div>
         </form>
@@ -156,12 +345,16 @@ export default function HelpdeskAdmin() {
     )
   }
 
-  // Admin Dashboard
   return (
     <PageWrapper mainClassName="w-full">
-      <div className="flex justify-between items-center mb-4">
-        <h1 className="text-4xl text-indie-accent-green">Helpdesk Admin</h1>
-        <button 
+      <div className="flex flex-wrap justify-between items-center gap-3 mb-4">
+        <div>
+          <h1 className="text-4xl text-indie-accent-green">Helpdesk Admin</h1>
+          <p className="text-sm text-indie-text-gray mt-1">
+            Signed in as {session.admin?.name || session.admin?.email}
+          </p>
+        </div>
+        <button
           onClick={handleLogout}
           className="text-sm text-indie-text-gray hover:text-indie-accent-green transition-colors cursor-pointer"
         >
@@ -170,118 +363,79 @@ export default function HelpdeskAdmin() {
       </div>
       <hr className="border-0 border-t border-indie-accent-green/50 my-4" />
 
+      {(actionError || actionNotice) && (
+        <div className={`mb-4 rounded-lg border p-3 text-sm ${actionError ? 'bg-red-500/15 border-red-400 text-indie-text-light' : 'bg-indie-accent-green/15 border-indie-accent-green text-indie-text-light'}`}>
+          {actionError || actionNotice}
+        </div>
+      )}
+
       <div className="grid grid-cols-1 xl:grid-cols-[2.2fr_1.2fr] gap-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-indie-bg-dark rounded-lg border border-indie-accent-green/40 p-4">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-bold text-indie-accent-green">Open</h2>
-              <span className="text-xs text-indie-text-gray">{openTickets.length}</span>
+          {[
+            { key: 'open', title: 'Open', tickets: openTickets },
+            { key: 'assigned', title: 'Assigned to Me', tickets: assignedTickets },
+            { key: 'closed', title: 'Closed', tickets: closedTickets },
+          ].map((column) => (
+            <div key={column.key} className="bg-indie-bg-dark rounded-lg border border-indie-accent-green/40 p-4">
+              <div className="flex items-center justify-between mb-4">
+                <h2 className="text-lg font-bold text-indie-accent-green">{column.title}</h2>
+                <span className="text-xs text-indie-text-gray">{column.tickets.length}</span>
+              </div>
+              <div className="space-y-3">
+                {loadingTickets ? (
+                  <p className="text-sm text-indie-text-gray/70 italic">Loading tickets...</p>
+                ) : column.tickets.length === 0 ? (
+                  <p className="text-sm text-indie-text-gray/70 italic">No tickets</p>
+                ) : (
+                  column.tickets.map((ticket) => (
+                    <button
+                      key={ticket.id}
+                      onClick={() => handleSelectTicket(ticket)}
+                      className={`w-full text-left rounded-lg border p-3 transition-colors cursor-pointer ${
+                        selectedTicketId === ticket.id
+                          ? 'border-indie-accent-green bg-indie-bg-main'
+                          : 'border-indie-accent-green/30 bg-indie-bg-main/40 hover:border-indie-accent-green/60'
+                      }`}
+                    >
+                      <p className="text-sm text-indie-accent-pink font-bold line-clamp-2">{ticket.subject}</p>
+                      <p className="text-xs text-indie-text-gray mt-2">{ticket.name}</p>
+                      <p className="text-[11px] text-indie-text-gray/70 mt-1">{ticket.email}</p>
+                      {ticket.assigneeEmail && (
+                        <p className="text-[11px] text-indie-text-gray/70 mt-1">
+                          Assigned: {ticket.assigneeEmail}
+                        </p>
+                      )}
+                    </button>
+                  ))
+                )}
+              </div>
             </div>
-            <div className="space-y-3">
-              {openTickets.length === 0 ? (
-                <p className="text-sm text-indie-text-gray/70 italic">No open tickets</p>
-              ) : (
-                openTickets.map((ticket) => (
-                  <button
-                    key={ticket.id}
-                    onClick={() => handleSelectTicket(ticket)}
-                    className={`w-full text-left rounded-lg border p-3 transition-colors cursor-pointer ${
-                      selectedTicket?.id === ticket.id
-                        ? 'border-indie-accent-green bg-indie-bg-main'
-                        : 'border-indie-accent-green/30 bg-indie-bg-main/40 hover:border-indie-accent-green/60'
-                    }`}
-                  >
-                    <p className="text-sm text-indie-accent-pink font-bold line-clamp-2">{ticket.subject}</p>
-                    <p className="text-xs text-indie-text-gray mt-2">{ticket.name}</p>
-                    {ticket.assignee_email && (
-                      <p className="text-[11px] text-indie-text-gray/70 mt-1">
-                        Assigned: {ticket.assignee_email}
-                      </p>
-                    )}
-                  </button>
-                ))
-              )}
-            </div>
-          </div>
-
-          <div className="bg-indie-bg-dark rounded-lg border border-indie-accent-green/40 p-4">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-bold text-indie-accent-green">Assigned to Me</h2>
-              <span className="text-xs text-indie-text-gray">{assignedTickets.length}</span>
-            </div>
-            <div className="space-y-3">
-              {assignedTickets.length === 0 ? (
-                <p className="text-sm text-indie-text-gray/70 italic">No assigned tickets</p>
-              ) : (
-                assignedTickets.map((ticket) => (
-                  <button
-                    key={ticket.id}
-                    onClick={() => handleSelectTicket(ticket)}
-                    className={`w-full text-left rounded-lg border p-3 transition-colors cursor-pointer ${
-                      selectedTicket?.id === ticket.id
-                        ? 'border-indie-accent-green bg-indie-bg-main'
-                        : 'border-indie-accent-green/30 bg-indie-bg-main/40 hover:border-indie-accent-green/60'
-                    }`}
-                  >
-                    <p className="text-sm text-indie-accent-pink font-bold line-clamp-2">{ticket.subject}</p>
-                    <p className="text-xs text-indie-text-gray mt-2">{ticket.name}</p>
-                  </button>
-                ))
-              )}
-            </div>
-          </div>
-
-          <div className="bg-indie-bg-dark rounded-lg border border-indie-accent-green/40 p-4">
-            <div className="flex items-center justify-between mb-4">
-              <h2 className="text-lg font-bold text-indie-accent-green">Closed</h2>
-              <span className="text-xs text-indie-text-gray">{closedTickets.length}</span>
-            </div>
-            <div className="space-y-3">
-              {closedTickets.length === 0 ? (
-                <p className="text-sm text-indie-text-gray/70 italic">No closed tickets</p>
-              ) : (
-                closedTickets.map((ticket) => (
-                  <button
-                    key={ticket.id}
-                    onClick={() => handleSelectTicket(ticket)}
-                    className={`w-full text-left rounded-lg border p-3 transition-colors cursor-pointer ${
-                      selectedTicket?.id === ticket.id
-                        ? 'border-indie-accent-green bg-indie-bg-main'
-                        : 'border-indie-accent-green/30 bg-indie-bg-main/40 hover:border-indie-accent-green/60'
-                    }`}
-                  >
-                    <p className="text-sm text-indie-text-gray/90 font-bold line-clamp-2">{ticket.subject}</p>
-                    <p className="text-xs text-indie-text-gray mt-2">{ticket.name}</p>
-                  </button>
-                ))
-              )}
-            </div>
-          </div>
+          ))}
         </div>
 
         <aside className="bg-indie-bg-dark rounded-lg border border-indie-accent-green/40 p-5">
-          {!selectedTicket ? (
+          {!selectedTicketId ? (
             <div className="text-sm text-indie-text-gray/70 italic text-center">
               Select a ticket to view details and respond.
+            </div>
+          ) : loadingTicketDetails || !selectedTicket ? (
+            <div className="text-sm text-indie-text-gray/70 italic text-center">
+              Loading ticket details...
             </div>
           ) : (
             <div className="space-y-5">
               <div>
-                <h2 className="text-xl text-indie-accent-pink font-bold">
-                  {selectedTicket.subject}
-                </h2>
+                <h2 className="text-xl text-indie-accent-pink font-bold">{selectedTicket.subject}</h2>
                 <p className="text-sm text-indie-text-gray mt-1">
                   From {selectedTicket.name} ({selectedTicket.email})
                 </p>
                 <p className="text-xs text-indie-text-gray/70 mt-1">
-                  {new Date(selectedTicket.created_at).toLocaleString()}
+                  {new Date(selectedTicket.createdAt).toLocaleString()}
                 </p>
               </div>
 
               <div className="bg-indie-bg-main rounded-lg p-4">
-                <p className="text-indie-text-light whitespace-pre-wrap">
-                  {selectedTicket.message}
-                </p>
+                <p className="text-indie-text-light whitespace-pre-wrap">{selectedTicket.message}</p>
               </div>
 
               <div className="space-y-3">
@@ -320,7 +474,7 @@ export default function HelpdeskAdmin() {
                   <div className="flex gap-2">
                     <input
                       value={assignEmail}
-                      onChange={(e) => setAssignEmail(e.target.value)}
+                      onChange={(event) => setAssignEmail(event.target.value)}
                       placeholder="user@example.com"
                       className="flex-1 px-3 py-2 rounded-lg bg-indie-bg-main border border-indie-accent-green/30 text-sm text-indie-text-light focus:border-indie-accent-green focus:outline-none"
                     />
@@ -331,9 +485,9 @@ export default function HelpdeskAdmin() {
                       Assign
                     </button>
                   </div>
-                  {selectedTicket.assignee_email && (
+                  {selectedTicket.assigneeEmail && (
                     <p className="text-xs text-indie-text-gray/70">
-                      Current assignee: {selectedTicket.assignee_email}
+                      Current assignee: {selectedTicket.assigneeEmail}
                     </p>
                   )}
                 </div>
@@ -342,10 +496,8 @@ export default function HelpdeskAdmin() {
               <div className="space-y-3">
                 <h3 className="text-sm font-bold text-indie-accent-green">Conversation & Notes</h3>
                 <div className="space-y-3 max-h-64 overflow-y-auto pr-1">
-                  {replies.length === 0 ? (
-                    <p className="text-xs text-indie-text-gray/70 italic">No replies or notes yet.</p>
-                  ) : (
-                    replies.map((reply) => (
+                  {selectedTicket.replies?.length ? (
+                    selectedTicket.replies.map((reply) => (
                       <div
                         key={reply.id}
                         className={`rounded-lg border px-3 py-2 text-sm ${
@@ -356,17 +508,19 @@ export default function HelpdeskAdmin() {
                               : 'border-indie-accent-pink/40 bg-indie-bg-main/60'
                         }`}
                       >
-                        <div className="flex justify-between text-[11px] text-indie-text-gray/70 mb-1">
+                        <div className="flex justify-between text-[11px] text-indie-text-gray/70 mb-1 gap-2">
                           <span>
-                            {reply.direction === 'internal' 
-                              ? `INTERNAL NOTE (${reply.author_email})` 
-                              : reply.direction?.toUpperCase() || 'OUTBOUND'}
+                            {reply.direction === 'internal'
+                              ? `INTERNAL NOTE (${reply.authorEmail})`
+                              : `${reply.direction?.toUpperCase() || 'OUTBOUND'}${reply.authorEmail ? ` • ${reply.authorEmail}` : ''}`}
                           </span>
-                          <span>{new Date(reply.created_at).toLocaleString()}</span>
+                          <span>{new Date(reply.createdAt).toLocaleString()}</span>
                         </div>
                         <p className="text-indie-text-light whitespace-pre-wrap">{reply.body}</p>
                       </div>
                     ))
+                  ) : (
+                    <p className="text-xs text-indie-text-gray/70 italic">No replies or notes yet.</p>
                   )}
                 </div>
               </div>
@@ -376,13 +530,13 @@ export default function HelpdeskAdmin() {
                 <textarea
                   rows="4"
                   value={replyMessage}
-                  onChange={(e) => setReplyMessage(e.target.value)}
+                  onChange={(event) => setReplyMessage(event.target.value)}
                   placeholder="Type your email reply to the customer..."
                   className="w-full px-3 py-2 rounded-lg bg-indie-bg-main border border-indie-accent-green/30 text-sm text-indie-text-light focus:border-indie-accent-green focus:outline-none"
                 />
                 <div className="flex justify-end">
                   <button
-                    onClick={handleSendEmailReply}
+                    onClick={handleSendReply}
                     disabled={sendingReply}
                     className="bg-indie-accent-pink text-indie-text-light px-4 py-2 rounded-lg text-sm font-bold hover:bg-indie-accent-pink/80 transition-colors disabled:opacity-60 cursor-pointer"
                   >
@@ -396,7 +550,7 @@ export default function HelpdeskAdmin() {
                 <textarea
                   rows="3"
                   value={noteMessage}
-                  onChange={(e) => setNoteMessage(e.target.value)}
+                  onChange={(event) => setNoteMessage(event.target.value)}
                   placeholder="Add an internal note visible only to admins..."
                   className="w-full px-3 py-2 rounded-lg bg-indie-bg-main border border-yellow-500/30 text-sm text-indie-text-light focus:border-yellow-500 focus:outline-none"
                 />
@@ -409,9 +563,6 @@ export default function HelpdeskAdmin() {
                     {sendingNote ? 'Adding...' : 'Add Internal Note'}
                   </button>
                 </div>
-                {actionError && (
-                  <p className="text-xs text-red-400/80">{actionError}</p>
-                )}
               </div>
             </div>
           )}
