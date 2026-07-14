@@ -10,6 +10,7 @@ const STACK_HINTS = [
   { test: /react/i, category: 'React' },
   { test: /typescript/i, category: 'TypeScript' },
   { test: /javascript/i, category: 'JavaScript' },
+  { test: /sql|database|postgres|mysql|sqlite/i, category: 'SQL' },
   { test: /php/i, category: 'PHP' },
   { test: /python/i, category: 'Python' },
   { test: /java/i, category: 'Java' },
@@ -23,6 +24,7 @@ const CATEGORY_PRIORITY = [
   'React',
   'TypeScript',
   'JavaScript',
+  'SQL',
   'PHP',
   'Python',
   'Java',
@@ -30,6 +32,14 @@ const CATEGORY_PRIORITY = [
   'C#',
   'HTML/CSS',
   'Other',
+]
+
+const STANDOUT_REPO_NAMES = [
+  'Portfolio-Website',
+  'course-files-javascript-react-movie-review-app',
+  'course-files-python-library-inventory-management',
+  'course-files-php-taskmanagementsystem',
+  'course-files-sql-final-projects',
 ]
 
 function inferCategory(repo) {
@@ -106,6 +116,49 @@ function groupReposByCategory(repos) {
     }))
 }
 
+function selectStandoutRepos(repos) {
+  if (!Array.isArray(repos) || repos.length === 0) {
+    return []
+  }
+
+  const standout = []
+  const seenIds = new Set()
+
+  for (const repoName of STANDOUT_REPO_NAMES) {
+    const match = repos.find((repo) => repo.name?.toLowerCase() === repoName.toLowerCase())
+    if (match && !seenIds.has(match.id)) {
+      standout.push(match)
+      seenIds.add(match.id)
+    }
+  }
+
+  if (standout.length < 6) {
+    const ranked = [...repos]
+      .sort((leftRepo, rightRepo) => {
+        if ((rightRepo.stargazers_count || 0) !== (leftRepo.stargazers_count || 0)) {
+          return (rightRepo.stargazers_count || 0) - (leftRepo.stargazers_count || 0)
+        }
+
+        const leftUpdated = new Date(leftRepo.pushed_at || leftRepo.updated_at || 0).getTime()
+        const rightUpdated = new Date(rightRepo.pushed_at || rightRepo.updated_at || 0).getTime()
+        return rightUpdated - leftUpdated
+      })
+
+    for (const repo of ranked) {
+      if (standout.length >= 6) {
+        break
+      }
+
+      if (!seenIds.has(repo.id)) {
+        standout.push(repo)
+        seenIds.add(repo.id)
+      }
+    }
+  }
+
+  return standout.slice(0, 6)
+}
+
 export default function Software() {
   const [repos, setRepos] = useState([])
   const [loading, setLoading] = useState(true)
@@ -168,6 +221,7 @@ export default function Software() {
   }, [])
 
   const groupedRepos = groupReposByCategory(repos)
+  const standoutRepos = selectStandoutRepos(repos)
 
   return (
     <PageWrapper>
@@ -175,6 +229,48 @@ export default function Software() {
       <hr className="border-0 border-t border-indie-accent-green/50 my-4" />
 
       <article className="text-indie-text-gray">
+        <div className="mb-10">
+          <div className="mb-4 flex flex-col gap-2">
+            <h2 className="text-2xl text-indie-accent-green font-bold">Standout Projects</h2>
+            <p className="text-sm text-indie-text-gray/65">
+              Featured projects from the same live GitHub data feed, chosen for impact and breadth.
+            </p>
+          </div>
+
+          {!loading && !error && standoutRepos.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">
+              {standoutRepos.map((repo) => (
+                <a
+                  key={`standout-${repo.id}`}
+                  href={repo.html_url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="glass-effect p-5 rounded-xl border border-indie-accent-green/30 hover:border-indie-accent-green/60 transition-colors group"
+                >
+                  <div className="flex items-start justify-between gap-3 mb-2">
+                    <h3 className="text-lg font-bold text-indie-text-light group-hover:text-indie-accent-green transition-colors break-words">
+                      {repo.name}
+                    </h3>
+                    <span className="text-[11px] px-2 py-1 rounded-md bg-indie-bg-main border border-indie-accent-green/25 text-indie-text-gray/80 whitespace-nowrap">
+                      {inferCategory(repo)}
+                    </span>
+                  </div>
+
+                  <p className="text-sm text-indie-text-gray/75 mb-4 min-h-[4.5rem] line-clamp-3">
+                    {repo.description || 'No description provided.'}
+                  </p>
+
+                  <div className="flex items-center justify-between text-xs text-indie-text-gray/60">
+                    <span>{repo.language || 'Other'}</span>
+                    <span>★ {repo.stargazers_count || 0}</span>
+                    <span>Updated {formatPushDate(repo.pushed_at || repo.updated_at)}</span>
+                  </div>
+                </a>
+              ))}
+            </div>
+          )}
+        </div>
+
         <div className="mt-12 pt-8 border-t border-indie-accent-green/20">
           <div className="mb-4 flex flex-col gap-2">
             <h2 className="text-xl text-indie-accent-green font-bold">All GitHub Projects</h2>
