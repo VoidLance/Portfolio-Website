@@ -25,6 +25,15 @@ export const updatesData = [
     ]
   },
   {
+    date: "14/07/26",
+    title: "Live GitHub Software Listings",
+    items: [
+      "Replaced the Software page's fixed GitHub project links with live repository data from the VoidLance GitHub account.",
+      "Grouped repositories into expandable language and stack sections so the portfolio stays organized as new projects are pushed.",
+      "Kept the featured showcase cards while making the GitHub list refresh automatically on each page load.",
+    ]
+  },
+  {
     date: "30/04/26",
     title: "Legacy Hosting Cleanup + Git Push Fix",
     items: [
