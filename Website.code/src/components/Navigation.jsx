@@ -52,6 +52,9 @@ export default function Navigation() {
     setOpenDropdown(null)
   }
 
+  const dropdownLinkClassName = ({ isActive }) =>
+    `block text-base transition-colors ${isActive ? 'text-indie-accent-green underline decoration-indie-accent-green decoration-2 underline-offset-4' : 'text-indie-text-light hover:text-indie-accent-green'}`
+
   return (
     <>
       {/* Mobile hamburger button - sticks to top with full header height and background */}
@@ -117,13 +120,13 @@ export default function Navigation() {
           </div>
           <ul className={`dropdown w-full md:w-auto md:relative md:top-0 md:left-0 ${openDropdown === 'games' ? 'opacity-100 visible block md:absolute md:top-full md:left-0' : 'hidden md:opacity-0 md:invisible md:absolute'}`}>
             <li className="dropdown-item">
-              <NavLink to="/games" onClick={closeMobileMenu} className="block text-base">Games List</NavLink>
+              <NavLink to="/games" onClick={closeMobileMenu} className={dropdownLinkClassName}>Games List</NavLink>
             </li>
             <li className="dropdown-item">
-              <NavLink to="/games/curse-semna" onClick={closeMobileMenu} className="block text-base">Semna: Shattered Cycles</NavLink>
+              <NavLink to="/games/curse-semna" onClick={closeMobileMenu} className={dropdownLinkClassName}>Semna: Shattered Cycles</NavLink>
             </li>
             <li className="dropdown-item">
-              <NavLink to="/games/dungeon-crawler" onClick={closeMobileMenu} className="block text-base">Dungeon Crawler</NavLink>
+              <NavLink to="/games/dungeon-crawler" onClick={closeMobileMenu} className={dropdownLinkClassName}>Dungeon Crawler</NavLink>
             </li>
           </ul>
         </li>
@@ -151,10 +154,10 @@ export default function Navigation() {
           </div>
           <ul className={`dropdown w-full md:w-auto md:relative md:top-0 md:left-0 ${openDropdown === 'books' ? 'opacity-100 visible block md:absolute md:top-full md:left-0' : 'hidden md:opacity-0 md:invisible md:absolute'}`}>
             <li className="dropdown-item">
-              <NavLink to="/books" onClick={closeMobileMenu} className="block text-base">Books</NavLink>
+              <NavLink to="/books" onClick={closeMobileMenu} className={dropdownLinkClassName}>Books</NavLink>
             </li>
             <li className="dropdown-item">
-              <NavLink to="/books/laws" onClick={closeMobileMenu} className="block text-base">L.A.W.S</NavLink>
+              <NavLink to="/books/laws" onClick={closeMobileMenu} className={dropdownLinkClassName}>L.A.W.S</NavLink>
             </li>
           </ul>
         </li>
@@ -185,7 +188,7 @@ export default function Navigation() {
           </div>
           <ul className={`dropdown w-full md:w-auto md:relative md:top-0 md:left-0 ${openDropdown === 'software' ? 'opacity-100 visible block md:absolute md:top-full md:left-0' : 'hidden md:opacity-0 md:invisible md:absolute'}`}>
             <li className="dropdown-item">
-              <NavLink to="/software" onClick={closeMobileMenu} className="block text-base">View All Projects</NavLink>
+              <NavLink to="/software" onClick={closeMobileMenu} className={dropdownLinkClassName}>View All Projects</NavLink>
             </li>
             <li className="dropdown-item px-4 py-2">
               <div className="text-[11px] uppercase tracking-[0.2em] text-indie-accent-green/60 mb-2">Featured GitHub Projects</div>
